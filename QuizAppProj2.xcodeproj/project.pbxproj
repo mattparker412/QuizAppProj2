@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2DD6EF9F27DFF0C1009DCD28 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD6EF9E27DFF0C1009DCD28 /* LoginViewController.swift */; };
+		2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA2D27E0ED390072646F /* UserPageViewController.swift */; };
 		84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */; };
 		84AC26D027DC09EE0053BF92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */; };
 		84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26D127DC09EE0053BF92 /* ViewController.swift */; };
@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2DD6EF9E27DFF0C1009DCD28 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2D57CA2D27E0ED390072646F /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		84AC26CA27DC09EE0053BF92 /* QuizAppProj2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizAppProj2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 				84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */,
 				84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */,
 				84AC26D127DC09EE0053BF92 /* ViewController.swift */,
-				2DD6EF9E27DFF0C1009DCD28 /* LoginViewController.swift */,
+				2D57CA2D27E0ED390072646F /* UserPageViewController.swift */,
 				84AC26D327DC09EE0053BF92 /* Main.storyboard */,
 				84AC26D927DC09F00053BF92 /* Assets.xcassets */,
 				84AC26DB27DC09F00053BF92 /* LaunchScreen.storyboard */,
@@ -146,8 +146,8 @@
 			files = (
 				84AC26D827DC09EE0053BF92 /* QuizAppProj2.xcdatamodeld in Sources */,
 				84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */,
+				2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */,
 				84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */,
-				2DD6EF9F27DFF0C1009DCD28 /* LoginViewController.swift in Sources */,
 				84AC26D027DC09EE0053BF92 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
