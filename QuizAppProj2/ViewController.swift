@@ -53,8 +53,8 @@ class ViewController: UIViewController {
         print("inside nav")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UserPageViewController
-        self.navigationController?.pushViewController(nextViewController, animated: true)
-        //self.present(nextViewController, animated:false, completion: nil)
+        //self.navigationController?.pushViewController(nextViewController, animated: true)
+        self.present(nextViewController, animated:false, completion: nil)
         print("completed nav")
     }
 /*
