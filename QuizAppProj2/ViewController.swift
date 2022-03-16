@@ -59,18 +59,18 @@ class ViewController: UIViewController {
     }
     
     func validateLoginInput() -> Bool{
-        if(userEmailText.text! == ""){
+        if(user.text! == ""){
             print("Please enter an email")
-            error.text = "Please enter an email."
+//            error.text = "Please enter an email."
             return false
-        }else if(userPasswordText.text! == ""){
+        }else if(pass.text! == ""){
             print("Please enter a password.")
-            error.text = "Please enter a password."
+//            error.text = "Please enter a password."
             return false
-        } else if(checkValidAccount() == false){
-            print("Email or password is wrong. Try again.")
-            error.text = "Email or password is wrong. Try again."
-            return false
+//        } else if(checkValidAccount() == false){
+//            print("Email or password is wrong. Try again.")
+//            error.text = "Email or password is wrong. Try again."
+//            return false
         }
         
         return true
@@ -83,8 +83,9 @@ class ViewController: UIViewController {
     }
     func navigateToUserController(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UserPageViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavigation") as! UINavigationController
         //self.navigationController?.pushViewController(nextViewController, animated: true)
+        self.view?.window?.rootViewController = nextViewController
         self.present(nextViewController, animated:false, completion: nil)
     }
     

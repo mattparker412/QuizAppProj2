@@ -24,21 +24,20 @@ class SignupViewController: UIViewController {
     }
     
     func validateLoginInput() -> Bool{
-        if(userEmailText.text! == ""){
+        if(username.text! == ""){
             print("Please enter an email")
-            error.text = "Please enter an email."
+//            error.text = "Please enter an email."
             return false
-        }else if(userPasswordText.text! == ""){
+        }else if(password.text! == ""){
             print("Please enter a password.")
-            error.text = "Please enter a password."
+//            error.text = "Please enter a password."
             return false
-        } else if(checkValidAccount() == false){
-            print("Email or password is wrong. Try again.")
-            error.text = "Email or password is wrong. Try again."
-            return false
+//        } else if(checkValidAccount() == false){
+//            print("Email or password is wrong. Try again.")
+//            error.text = "Email or password is wrong. Try again."
+//            return false
         }
         
         return true
     }
-
 }
