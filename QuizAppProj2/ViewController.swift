@@ -39,22 +39,41 @@ class ViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: Any) {
-        if (user.text! == userUser1 && pass.text! == userPass1){
-            print("user1 logged in")
-            isSubbed = false
-            //nav()
-            navigateToUserController()
-        } else if(user.text! == userUser2 && pass.text! == userPass2){
-            print("user2 logged in")
-            isSubbed = true
-        } else if(user.text! == adminUser && pass.text! == adminPass){
-            print("admin logged in")
-            isAdmin = true
+        if validateLoginInput() == true{
+            if (user.text! == userUser1 && pass.text! == userPass1){
+                print("user1 logged in")
+                isSubbed = false
+                //nav()
+                navigateToUserController()
+            } else if(user.text! == userUser2 && pass.text! == userPass2){
+                print("user2 logged in")
+                isSubbed = true
+                //navigate directly to quiz page
+            } else if(user.text! == adminUser && pass.text! == adminPass){
+                print("admin logged in")
+                isAdmin = true
+                //navigate to admin page
+                navigateToAdmin()
+            }
         }
     }
     
-    @IBAction func signup(_ sender: Any) {
-        print("go to signup")
+    func validateLoginInput() -> Bool{
+        if(userEmailText.text! == ""){
+            print("Please enter an email")
+            error.text = "Please enter an email."
+            return false
+        }else if(userPasswordText.text! == ""){
+            print("Please enter a password.")
+            error.text = "Please enter a password."
+            return false
+        } else if(checkValidAccount() == false){
+            print("Email or password is wrong. Try again.")
+            error.text = "Email or password is wrong. Try again."
+            return false
+        }
+        
+        return true
     }
     
     func nav(){
@@ -63,12 +82,24 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     func navigateToUserController(){
-        print("inside nav")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UserPageViewController
         //self.navigationController?.pushViewController(nextViewController, animated: true)
         self.present(nextViewController, animated:false, completion: nil)
-        print("completed nav")
+    }
+    
+    func navigateToQuizPage(){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UserPageViewController
+        //self.navigationController?.pushViewController(nextViewController, animated: true)
+        self.present(nextViewController, animated:false, completion: nil)
+    }
+    
+    func navigateToAdmin(){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Admin", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "adminPage") as! AdminViewController
+        //self.navigationController?.pushViewController(nextViewController, animated: true)
+        self.present(nextViewController, animated:false, completion: nil)
     }
 /*
     @IBOutlet weak var label: UILabel!

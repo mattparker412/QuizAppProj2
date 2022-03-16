@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1E2D83E5D1E1E2079E12716A /* Pods_QuizAppProj2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DDB45120129C5AC9CE4EA9A /* Pods_QuizAppProj2.framework */; };
 		2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA2D27E0ED390072646F /* UserPageViewController.swift */; };
+		2D57CA9627E2491E0072646F /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D57CA9527E2491E0072646F /* Admin.storyboard */; };
+		2D57CA9827E24A070072646F /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA9727E24A070072646F /* AdminViewController.swift */; };
+		2D57CA9A27E24BB70072646F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA9927E24BB70072646F /* SignupViewController.swift */; };
 		84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */; };
 		84AC26D027DC09EE0053BF92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */; };
 		84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26D127DC09EE0053BF92 /* ViewController.swift */; };
@@ -20,9 +23,11 @@
 
 /* Begin PBXFileReference section */
 		07FA34860843BF89F29056C3 /* Pods-QuizAppProj2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizAppProj2.release.xcconfig"; path = "Target Support Files/Pods-QuizAppProj2/Pods-QuizAppProj2.release.xcconfig"; sourceTree = "<group>"; };
-		446A715FC09145BFC255E9BB /* Pods-QuizAppProj2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizAppProj2.debug.xcconfig"; path = "Target Support Files/Pods-QuizAppProj2/Pods-QuizAppProj2.debug.xcconfig"; sourceTree = "<group>"; };
 		2D57CA2D27E0ED390072646F /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
-
+		2D57CA9527E2491E0072646F /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
+		2D57CA9727E24A070072646F /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
+		2D57CA9927E24BB70072646F /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		446A715FC09145BFC255E9BB /* Pods-QuizAppProj2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizAppProj2.debug.xcconfig"; path = "Target Support Files/Pods-QuizAppProj2/Pods-QuizAppProj2.debug.xcconfig"; sourceTree = "<group>"; };
 		84AC26CA27DC09EE0053BF92 /* QuizAppProj2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizAppProj2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +58,6 @@
 				446A715FC09145BFC255E9BB /* Pods-QuizAppProj2.debug.xcconfig */,
 				07FA34860843BF89F29056C3 /* Pods-QuizAppProj2.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -89,8 +93,11 @@
 				84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */,
 				84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */,
 				84AC26D127DC09EE0053BF92 /* ViewController.swift */,
+				2D57CA9927E24BB70072646F /* SignupViewController.swift */,
 				2D57CA2D27E0ED390072646F /* UserPageViewController.swift */,
+				2D57CA9727E24A070072646F /* AdminViewController.swift */,
 				84AC26D327DC09EE0053BF92 /* Main.storyboard */,
+				2D57CA9527E2491E0072646F /* Admin.storyboard */,
 				84AC26D927DC09F00053BF92 /* Assets.xcassets */,
 				84AC26DB27DC09F00053BF92 /* LaunchScreen.storyboard */,
 				84AC26DE27DC09F00053BF92 /* Info.plist */,
@@ -159,6 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D57CA9627E2491E0072646F /* Admin.storyboard in Resources */,
 				84AC26DD27DC09F00053BF92 /* LaunchScreen.storyboard in Resources */,
 				84AC26DA27DC09F00053BF92 /* Assets.xcassets in Resources */,
 				84AC26D527DC09EE0053BF92 /* Main.storyboard in Resources */,
@@ -214,6 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D57CA9827E24A070072646F /* AdminViewController.swift in Sources */,
+				2D57CA9A27E24BB70072646F /* SignupViewController.swift in Sources */,
 				84AC26D827DC09EE0053BF92 /* QuizAppProj2.xcdatamodeld in Sources */,
 				84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */,
 				2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */,
