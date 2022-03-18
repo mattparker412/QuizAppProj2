@@ -36,6 +36,7 @@
 		84AC26DD27DC09F00053BF92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AC26DB27DC09F00053BF92 /* LaunchScreen.storyboard */; };
 		84C1E8C727E29C3D001B298A /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 84C1E8C627E29C3D001B298A /* FacebookCore */; };
 		84C1E8C927E29C3D001B298A /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 84C1E8C827E29C3D001B298A /* FacebookLogin */; };
+		84DDAA6427E53CD50012DAD2 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDAA6327E53CD50012DAD2 /* HeaderCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		84AC26D927DC09F00053BF92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84AC26DC27DC09F00053BF92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84AC26DE27DC09F00053BF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84DDAA6327E53CD50012DAD2 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				84308D9C27E4F1D700F8E694 /* Utilities.swift */,
 				2DA63A3027E4D9C500F088CB /* SortingAlgorithm.swift */,
 				84308DA027E4F8C500F8E694 /* QuizTableViewCell.swift */,
+				84DDAA6327E53CD50012DAD2 /* HeaderCollectionReusableView.swift */,
 			);
 			path = ViewLogicComponents;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				84AC26D827DC09EE0053BF92 /* QuizAppProj2.xcdatamodeld in Sources */,
 				84308D9D27E4F1D700F8E694 /* Utilities.swift in Sources */,
 				84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */,
+				84DDAA6427E53CD50012DAD2 /* HeaderCollectionReusableView.swift in Sources */,
 				2D91747D27E385A200151288 /* InputValidation.swift in Sources */,
 				2DA63A3127E4D9C500F088CB /* SortingAlgorithm.swift in Sources */,
 				84308D9927E4F1B200F8E694 /* QuizCollectionViewController.swift in Sources */,

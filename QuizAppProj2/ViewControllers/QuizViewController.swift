@@ -11,6 +11,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var quizTable: UITableView!
     @IBOutlet weak var nextButton: UIButton!
+    var pickRandomAnswerOrder = [0,1,2,3]
     var questionNumber = 1
     var pickQuestion : Int?
     var techChoice : Int?
@@ -33,32 +34,107 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.section == 1{
             cell.answerLabel.font = UIFont.systemFont(ofSize: 16)
             cell.selectionStyle = .default
+            
             switch indexPath.row{
             case 0:
-                cell.answerLabel.text = swiftQuestionAnswer1[pickQuestion!]
-                swiftQuestionAnswer1.remove(at: pickQuestion!)
-                print(swiftQuestionAnswer1)
+                let randomOrder = pickRandomAnswerOrder.randomElement()
+                switch randomOrder{
+                case 0:
+                    cell.answerLabel.text = swiftQuestionAnswer1[pickQuestion!]
+                    swiftQuestionAnswer1.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.remove(at: randomOrder!)
+                case 1:
+                    cell.answerLabel.text = swiftQuestionAnswer2[pickQuestion!]
+                    swiftQuestionAnswer2.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.remove(at: randomOrder!)
+                case 2:
+                    cell.answerLabel.text = swiftQuestionAnswer3[pickQuestion!]
+                    swiftQuestionAnswer3.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.remove(at: randomOrder!)
+                case 3:
+                    cell.answerLabel.text = swiftQuestionAnswer4[pickQuestion!]
+                    swiftQuestionAnswer4.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.remove(at: randomOrder!)
+                default:
+                    print("")
+                }
             case 1:
-                cell.answerLabel.text = swiftQuestionAnswer2[pickQuestion!]
-                swiftQuestionAnswer2.remove(at: pickQuestion!)
+                let randomOrder = pickRandomAnswerOrder.randomElement()
+                switch randomOrder{
+                case 0:
+                    cell.answerLabel.text = swiftQuestionAnswer1[pickQuestion!]
+                    swiftQuestionAnswer1.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                case 1:
+                    cell.answerLabel.text = swiftQuestionAnswer2[pickQuestion!]
+                    swiftQuestionAnswer2.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                case 2:
+                    cell.answerLabel.text = swiftQuestionAnswer3[pickQuestion!]
+                    swiftQuestionAnswer3.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                case 3:
+                    cell.answerLabel.text = swiftQuestionAnswer4[pickQuestion!]
+                    swiftQuestionAnswer4.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                default:
+                    print("")
+                }
             case 2:
-                cell.answerLabel.text = swiftQuestionAnswer3[pickQuestion!]
-                swiftQuestionAnswer3.remove(at: pickQuestion!)
+                    let randomOrder = pickRandomAnswerOrder.randomElement()
+                    switch randomOrder{
+                    case 0:
+                        cell.answerLabel.text = swiftQuestionAnswer1[pickQuestion!]
+                        swiftQuestionAnswer1.remove(at: pickQuestion!)
+                        pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                    case 1:
+                        cell.answerLabel.text = swiftQuestionAnswer2[pickQuestion!]
+                        swiftQuestionAnswer2.remove(at: pickQuestion!)
+                        pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                    case 2:
+                        cell.answerLabel.text = swiftQuestionAnswer3[pickQuestion!]
+                        swiftQuestionAnswer3.remove(at: pickQuestion!)
+                        pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                    case 3:
+                        cell.answerLabel.text = swiftQuestionAnswer4[pickQuestion!]
+                        swiftQuestionAnswer4.remove(at: pickQuestion!)
+                        pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                    default:
+                        print("")
+                    }
             case 3:
-                cell.answerLabel.text = swiftQuestionAnswer4[pickQuestion!]
-                swiftQuestionAnswer4.remove(at: pickQuestion!)
+                let randomOrder = pickRandomAnswerOrder.randomElement()
+                switch randomOrder{
+                case 0:
+                    cell.answerLabel.text = swiftQuestionAnswer1[pickQuestion!]
+                    swiftQuestionAnswer1.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                case 1:
+                    cell.answerLabel.text = swiftQuestionAnswer2[pickQuestion!]
+                    swiftQuestionAnswer2.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                case 2:
+                    cell.answerLabel.text = swiftQuestionAnswer3[pickQuestion!]
+                    swiftQuestionAnswer3.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                case 3:
+                    cell.answerLabel.text = swiftQuestionAnswer4[pickQuestion!]
+                    swiftQuestionAnswer4.remove(at: pickQuestion!)
+                    pickRandomAnswerOrder.removeAll{ $0 == randomOrder }
+                default:
+                    print("")
+                }
             default:
-                print("impossible error")
+                print("")
                 
             }
         }
         else if indexPath.section == 0{
             cell.selectionStyle = .none
-            cell.answerLabel.font = UIFont.systemFont(ofSize: 24)
+            cell.answerLabel.font = UIFont.systemFont(ofSize: 22)
             cell.answerLabel.numberOfLines = 3
             cell.answerLabel.text = swiftQuestionData[pickQuestion!]
             swiftQuestionData.remove(at: pickQuestion!)
-            print(swiftQuestionData)
         }
         
         return cell
@@ -66,9 +142,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section{
         case 0:
-            return 150
+            return 200
         case 1:
-            return 43.5
+            return 50
         default:
             return 0
         }
@@ -94,11 +170,12 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             return 20
         case 1:
-            return 10
+            return 20
         default:
             return 0
         }
     }
+    
     
     
     
@@ -126,9 +203,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func pressNext(_ sender: Any) {
         //store answer
        
-        
-        if questionNumber < 4 {
-        pickQuestion = Int.random(in: 0...(4-questionNumber))
+        pickRandomAnswerOrder = [0,1,2,3]
+        if swiftQuestionData.count > 1 {
+            pickQuestion = Int.random(in: 0..<swiftQuestionData.count)
         }
         else{
             pickQuestion = 0

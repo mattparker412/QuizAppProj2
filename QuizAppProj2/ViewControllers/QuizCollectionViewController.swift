@@ -25,7 +25,15 @@ class QuizCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-  
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
+        guard let typedHeaderView = headerView as? HeaderCollectionReusableView
+        else{
+            return headerView
+        }
+        typedHeaderView.headerLabel.text = "Pick a Technology Quiz"
+        return typedHeaderView
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -80,6 +88,7 @@ class QuizCollectionViewController: UICollectionViewController {
             
         
     }
+    
     // MARK: UICollectionViewDelegate
 
     /*
