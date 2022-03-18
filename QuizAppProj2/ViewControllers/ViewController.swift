@@ -38,8 +38,9 @@ class ViewController: UIViewController {
         }
     }
     
+    let validation = InputValidation()
     @IBAction func login(_ sender: Any) {
-        if validateLoginInput() == true{
+        if validation.validateLoginInput(username: user.text!, password: pass.text!) == true{
             if (user.text! == userUser1 && pass.text! == userPass1){
                 print("user1 logged in")
                 isSubbed = false
@@ -58,23 +59,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func validateLoginInput() -> Bool{
-        if(user.text! == ""){
-            print("Please enter an email")
-//            error.text = "Please enter an email."
-            return false
-        }else if(pass.text! == ""){
-            print("Please enter a password.")
-//            error.text = "Please enter a password."
-            return false
-//        } else if(checkValidAccount() == false){
-//            print("Email or password is wrong. Try again.")
-//            error.text = "Email or password is wrong. Try again."
-//            return false
-        }
-        
-        return true
-    }
     
     func nav(){
         print("inside nav")
