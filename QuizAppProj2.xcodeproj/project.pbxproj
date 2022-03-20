@@ -22,6 +22,8 @@
 		2DA63A2D27E4D61D00F088CB /* UseMicrophone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA63A2C27E4D61D00F088CB /* UseMicrophone.swift */; };
 		2DA63A2F27E4D71100F088CB /* CalculateRanking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA63A2E27E4D71100F088CB /* CalculateRanking.swift */; };
 		2DA63A3127E4D9C500F088CB /* SortingAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA63A3027E4D9C500F088CB /* SortingAlgorithm.swift */; };
+		2DA63A7527E6FBCD00F088CB /* XCTestSortingAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA63A7427E6FBCD00F088CB /* XCTestSortingAlgorithm.swift */; };
+		2DA63A7A27E7138400F088CB /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA63A7927E7138400F088CB /* FeedbackViewController.swift */; };
 		84308D9727E4F17F00F8E694 /* QuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308D9627E4F17F00F8E694 /* QuizCollectionViewCell.swift */; };
 		84308D9927E4F1B200F8E694 /* QuizCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308D9827E4F1B100F8E694 /* QuizCollectionViewController.swift */; };
 		84308D9B27E4F1CF00F8E694 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308D9A27E4F1CF00F8E694 /* QuizViewController.swift */; };
@@ -63,6 +65,8 @@
 		2DA63A2C27E4D61D00F088CB /* UseMicrophone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseMicrophone.swift; sourceTree = "<group>"; };
 		2DA63A2E27E4D71100F088CB /* CalculateRanking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateRanking.swift; sourceTree = "<group>"; };
 		2DA63A3027E4D9C500F088CB /* SortingAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingAlgorithm.swift; sourceTree = "<group>"; };
+		2DA63A7427E6FBCD00F088CB /* XCTestSortingAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestSortingAlgorithm.swift; sourceTree = "<group>"; };
+		2DA63A7927E7138400F088CB /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		84308D9427E4F02F00F8E694 /* QuizAppProj2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizAppProj2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84308D9527E4F02F00F8E694 /* QuizAppProj2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizAppProj2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84308D9627E4F17F00F8E694 /* QuizCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				2D91747227E37EC500151288 /* QuizAppProj2Tests.swift */,
 				2D91748327E3884600151288 /* XCTestInputValidation.swift */,
 				2D91748727E3934A00151288 /* XCTestQuizTimer.swift */,
+				2DA63A7427E6FBCD00F088CB /* XCTestSortingAlgorithm.swift */,
 			);
 			path = QuizAppProj2Tests;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 				84308D9A27E4F1CF00F8E694 /* QuizViewController.swift */,
 				2D91747927E3806C00151288 /* QuizPageViewController.swift */,
 				2DA63A2A27E4D15400F088CB /* RankingViewController.swift */,
+				2DA63A7927E7138400F088CB /* FeedbackViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -296,6 +302,7 @@
 				2D91748827E3934A00151288 /* XCTestQuizTimer.swift in Sources */,
 				2D91747E27E385A200151288 /* InputValidation.swift in Sources */,
 				2D91747327E37EC500151288 /* QuizAppProj2Tests.swift in Sources */,
+				2DA63A7527E6FBCD00F088CB /* XCTestSortingAlgorithm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +313,7 @@
 				2DA63A2F27E4D71100F088CB /* CalculateRanking.swift in Sources */,
 				84308D9B27E4F1CF00F8E694 /* QuizViewController.swift in Sources */,
 				84308D9727E4F17F00F8E694 /* QuizCollectionViewCell.swift in Sources */,
+				2DA63A7A27E7138400F088CB /* FeedbackViewController.swift in Sources */,
 				2D57CA9827E24A070072646F /* AdminViewController.swift in Sources */,
 				2D57CA9A27E24BB70072646F /* SignupViewController.swift in Sources */,
 				84AC26D827DC09EE0053BF92 /* QuizAppProj2.xcdatamodeld in Sources */,

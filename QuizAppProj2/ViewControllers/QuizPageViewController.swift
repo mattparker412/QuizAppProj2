@@ -22,7 +22,7 @@ class QuizPageViewController: UIViewController {
     //need to add animation for disappearing start button when start is clicked and display quiz questions
     @IBAction func startTimer(_ sender: UIButton) {
         print("button pressed")
-        clock.countdownTimer(secondsRemaining: 1800)
+        //clock.countdownTimer(secondsRemaining: 1800)
         var time = 1800
         var minutes : String?
         var seconds : String?

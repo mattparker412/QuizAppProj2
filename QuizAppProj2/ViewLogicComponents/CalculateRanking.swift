@@ -16,5 +16,7 @@ class CalculateRanking{
         var quizScore = correctAnswers + (1800-timeTaken)
         
         //to calculate ranking position, use array of all previous scores and sort the array. higher integer values are placed higher on the list while lower integer values are placed lower
+        
+        
     }
 }

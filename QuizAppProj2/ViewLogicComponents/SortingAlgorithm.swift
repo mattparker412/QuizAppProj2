@@ -8,4 +8,9 @@
 import Foundation
 class SortingAlgorithm{
     
+    func sortRanks(numD : Array<Int>){
+        let num = numD.sorted{(a,b)-> Bool in
+            return a > b
+        }
+    }
 }

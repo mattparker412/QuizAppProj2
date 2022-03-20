@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fOj-4Y-dPz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -174,10 +174,10 @@
             </objects>
             <point key="canvasLocation" x="2388" y="80"/>
         </scene>
-        <!--View Controller-->
+        <!--Feedback View Controller-->
         <scene sceneID="keY-VN-eMp">
             <objects>
-                <viewController id="Pl3-mA-f7O" sceneMemberID="viewController">
+                <viewController id="Pl3-mA-f7O" customClass="FeedbackViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jzg-FQ-3aU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,15 +189,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-J7-ADC">
+                                <rect key="frame" x="187" y="291" width="42" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="mic.fill" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="activeMicro:" destination="Pl3-mA-f7O" eventType="touchUpInside" id="U4R-9t-Ma5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="leve a comment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swe-ze-4Qt">
+                                <rect key="frame" x="64" y="262" width="202" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wn-et-WiV">
+                                <rect key="frame" x="64" y="358" width="275" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rKf-Kw-GDI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="frc-9a-0CC"/>
+                    <connections>
+                        <outlet property="label" destination="3wn-et-WiV" id="zlb-Z3-9Xu"/>
+                        <outlet property="micro" destination="MEr-J7-ADC" id="EYs-WP-udF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoI-kI-JGu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4161" y="281"/>
+            <point key="canvasLocation" x="4194" y="418"/>
         </scene>
         <!--Ranking View Controller-->
         <scene sceneID="7Qa-EP-ctZ">
@@ -317,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUd-Ia-Toa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3286.9565217391305" y="611.38392857142856"/>
+            <point key="canvasLocation" x="3287" y="514"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yn2-Hs-1Z3">
@@ -342,7 +370,7 @@
             <objects>
                 <collectionViewController id="Y9N-00-2yD" customClass="QuizCollectionViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="B4b-RK-g2E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="jc4-3l-klR">
@@ -412,11 +440,11 @@
             <objects>
                 <viewController id="QtJ-yr-a3G" customClass="QuizViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EfZ-iH-TOY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Java" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tZ-dH-fOm">
-                                <rect key="frame" x="179.5" y="0.0" width="55.5" height="34"/>
+                                <rect key="frame" x="179.5" y="88" width="55.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -461,13 +489,20 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rez-H9-LKH">
-                                <rect key="frame" x="180" y="705.5" width="54" height="31"/>
+                                <rect key="frame" x="180" y="732.5" width="54" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Next"/>
                                 <connections>
                                     <action selector="pressNext:" destination="QtJ-yr-a3G" eventType="touchUpInside" id="tTR-61-NZh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCP-FP-6Gd">
+                                <rect key="frame" x="153" y="767" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mJw-Yv-vdk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -482,21 +517,26 @@
                     <connections>
                         <outlet property="nextButton" destination="rez-H9-LKH" id="HqJ-ri-twD"/>
                         <outlet property="quizTable" destination="sNl-gA-XGe" id="dVi-FD-22e"/>
+                        <outlet property="quizTimer" destination="gCP-FP-6Gd" id="WSl-u4-uUM"/>
                         <outlet property="textLabel" destination="3tZ-dH-fOm" id="bJK-Nx-slW"/>
                         <segue destination="Y9N-00-2yD" kind="show" identifier="backtoquizhome" id="Odd-sC-Gt8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlH-qW-KbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4161" y="-392"/>
+            <point key="canvasLocation" x="4160.8695652173919" y="-392.41071428571428"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Odd-sC-Gt8"/>
+        <segue reference="JWw-1t-keR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="free" width="164" height="350"/>
+        <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="subscribed" width="160" height="350"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

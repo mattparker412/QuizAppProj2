@@ -9,6 +9,7 @@ import UIKit
 
 class QuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var quizTimer: UILabel!
     @IBOutlet weak var quizTable: UITableView!
     @IBOutlet weak var nextButton: UIButton!
     var questionNumber = 1
@@ -109,6 +110,8 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let clock = Clock()
+        clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer)
         switch techChoice{
         case 1:
             textLabel.text = "Swift"

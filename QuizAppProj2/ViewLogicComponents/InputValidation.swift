@@ -7,6 +7,10 @@
 
 import Foundation
 class InputValidation{
+    func validateCreditCard(creditCard : String){
+        
+    }
+    
     func validateLoginInput(username : String, password: String) -> Bool{
         if(username == ""){
             print("Please enter an email")
