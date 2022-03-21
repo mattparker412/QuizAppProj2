@@ -7,9 +7,11 @@
 
 import Foundation
 class InputValidation{
-    func validateCreditCard(creditCard : String){
+    func validateCreditCard(creditCard : String, cvc :String, expDate : String, firstName : String, lastName : String){
         
     }
+    
+    
     
     func validateLoginInput(username : String, password: String) -> Bool{
         if(username == ""){

@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D3557F527E7C99B002B103C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F427E7C99B002B103C /* User.swift */; };
+		2D3557F727E7C9B4002B103C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F627E7C9B4002B103C /* Question.swift */; };
+		2D3557F927E7C9C5002B103C /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F827E7C9C5002B103C /* Ranking.swift */; };
+		2D3557FD27E7C9E3002B103C /* Technology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557FC27E7C9E3002B103C /* Technology.swift */; };
+		2D3557FF27E7C9FA002B103C /* IsSubscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557FE27E7C9FA002B103C /* IsSubscribed.swift */; };
+		2D35580127E7CA11002B103C /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35580027E7CA11002B103C /* DBHelper.swift */; };
+		2D35580327E7CA20002B103C /* IsBlocked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35580227E7CA20002B103C /* IsBlocked.swift */; };
+		2D35584327E81F8B002B103C /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35584227E81F8B002B103C /* DataFetcher.swift */; };
+		2D35584527E820DA002B103C /* AdminAllUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35584427E820DA002B103C /* AdminAllUsersViewController.swift */; };
+		2D35584727E820E6002B103C /* AdminCreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35584627E820E6002B103C /* AdminCreateQuizViewController.swift */; };
 		2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA2D27E0ED390072646F /* UserPageViewController.swift */; };
 		2D57CA9627E2491E0072646F /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D57CA9527E2491E0072646F /* Admin.storyboard */; };
 		2D57CA9827E24A070072646F /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA9727E24A070072646F /* AdminViewController.swift */; };
@@ -51,6 +61,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D3557F427E7C99B002B103C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2D3557F627E7C9B4002B103C /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		2D3557F827E7C9C5002B103C /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
+		2D3557FC27E7C9E3002B103C /* Technology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technology.swift; sourceTree = "<group>"; };
+		2D3557FE27E7C9FA002B103C /* IsSubscribed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsSubscribed.swift; sourceTree = "<group>"; };
+		2D35580027E7CA11002B103C /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		2D35580227E7CA20002B103C /* IsBlocked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsBlocked.swift; sourceTree = "<group>"; };
+		2D35584227E81F8B002B103C /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		2D35584427E820DA002B103C /* AdminAllUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAllUsersViewController.swift; sourceTree = "<group>"; };
+		2D35584627E820E6002B103C /* AdminCreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCreateQuizViewController.swift; sourceTree = "<group>"; };
 		2D57CA2D27E0ED390072646F /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		2D57CA9527E2491E0072646F /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		2D57CA9727E24A070072646F /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +124,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D3557F227E7A4E2002B103C /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				2D3557F427E7C99B002B103C /* User.swift */,
+				2D3557F627E7C9B4002B103C /* Question.swift */,
+				2D3557F827E7C9C5002B103C /* Ranking.swift */,
+				2D3557FC27E7C9E3002B103C /* Technology.swift */,
+				2D3557FE27E7C9FA002B103C /* IsSubscribed.swift */,
+				2D35580027E7CA11002B103C /* DBHelper.swift */,
+				2D35580227E7CA20002B103C /* IsBlocked.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		2D91747127E37EC500151288 /* QuizAppProj2Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +170,8 @@
 				2D91747927E3806C00151288 /* QuizPageViewController.swift */,
 				2DA63A2A27E4D15400F088CB /* RankingViewController.swift */,
 				2DA63A7927E7138400F088CB /* FeedbackViewController.swift */,
+				2D35584427E820DA002B103C /* AdminAllUsersViewController.swift */,
+				2D35584627E820E6002B103C /* AdminCreateQuizViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -153,6 +189,7 @@
 		2D91748227E387A000151288 /* ViewLogicComponents */ = {
 			isa = PBXGroup;
 			children = (
+				2D35584227E81F8B002B103C /* DataFetcher.swift */,
 				84308D9627E4F17F00F8E694 /* QuizCollectionViewCell.swift */,
 				2D91747C27E385A200151288 /* InputValidation.swift */,
 				2D91748527E3919B00151288 /* Clock.swift */,
@@ -178,6 +215,7 @@
 		84AC26CC27DC09EE0053BF92 /* QuizAppProj2 */ = {
 			isa = PBXGroup;
 			children = (
+				2D3557F227E7A4E2002B103C /* Database */,
 				2D91748227E387A000151288 /* ViewLogicComponents */,
 				2D91748127E3878300151288 /* Storyboards */,
 				2D91748027E3876C00151288 /* ViewControllers */,
@@ -317,19 +355,29 @@
 				2D57CA9827E24A070072646F /* AdminViewController.swift in Sources */,
 				2D57CA9A27E24BB70072646F /* SignupViewController.swift in Sources */,
 				84AC26D827DC09EE0053BF92 /* QuizAppProj2.xcdatamodeld in Sources */,
+				2D3557FD27E7C9E3002B103C /* Technology.swift in Sources */,
 				84308D9D27E4F1D700F8E694 /* Utilities.swift in Sources */,
 				84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */,
+				2D3557F727E7C9B4002B103C /* Question.swift in Sources */,
 				2D91747D27E385A200151288 /* InputValidation.swift in Sources */,
 				2DA63A3127E4D9C500F088CB /* SortingAlgorithm.swift in Sources */,
+				2D35584527E820DA002B103C /* AdminAllUsersViewController.swift in Sources */,
 				84308D9927E4F1B200F8E694 /* QuizCollectionViewController.swift in Sources */,
 				2D91747A27E3806C00151288 /* QuizPageViewController.swift in Sources */,
+				2D35584327E81F8B002B103C /* DataFetcher.swift in Sources */,
+				2D35584727E820E6002B103C /* AdminCreateQuizViewController.swift in Sources */,
+				2D3557F927E7C9C5002B103C /* Ranking.swift in Sources */,
 				2D91748627E3919B00151288 /* Clock.swift in Sources */,
 				2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */,
 				84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */,
+				2D35580327E7CA20002B103C /* IsBlocked.swift in Sources */,
 				84AC26D027DC09EE0053BF92 /* SceneDelegate.swift in Sources */,
 				2DA63A2B27E4D15400F088CB /* RankingViewController.swift in Sources */,
+				2D3557FF27E7C9FA002B103C /* IsSubscribed.swift in Sources */,
 				84308DA127E4F8C500F8E694 /* QuizTableViewCell.swift in Sources */,
 				2DA63A2D27E4D61D00F088CB /* UseMicrophone.swift in Sources */,
+				2D3557F527E7C99B002B103C /* User.swift in Sources */,
+				2D35580127E7CA11002B103C /* DBHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

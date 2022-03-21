@@ -1,13 +1,14 @@
 //
-//  RankingViewController.swift
+//  AdminAllUsersViewController.swift
 //  QuizAppProj2
 //
-//  Created by John Figueroa on 3/18/22.
+//  Created by John Figueroa on 3/20/22.
 //
 
 import UIKit
 
-class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+//adminallusersviewcontroller operates similarly to rankingviewcontroller
+class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     
     private let dataFetcher = DataFetcher()
