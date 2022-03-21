@@ -75,6 +75,30 @@
             </objects>
             <point key="canvasLocation" x="792.75362318840587" y="501.5625"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="meT-eh-gaH">
+            <objects>
+                <viewController id="TJx-b1-6ve" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZTP-eS-5Zy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Page of user if clicked in user page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6R-8A-qQf">
+                                <rect key="frame" x="75" y="173" width="265" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cwZ-0i-Cva"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JaO-HC-abr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1619" y="502"/>
+        </scene>
         <!--Admin Create Quiz View Controller-->
         <scene sceneID="fzJ-7a-fxb">
             <objects>

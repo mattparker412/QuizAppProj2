@@ -20,10 +20,12 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        pass.isSecureTextEntry = true
         let loginButton = FBLoginButton()
         loginButton.permissions = ["public_profile", "email"]
         loginButton.center = view.center
