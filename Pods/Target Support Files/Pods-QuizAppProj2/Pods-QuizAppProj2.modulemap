@@ -1,0 +1,6 @@
+framework module Pods_QuizAppProj2 {
+  umbrella header "Pods-QuizAppProj2-umbrella.h"
+
+  export *
+  module * { export * }
+}

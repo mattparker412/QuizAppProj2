@@ -9,22 +9,50 @@ import UIKit
 import AVFoundation
 import Speech
 
-class FeedbackViewController: UIViewController {
+
+class FeedbackViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var micro: UIButton!
-    @IBOutlet weak var label: UILabel!
-    
     let audioEng = AVAudioEngine()
     let req = SFSpeechAudioBufferRecognitionRequest()
     let speechR = SFSpeechRecognizer()
     var rTask : SFSpeechRecognitionTask!
     var isStart = false
+    var finalMsg : String?
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "Reviews"
+        return cell
+    }
+    
+    //something happens when cell clicked
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        //show chat messages
+        print("clicked")
+        let vc = ChatViewController()
+        vc.title = "Chat"
+        //navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated:false, completion: nil)
+    }
+    
+
+    
+    @IBOutlet var myTable : UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        myTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        myTable.delegate = self
+        myTable.dataSource = self
     }
+
     
     func startSpeechRec(){
         let nd = audioEng.inputNode
@@ -49,9 +77,8 @@ class FeedbackViewController: UIViewController {
                 return
             }
             let msg = resp?.bestTranscription.formattedString
-            self.label.text = msg!
-            
-            
+            print(msg)
+            self.finalMsg = msg
             
             var str : String = ""
             for seg in  resp!.bestTranscription.segments{
@@ -61,11 +88,9 @@ class FeedbackViewController: UIViewController {
         
         })
         
-        
-        print("start")
     }
     
-    func cancellSpeechRec(){
+    func cancelSpeechRec(){
         rTask.finish()
         rTask.cancel()
         rTask = nil
@@ -75,24 +100,43 @@ class FeedbackViewController: UIViewController {
         if audioEng.inputNode.numberOfInputs > 0 {
             audioEng.inputNode.removeTap(onBus: 0)
         }
-        print("cancel")
+        print("final msg")
+        print(finalMsg!)
     }
     
+    @IBAction func submitMsg(_ sender: Any) {
+        if(!(finalMsg ?? "").isEmpty && micro.currentTitle == "start"){
+            //send data to database
+            //store message id
+            // message in finalMsg
+            print("data saved to db")
+        } else {
+            print("no message to send")
+        }
+    }
     @IBAction func activeMicro(_ sender: Any) {
         isStart = !isStart
         if isStart {
             startSpeechRec()
             micro.setTitle("stop", for: .normal)
-            micro.tintColor = .blue
+            micro.tintColor = .red
             
          //   sender.setTitle("stop", for: .normal)
         }else{
-            cancellSpeechRec()
+            cancelSpeechRec()
             micro.setTitle("start", for: .normal)
-            micro.tintColor = .red
+            micro.tintColor = .green
+            
+            
           //  sender.setTitle("start", for: .normal)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("enter prepare")
+        let svc = segue.destination as!  ChatViewController
+            svc.messageToAppend = finalMsg!
+        }
     
 
 }
