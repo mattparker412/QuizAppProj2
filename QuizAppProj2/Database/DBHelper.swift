@@ -12,6 +12,10 @@ class DBHelper{
     
     var db: OpaquePointer?
     
+    init(){
+        self.connect()
+    }
+    
     func connect(){
     
     // Create the file path.
