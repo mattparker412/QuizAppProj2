@@ -7,6 +7,9 @@
 
 import Foundation
 class InputValidation{
+    
+    
+    
     func validateCreditCard(creditCard : String, cvc :String, expDate : String, firstName : String, lastName : String){
         
     }
@@ -33,7 +36,10 @@ class InputValidation{
     
     //function checks to see if username input and password input exist in database
     //to do when database is finished
-    func checkValidAccount(){
-        return
+    func checkValidAccount(userName: String, password: String) -> Bool {
+        
+        // Connect to the data base.
+        let db = DBHelper()
+        return db.checkUser(userName:userName, pass: password)
     }
 }

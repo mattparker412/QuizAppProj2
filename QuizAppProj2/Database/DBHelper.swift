@@ -64,6 +64,55 @@ class DBHelper{
         }
     } // End of connect().
     
+    
+    // Check user account.
+    func checkUser(userName:String, pass: String) -> Bool{
+        
+        var userList = [User]()
+        
+        var pointer: OpaquePointer?
+        
+        // This query did not work. It gives a weird error.
+        //let query = "select * from user where name = userName and password = pass"
+        let query = "select * from user"
+        // Apply the query.
+        // Connect the pointer to the database, and apply the query.
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.checkUser() --> ", err)
+            
+        }
+        
+        while(sqlite3_step(pointer)) == SQLITE_ROW
+        {
+            // Get the id.
+            let id = Int(sqlite3_column_int(pointer,0))
+            let name = String(cString:sqlite3_column_text(pointer, 1))
+            let pass = String(cString: sqlite3_column_text(pointer, 2))
+            let isSubRaw = Int(sqlite3_column_int(pointer, 3))
+            let isBlockedRaw = Int(sqlite3_column_int(pointer, 4))
+            
+            //Create the enums.
+            let isSubscribed = IsSubscribed(rawValue: isSubRaw)
+            let isBlocked = IsBlocked(rawValue: isBlockedRaw)
+            
+            // Create a user object.
+            let user = User(id: id, name: name, password: pass, subscribed: isSubscribed!, blocked: isBlocked!)
+        
+            // Add the returned users to the array.
+            userList.append(user)
+        }
+        // Check if there is a user with the passed name and password. 
+        for u in userList{
+            if(u.name == userName && u.password == pass)
+            {
+                return true
+            }
+        }
+        return false
+        
+    } // End of checkUser
+    
 }
 
 
