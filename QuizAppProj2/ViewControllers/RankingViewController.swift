@@ -81,7 +81,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 switch result{
                 case .success(let newData):
-                    self?.data.append(contentsOf: newData)
+                   self?.data.append(contentsOf: newData)
                     DispatchQueue.main.async{
                         self?.tableView.reloadData()
                     }
