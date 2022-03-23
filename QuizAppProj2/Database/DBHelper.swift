@@ -283,6 +283,37 @@ class DBHelper{
         return quizz
     }// End of create quizz.
     
+    
+    // This function returns an array of dictionaries.
+    //Each dictionary contains the user name and user feedback of each feedback received.
+    func getFeedBacks() -> [[String:String]]{
+        
+        // This array holds the feedbacks.
+        var feedBacks : [[String:String]] = []
+        
+        var pointer: OpaquePointer?
+        
+        let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
+        
+        // Connect the pointer to the database, and apply the query.
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.getFeedBacks() --> ", err)
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            
+            let name = String(cString:sqlite3_column_text(pointer,0))
+            let feedBack = String(cString: sqlite3_column_text(pointer,1))
+            
+            let dic = ["name":name, "feedback": feedBack]
+            feedBacks.append(dic)
+        }
+        
+       return feedBacks
+    }// End getFeedBacks
+    
+    
 }
 
 
