@@ -16,10 +16,11 @@ class QuizCollectionViewController: UICollectionViewController {
     var userID : Int? = Int.random(in: 1...1000)
     var db = DBHelper()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         db.connect()
+       
 
         // Register cell classes
        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -60,9 +61,14 @@ class QuizCollectionViewController: UICollectionViewController {
         if segue.identifier == "quizSegue"{
             if let locationIndex = sender as? NSIndexPath{
                 let quizVC = segue.destination as? QuizViewController
+                quizVC?.pickQuestion = Int.random(in: 0...4)
+                quizVC?.db = db
+                quizVC?.userID = userID
                 switch locationIndex.row{
                 case 0:
+                    
                     quizVC?.quizChoice = db.createQuiz(technologyId: 1)
+                    
                     quizVC?.techChoice = 1
                     quizVC?.view.backgroundColor = UIColor.red
                 case 1:

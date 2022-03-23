@@ -16,10 +16,30 @@ class DBHelper{
         self.connect()
     }
     
+    func prepareDatabaseFile() -> String{
+        let fileName : String = "quizzer.db"
+        
+        let fileManager : FileManager = FileManager.default
+        let directory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        let documentUrl = directory.appendingPathComponent(fileName)
+        let bundleUrl = Bundle.main.resourceURL?.appendingPathComponent(fileName)
+        
+        if fileManager.fileExists(atPath: (documentUrl.path)){
+            print("document file exists")
+            return documentUrl.path
+        }
+        else if fileManager.fileExists(atPath: (bundleUrl?.path)!){
+            print("document file does not exist, copy from bundle!")
+            try! fileManager.copyItem(at: bundleUrl!, to: documentUrl)
+        }
+        return documentUrl.path
+    }
+    
     func connect(){
     
     // Create the file path.
-    let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("quizDB.sqlite")
+    let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("quizzer.db")
     
         //Print the file path.
         print(filePath)
@@ -313,6 +333,112 @@ class DBHelper{
        return feedBacks
     }// End getFeedBacks
     
+    func storeRanking(userID : Int, techID : Int, rankScore : Int){
+        var pointer : OpaquePointer?
+        
+        let strTechID = String(techID)
+        let struserID = String(userID)
+        var oldRank : Int
+        var newRank : Int = rankScore
+        
+        let query = "select * from ranking where userID = " + struserID + " and technologyID = " + strTechID
+        
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at get ranking --> ", err)
+            
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            
+            // Get the id.
+             oldRank = Int(sqlite3_column_int(pointer, 2))
+            newRank = rankScore + oldRank
+        }
+        
+       
+        
+        if newRank != rankScore{
+            let query2 = "update ranking set rankingValue = " + String(newRank) + " where userID = " + struserID + " and technologyID = " + strTechID
+            
+            if sqlite3_prepare(db, query2, -1, &pointer, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print("There is an error at update ranking --> ", err)
+            }
+            
+            if sqlite3_step(pointer) != SQLITE_DONE{
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print("There is an error at update ranking step --> ", err)
+            }
+        }
+        else{
+            
+            let query3 = "insert into ranking (userID, technologyID, rankingValue) values (?,?,?)"
+            
+            if sqlite3_prepare(db, query3, -1, &pointer, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print("There is an error at insert new ranking --> ", err)
+            }
+            
+            if sqlite3_bind_int(pointer, 1, (Int32(userID)) ) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print("There is an error at insert id bind int --> ", err)
+            }
+            
+            if sqlite3_bind_int(pointer, 2, (Int32(techID)) ) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print("There is an error at insert techid bind int --> ", err)
+            }
+            
+            if sqlite3_bind_int(pointer, 3, (Int32(rankScore)) ) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print("There is an error at insert rankscore bind int --> ", err)
+            }
+            
+            if sqlite3_step(pointer) != SQLITE_DONE{
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print("There is an error at insert ranking step --> ", err)
+            }
+        }
+        
+        
+    }
+    
+    func getTopRanking(techID : Int) -> [Ranking]{
+        var pointer : OpaquePointer?
+        
+        //var userRankingDict = [Int:Int]()
+        var dictUsers = [Int]()
+        var dictRankings = [Int]()
+        var rankingArray = [Ranking]()
+        
+        
+        let query = "select * from ranking where technologyID = " + String(techID) + " order by rankingValue desc limit 10"
+        
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            
+            //userRankingDict[Int(sqlite3_column_int(pointer, 0))] = Int(sqlite3_column_int(pointer, 2))
+            //dictUsers.append(Int(sqlite3_column_int(pointer, 0)))
+            //dictRankings.append(Int(sqlite3_column_int(pointer, 2)))
+            let id = Int(sqlite3_column_int(pointer, 0))
+            let rankscore = Int(sqlite3_column_int(pointer, 2))
+            let rankingObj = Ranking(userId: id, technologyId: techID, rank: rankscore)
+            rankingArray.append(rankingObj)
+        }
+//        print(dictUsers)
+//        print(dictRankings)
+        for r in rankingArray{
+            print(r.userId)
+            print(r.technologyId)
+            print(r.ranking)
+        }
+        return rankingArray
+    }
     
 }
 

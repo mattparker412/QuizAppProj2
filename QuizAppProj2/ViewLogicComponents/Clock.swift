@@ -14,6 +14,7 @@ class Clock{
         return timeCount
     }
     func countdownTimer(secondsRemaining : Int, remainingTime : UILabel){
+        
         var time = secondsRemaining
         var minutes : String?
         var seconds : String?
@@ -25,12 +26,24 @@ class Clock{
                 seconds = String(display.2)
                 fullTime = "\(minutes!):\(seconds!)"
                 remainingTime.text = fullTime!
+                self.leftOver = time
                 print ("\(display)")
                 time -= 1
                 //return time
-            } else {
+            }
+            else{
                 Timer.invalidate()
             }
+            
         }
     }
+        func timerActionTest(){
+            print("timer condition \(timerTest!)")
+        }
+        func stopTimerTest(){
+            timerTest?.invalidate()
+            timerTest = nil
+        }
+    
+    
 }

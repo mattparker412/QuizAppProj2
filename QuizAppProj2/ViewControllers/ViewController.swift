@@ -12,11 +12,11 @@ import SQLite3
 
 class ViewController: UIViewController {
     let adminUser = "admin"
-    let adminPass = "1234"
+    let adminPass = "123"
     let userUser1 = "user1"
-    let userPass1 = "1234"
+    let userPass1 = "123"
     let userUser2 = "user2"
-    let userPass2 = "1234"
+    let userPass2 = "123"
     var isSubbed = false
     var isAdmin = false
     
@@ -28,6 +28,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       // i.connect()
+       // i.insertInitial()
         
         var f1 = db.prepareDatabaseFile()
                 if sqlite3_open(f1, &db.db) != SQLITE_OK{
