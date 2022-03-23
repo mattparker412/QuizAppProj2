@@ -12,8 +12,14 @@ class DataFetcher{
     func fetchData(pagination: Bool = false, completion : @escaping(Result<[String], Error>)->Void){
         DispatchQueue.global().asyncAfter(deadline: .now()
                                           + (pagination ? 3 : 2), execute: {
-            let originalData = ["Apple", "Google", "Facebook","Apple", "Google", "Facebook","Apple", "Google", "Facebook"]
-            
+            let originalData = ["Apple", "Google", "Facebook","Apple", "Google", "Facebook",
+                               "Apple", "Google", "Facebook",
+                               "Apple", "Google", "Facebook",
+                               "Apple", "Google", "Facebook","Apple", "Google", "Facebook",
+                               "Apple", "Google", "Facebook",
+                               "Apple", "Google", "Facebook","Apple", "Google", "Facebook",
+                               "Apple", "Google", "Facebook",
+                               "Apple", "Google", "Facebook"]
             /*
              ["Apple", "Google", "Facebook","Apple", "Google", "Facebook",
                                  "Apple", "Google", "Facebook",

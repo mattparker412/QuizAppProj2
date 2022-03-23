@@ -17,6 +17,14 @@
 		2D35584527E820DA002B103C /* AdminAllUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35584427E820DA002B103C /* AdminAllUsersViewController.swift */; };
 		2D35584727E820E6002B103C /* AdminCreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35584627E820E6002B103C /* AdminCreateQuizViewController.swift */; };
 		2D3558F927EA5260002B103C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3558F827EA5260002B103C /* ChatViewController.swift */; };
+		2D3558FB27EB74EB002B103C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3558FA27EB74EA002B103C /* User.swift */; };
+		2D3558FD27EB7509002B103C /* InitialDbInserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3558FC27EB7509002B103C /* InitialDbInserts.swift */; };
+		2D3558FF27EB7515002B103C /* Quizz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3558FE27EB7515002B103C /* Quizz.swift */; };
+		2D35590127EB7521002B103C /* QuizesTaken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35590027EB7521002B103C /* QuizesTaken.swift */; };
+		2D35590327EB7534002B103C /* PrepareDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35590227EB7534002B103C /* PrepareDb.swift */; };
+		2D35590527EB753F002B103C /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35590427EB753F002B103C /* Feedback.swift */; };
+		2D35590727EB7547002B103C /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35590627EB7547002B103C /* Admin.swift */; };
+		2D35590927EB75BE002B103C /* IsSubscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D35590827EB75BE002B103C /* IsSubscribed.swift */; };
 		2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA2D27E0ED390072646F /* UserPageViewController.swift */; };
 		2D57CA9627E2491E0072646F /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D57CA9527E2491E0072646F /* Admin.storyboard */; };
 		2D57CA9827E24A070072646F /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA9727E24A070072646F /* AdminViewController.swift */; };
@@ -73,6 +81,14 @@
 		2D35584427E820DA002B103C /* AdminAllUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAllUsersViewController.swift; sourceTree = "<group>"; };
 		2D35584627E820E6002B103C /* AdminCreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCreateQuizViewController.swift; sourceTree = "<group>"; };
 		2D3558F827EA5260002B103C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		2D3558FA27EB74EA002B103C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2D3558FC27EB7509002B103C /* InitialDbInserts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialDbInserts.swift; sourceTree = "<group>"; };
+		2D3558FE27EB7515002B103C /* Quizz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quizz.swift; sourceTree = "<group>"; };
+		2D35590027EB7521002B103C /* QuizesTaken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizesTaken.swift; sourceTree = "<group>"; };
+		2D35590227EB7534002B103C /* PrepareDb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareDb.swift; sourceTree = "<group>"; };
+		2D35590427EB753F002B103C /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		2D35590627EB7547002B103C /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		2D35590827EB75BE002B103C /* IsSubscribed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsSubscribed.swift; sourceTree = "<group>"; };
 		2D57CA2D27E0ED390072646F /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		2D57CA9527E2491E0072646F /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		2D57CA9727E24A070072646F /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
@@ -135,11 +151,19 @@
 		2D3557F227E7A4E2002B103C /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				2D3558FA27EB74EA002B103C /* User.swift */,
 				2D3557F627E7C9B4002B103C /* Question.swift */,
 				2D3557F827E7C9C5002B103C /* Ranking.swift */,
 				2D3557FC27E7C9E3002B103C /* Technology.swift */,
+				2D35590827EB75BE002B103C /* IsSubscribed.swift */,
 				2D35580027E7CA11002B103C /* DBHelper.swift */,
 				2D35580227E7CA20002B103C /* IsBlocked.swift */,
+				2D3558FC27EB7509002B103C /* InitialDbInserts.swift */,
+				2D3558FE27EB7515002B103C /* Quizz.swift */,
+				2D35590027EB7521002B103C /* QuizesTaken.swift */,
+				2D35590227EB7534002B103C /* PrepareDb.swift */,
+				2D35590427EB753F002B103C /* Feedback.swift */,
+				2D35590627EB7547002B103C /* Admin.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -253,7 +277,6 @@
 				07E5A3B05B7D742FB03EA978 /* Pods-QuizAppProj2Tests.debug.xcconfig */,
 				1A26E744C9ABDCB2278ED360 /* Pods-QuizAppProj2Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -453,12 +476,19 @@
 				2D57CA9A27E24BB70072646F /* SignupViewController.swift in Sources */,
 				84AC26D827DC09EE0053BF92 /* QuizAppProj2.xcdatamodeld in Sources */,
 				2D3557FD27E7C9E3002B103C /* Technology.swift in Sources */,
+				2D3558FB27EB74EB002B103C /* User.swift in Sources */,
+				2D35590327EB7534002B103C /* PrepareDb.swift in Sources */,
+				2D3558FF27EB7515002B103C /* Quizz.swift in Sources */,
 				84308D9D27E4F1D700F8E694 /* Utilities.swift in Sources */,
+				2D35590527EB753F002B103C /* Feedback.swift in Sources */,
 				84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */,
+				2D35590927EB75BE002B103C /* IsSubscribed.swift in Sources */,
+				2D35590127EB7521002B103C /* QuizesTaken.swift in Sources */,
 				2D3557F727E7C9B4002B103C /* Question.swift in Sources */,
 				2D91747D27E385A200151288 /* InputValidation.swift in Sources */,
 				2DA63A3127E4D9C500F088CB /* SortingAlgorithm.swift in Sources */,
 				2D35584527E820DA002B103C /* AdminAllUsersViewController.swift in Sources */,
+				2D35590727EB7547002B103C /* Admin.swift in Sources */,
 				84308D9927E4F1B200F8E694 /* QuizCollectionViewController.swift in Sources */,
 				2D91747A27E3806C00151288 /* QuizPageViewController.swift in Sources */,
 				2D35584327E81F8B002B103C /* DataFetcher.swift in Sources */,
@@ -468,6 +498,7 @@
 				2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */,
 				84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */,
 				2D35580327E7CA20002B103C /* IsBlocked.swift in Sources */,
+				2D3558FD27EB7509002B103C /* InitialDbInserts.swift in Sources */,
 				84AC26D027DC09EE0053BF92 /* SceneDelegate.swift in Sources */,
 				2DA63A2B27E4D15400F088CB /* RankingViewController.swift in Sources */,
 				84308DA127E4F8C500F8E694 /* QuizTableViewCell.swift in Sources */,

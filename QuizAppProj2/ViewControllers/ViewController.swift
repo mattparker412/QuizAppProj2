@@ -18,12 +18,27 @@ class ViewController: UIViewController {
     var isSubbed = false
     var isAdmin = false
 
+    //let i = InitialDbInserts()
+    //let db = DBHelper()
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        // let db = DBHelper()
+         //print("*********************************************************")
+         
+      // let feedBacks = db.getFeedBacks()
+         //print(feedBacks)
+         
+        // for f in feedBacks{
+            // print(f["name"]! + " ----> " + f["feedback"]!)
+         //}
+         
+         //i.connect()
+         //i.insertInitial()
 
         // Do any additional setup after loading the view.
+        pass.isSecureTextEntry = true
         let loginButton = FBLoginButton()
         loginButton.permissions = ["public_profile", "email"]
         loginButton.center = view.center
