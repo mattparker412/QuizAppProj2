@@ -60,7 +60,7 @@ class DBHelper{
             print("error at create question table --> ", err)
         }
         
-        // feedback table.
+        // Reviews table.
         if sqlite3_exec(db, "create table if not exists feedback (id integer primary key autoincrement, userId integer, review text, foreign key (userId) references user (id))", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
