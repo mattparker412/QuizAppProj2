@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     //let db = DBHelper()
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
+    @IBOutlet weak var error: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,7 @@ class ViewController: UIViewController {
     
     let validation = InputValidation()
     @IBAction func login(_ sender: Any) {
-        if validation.validateLoginInput(username: user.text!, password: pass.text!) == true{
+        if validation.validateLoginInput(username: user.text!, password: pass.text!, error: error) == true{
             if (user.text! == userUser1 && pass.text! == userPass1){
                 print("user1 logged in")
                 isSubbed = false
