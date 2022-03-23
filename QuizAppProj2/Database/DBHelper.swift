@@ -61,10 +61,10 @@ class DBHelper{
         }
         
         // Reviews table.
-        if sqlite3_exec(db, "create table if not exists feedback (id integer primary key autoincrement, userId integer, review text, foreign key (userId) references user (id))", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists reviews (id integer primary key autoincrement, userId integer, review text, foreign key (userId) references user (id))", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
-            print("error at create feedback table --> ", err)
+            print("error at create technologies table --> ", err)
         }
         
         // Quizes table.
