@@ -35,7 +35,7 @@ class DBHelper{
     func connect(){
     
     // Create the file path.
-    let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("quizzer.db")
+    let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("quizDB.sqlite")
     
         //Print the file path.
         print(filePath)
