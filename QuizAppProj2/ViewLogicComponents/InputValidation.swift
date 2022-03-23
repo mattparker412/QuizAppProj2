@@ -9,10 +9,67 @@ import Foundation
 import UIKit
 class InputValidation{
     
+    func validateMonth(monthExpire: String) -> Bool{
+        if(monthExpire.count != 2 || Int(monthExpire)! > 12 || Int(monthExpire)! < 1 || checkContainsOnlyDigits(stringToCheck: monthExpire) == false){
+            return false
+        }
+        return true
+    }
+    func validateYear(yearExpire: String) -> Bool{
+        if(yearExpire.count != 2 || Int(yearExpire)! > 12 || Int(yearExpire)! < 1 || checkContainsOnlyDigits(stringToCheck: yearExpire) == false){
+            return false
+        }
+        return true
+    }
+    func validateCVC(cvc: String) -> Bool{
+        if(cvc.count != 3 || checkContainsOnlyDigits(stringToCheck: cvc) == false){
+            return false
+        }
+        return true
+    }
     
-    
-    func validateCreditCard(creditCard : String, cvc :String, expDate : String, firstName : String, lastName : String){
+    func validateCCNumber(creditCardNumber: String)-> Bool{
+        if(creditCardNumber.count != 16 || checkContainsOnlyDigits(stringToCheck: creditCardNumber) == false){
+            return false
+        }
+        return true
+    }
+    func checkExpiry(inputDate: String){
         
+    }
+    func checkContainsOnlyDigits(stringToCheck: String) -> Bool{
+        let numbersSet = CharacterSet(charactersIn: "0123456789")
+
+        let textCharacterSet = CharacterSet(charactersIn: stringToCheck)
+
+        if textCharacterSet.isSubset(of: numbersSet) {
+            print("text only contains numbers 0-9")
+            
+            return true
+        } else {
+            print(stringToCheck, " contains invalid credit information")
+            return false
+        }
+    }
+    
+    func validateCreditCard(creditCard : String, cvc :String, expMonth : String, expYear: String, error:UILabel) -> Bool{
+        if(validateCCNumber(creditCardNumber: creditCard) == false || validateCVC(cvc: cvc) == false) || validateMonth(monthExpire: expMonth) == false || validateYear(yearExpire: expYear) == false
+        {
+            if(validateCCNumber(creditCardNumber: creditCard) == false){
+                error.text = "Invalid credit card number"
+            }
+            else if(validateMonth(monthExpire: expMonth) == false){
+                error.text = "Invalid month"
+            }
+            else if(validateYear(yearExpire: expYear) == false){
+                error.text = "Invalid year"
+            }
+            else if(validateCVC(cvc: cvc) == false){
+                error.text = "Invalid cvc"
+            }
+            return false
+        }
+        return true
     }
     
     
