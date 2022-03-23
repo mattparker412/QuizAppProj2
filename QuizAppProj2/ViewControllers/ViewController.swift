@@ -25,15 +25,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       // let db = DBHelper()
+        let db = DBHelper()
         //print("*********************************************************")
         
-     // let feedBacks = db.getFeedBacks()
+     let feedBacks = db.getFeedBacks()
         //print(feedBacks)
         
-       // for f in feedBacks{
-           // print(f["name"]! + " ----> " + f["feedback"]!)
-        //}
+        for f in feedBacks{
+            print(f["name"]! + " ----> " + f["feedback"]!)
+        }
         
         //i.connect()
         //i.insertInitial()

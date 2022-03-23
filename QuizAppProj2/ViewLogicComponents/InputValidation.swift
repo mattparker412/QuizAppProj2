@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 class InputValidation{
     
     
@@ -16,7 +17,7 @@ class InputValidation{
     
     
     
-    func validateLoginInput(username : String, password: String) -> Bool{
+    func validateLoginInput(username : String, password: String, error:UILabel) -> Bool{
         if(username == ""){
             print("Please enter an email")
 //            error.text = "Please enter an email."
@@ -25,10 +26,10 @@ class InputValidation{
             print("Please enter a password.")
 //            error.text = "Please enter a password."
             return false
-//        } else if(checkValidAccount() == false){
-//            print("Email or password is wrong. Try again.")
-//            error.text = "Email or password is wrong. Try again."
-//            return false
+        } else if(checkValidAccount(userName:username, password: password) == false){
+            print("Email or password is wrong. Try again.")
+          error.text = "Email or password is wrong. Try again."
+            return false
         }
         
         return true
