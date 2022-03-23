@@ -13,11 +13,13 @@ class QuizCollectionViewController: UICollectionViewController {
     
     let techNames = ["Swift", "Java", "Android", "Coming Soon"]
     let techImgs = ["swiftlogo", "javalogo", "androidlogo"]
-
+    var userID : Int? = Int.random(in: 1...1000)
+    var db = DBHelper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+        db.connect()
 
         // Register cell classes
        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -60,15 +62,15 @@ class QuizCollectionViewController: UICollectionViewController {
                 let quizVC = segue.destination as? QuizViewController
                 switch locationIndex.row{
                 case 0:
-                    quizVC?.pickQuestion = Int.random(in: 0...4)
+                    quizVC?.quizChoice = db.createQuiz(technologyId: 1)
                     quizVC?.techChoice = 1
                     quizVC?.view.backgroundColor = UIColor.red
                 case 1:
-                    quizVC?.pickQuestion = Int.random(in: 0...4)
+                    quizVC?.quizChoice = db.createQuiz(technologyId: 2)
                     quizVC?.techChoice = 2
                     quizVC?.view.backgroundColor = UIColor.blue
                 case 2:
-                    quizVC?.pickQuestion = Int.random(in: 0...4)
+                    qquizVC?.quizChoice = db.createQuiz(technologyId: 3)
                     quizVC?.techChoice = 3
                     quizVC?.view.backgroundColor = UIColor.green
                 default:

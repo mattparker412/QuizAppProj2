@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import SQLite3
 
 class ViewController: UIViewController {
     let adminUser = "admin"
@@ -19,14 +20,21 @@ class ViewController: UIViewController {
     var isSubbed = false
     var isAdmin = false
     
-    //let i = InitialDbInserts()
-    //let db = DBHelper()
+    //var i = InitialDbInserts()
+    var db = DBHelper()
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
     @IBOutlet weak var error: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var f1 = db.prepareDatabaseFile()
+                if sqlite3_open(f1, &db.db) != SQLITE_OK{
+                    print("can't open database")
+                }
+                db.connect()
+        
         let db = DBHelper()
         //print("*********************************************************")
         
