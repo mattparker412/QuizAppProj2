@@ -21,5 +21,29 @@
 			</array>
 		</dict>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb3098175723756689</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>3098175723756689</string>
+	<key>FacebookClientToken</key>
+	<string>ab7bb1ba3d217768acb694c6d6eb5b3d</string>
+	<key>FacebookDisplayName</key>
+	<string>QuizApp</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Use speech recognition</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Use Microphone</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+	</array>
 </dict>
 </plist>

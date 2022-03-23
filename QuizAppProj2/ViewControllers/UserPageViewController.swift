@@ -1,19 +1,22 @@
 //
-//  ViewController.swift
+//  UserPageViewController.swift
 //  QuizAppProj2
 //
-//  Created by admin on 3/11/22.
+//  Created by John Figueroa on 3/15/22.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class UserPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
+        print("inside user")
     }
+    
+
 
 
 }
-
