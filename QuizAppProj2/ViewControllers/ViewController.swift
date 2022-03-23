@@ -5,6 +5,7 @@
 //  Created by admin on 3/11/22.
 //
 
+
 import UIKit
 import FBSDKLoginKit
 
@@ -17,26 +18,27 @@ class ViewController: UIViewController {
     let userPass2 = "1234"
     var isSubbed = false
     var isAdmin = false
-
+    
     //let i = InitialDbInserts()
     //let db = DBHelper()
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
+    @IBOutlet weak var error: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // let db = DBHelper()
-         //print("*********************************************************")
-         
-      // let feedBacks = db.getFeedBacks()
-         //print(feedBacks)
-         
-        // for f in feedBacks{
-            // print(f["name"]! + " ----> " + f["feedback"]!)
-         //}
-         
-         //i.connect()
-         //i.insertInitial()
-
+        let db = DBHelper()
+        //print("*********************************************************")
+        
+     let feedBacks = db.getFeedBacks()
+        //print(feedBacks)
+        
+        for f in feedBacks{
+            print(f["name"]! + " ----> " + f["feedback"]!)
+        }
+        
+        //i.connect()
+        //i.insertInitial()
         // Do any additional setup after loading the view.
         pass.isSecureTextEntry = true
         let loginButton = FBLoginButton()
@@ -55,7 +57,7 @@ class ViewController: UIViewController {
     
     let validation = InputValidation()
     @IBAction func login(_ sender: Any) {
-        if validation.validateLoginInput(username: user.text!, password: pass.text!) == true{
+        if validation.validateLoginInput(username: user.text!, password: pass.text!, error: error) == true{
             if (user.text! == userUser1 && pass.text! == userPass1){
                 print("user1 logged in")
                 isSubbed = false
