@@ -17,13 +17,17 @@ class ViewController: UIViewController {
     let userPass2 = "1234"
     var isSubbed = false
     var isAdmin = false
-
+    
+    //let i = InitialDbInserts()
+    
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //let db = DBHelper()
+        //i.connect()
+        //i.insertInitial()
         // Do any additional setup after loading the view.
         pass.isSecureTextEntry = true
         let loginButton = FBLoginButton()
