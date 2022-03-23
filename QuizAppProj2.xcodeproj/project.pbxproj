@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D212D8F27EBCC84000B85C4 /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */; };
 		2D3557F727E7C9B4002B103C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F627E7C9B4002B103C /* Question.swift */; };
 		2D3557F927E7C9C5002B103C /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F827E7C9C5002B103C /* Ranking.swift */; };
 		2D3557FD27E7C9E3002B103C /* Technology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557FC27E7C9E3002B103C /* Technology.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
 		2D3557F627E7C9B4002B103C /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		2D3557F827E7C9C5002B103C /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		2D3557FC27E7C9E3002B103C /* Technology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technology.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				2D3558F827EA5260002B103C /* ChatViewController.swift */,
 				2D35584427E820DA002B103C /* AdminAllUsersViewController.swift */,
 				2D35584627E820E6002B103C /* AdminCreateQuizViewController.swift */,
+				2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				2D3557F727E7C9B4002B103C /* Question.swift in Sources */,
 				2D91747D27E385A200151288 /* InputValidation.swift in Sources */,
 				2DA63A3127E4D9C500F088CB /* SortingAlgorithm.swift in Sources */,
+				2D212D8F27EBCC84000B85C4 /* SubscribeViewController.swift in Sources */,
 				2D35584527E820DA002B103C /* AdminAllUsersViewController.swift in Sources */,
 				2D35590727EB7547002B103C /* Admin.swift in Sources */,
 				84308D9927E4F1B200F8E694 /* QuizCollectionViewController.swift in Sources */,
