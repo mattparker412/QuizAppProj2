@@ -39,6 +39,10 @@
 		84308D9B27E4F1CF00F8E694 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308D9A27E4F1CF00F8E694 /* QuizViewController.swift */; };
 		84308D9D27E4F1D700F8E694 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308D9C27E4F1D700F8E694 /* Utilities.swift */; };
 		84308DA127E4F8C500F8E694 /* QuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308DA027E4F8C500F8E694 /* QuizTableViewCell.swift */; };
+		84492EBD27EA5505000127D7 /* Quizz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492EBC27EA5505000127D7 /* Quizz.swift */; };
+		84492EBF27EA550F000127D7 /* QuizesTaken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492EBE27EA550F000127D7 /* QuizesTaken.swift */; };
+		84492EC127EA551B000127D7 /* InitialDbInserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84492EC027EA551B000127D7 /* InitialDbInserts.swift */; };
+		84492EC527EA5D35000127D7 /* quizzer.db in Resources */ = {isa = PBXBuildFile; fileRef = 84492EC427EA5D35000127D7 /* quizzer.db */; };
 		84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */; };
 		84AC26D027DC09EE0053BF92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */; };
 		84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26D127DC09EE0053BF92 /* ViewController.swift */; };
@@ -94,6 +98,10 @@
 		84308D9A27E4F1CF00F8E694 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		84308D9C27E4F1D700F8E694 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		84308DA027E4F8C500F8E694 /* QuizTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewCell.swift; sourceTree = "<group>"; };
+		84492EBC27EA5505000127D7 /* Quizz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quizz.swift; sourceTree = "<group>"; };
+		84492EBE27EA550F000127D7 /* QuizesTaken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizesTaken.swift; sourceTree = "<group>"; };
+		84492EC027EA551B000127D7 /* InitialDbInserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialDbInserts.swift; sourceTree = "<group>"; };
+		84492EC427EA5D35000127D7 /* quizzer.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = quizzer.db; sourceTree = "<group>"; };
 		84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84AC26D127DC09EE0053BF92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +142,9 @@
 				2D3557FE27E7C9FA002B103C /* IsSubscribed.swift */,
 				2D35580027E7CA11002B103C /* DBHelper.swift */,
 				2D35580227E7CA20002B103C /* IsBlocked.swift */,
+				84492EBC27EA5505000127D7 /* Quizz.swift */,
+				84492EBE27EA550F000127D7 /* QuizesTaken.swift */,
+				84492EC027EA551B000127D7 /* InitialDbInserts.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -209,6 +220,7 @@
 				2D91747127E37EC500151288 /* QuizAppProj2Tests */,
 				84308D9427E4F02F00F8E694 /* QuizAppProj2.app */,
 				84308D9527E4F02F00F8E694 /* QuizAppProj2Tests.xctest */,
+				84492EC427EA5D35000127D7 /* quizzer.db */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,6 +337,7 @@
 				2D57CA9627E2491E0072646F /* Admin.storyboard in Resources */,
 				84AC26DD27DC09F00053BF92 /* LaunchScreen.storyboard in Resources */,
 				84AC26DA27DC09F00053BF92 /* Assets.xcassets in Resources */,
+				84492EC527EA5D35000127D7 /* quizzer.db in Resources */,
 				84AC26D527DC09EE0053BF92 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84492EBF27EA550F000127D7 /* QuizesTaken.swift in Sources */,
 				2DA63A2F27E4D71100F088CB /* CalculateRanking.swift in Sources */,
 				84308D9B27E4F1CF00F8E694 /* QuizViewController.swift in Sources */,
 				84308D9727E4F17F00F8E694 /* QuizCollectionViewCell.swift in Sources */,
@@ -364,6 +378,7 @@
 				2D35584527E820DA002B103C /* AdminAllUsersViewController.swift in Sources */,
 				84308D9927E4F1B200F8E694 /* QuizCollectionViewController.swift in Sources */,
 				2D91747A27E3806C00151288 /* QuizPageViewController.swift in Sources */,
+				84492EBD27EA5505000127D7 /* Quizz.swift in Sources */,
 				2D35584327E81F8B002B103C /* DataFetcher.swift in Sources */,
 				2D35584727E820E6002B103C /* AdminCreateQuizViewController.swift in Sources */,
 				2D3557F927E7C9C5002B103C /* Ranking.swift in Sources */,
@@ -371,6 +386,7 @@
 				2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */,
 				84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */,
 				2D35580327E7CA20002B103C /* IsBlocked.swift in Sources */,
+				84492EC127EA551B000127D7 /* InitialDbInserts.swift in Sources */,
 				84AC26D027DC09EE0053BF92 /* SceneDelegate.swift in Sources */,
 				2DA63A2B27E4D15400F088CB /* RankingViewController.swift in Sources */,
 				2D3557FF27E7C9FA002B103C /* IsSubscribed.swift in Sources */,

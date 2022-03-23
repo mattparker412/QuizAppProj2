@@ -7,6 +7,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import SQLite3
 
 class ViewController: UIViewController {
     let adminUser = "admin"
@@ -20,10 +21,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
-
+   // var q = InitialDbInserts()
+    var db = DBHelper()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //q.connect()
+       // q.insertInitial()
+        var f1 = db.prepareDatabaseFile()
+        if sqlite3_open(f1, &db.db) != SQLITE_OK{
+            print("can't open database")
+        }
+        db.connect()
         // Do any additional setup after loading the view.
         pass.isSecureTextEntry = true
         let loginButton = FBLoginButton()
@@ -38,6 +46,7 @@ class ViewController: UIViewController {
         else{
             
         }
+        db.getTopRanking(techID: 1)
     }
     
     let validation = InputValidation()
