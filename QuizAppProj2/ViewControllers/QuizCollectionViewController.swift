@@ -70,7 +70,7 @@ class QuizCollectionViewController: UICollectionViewController {
                     quizVC?.techChoice = 2
                     quizVC?.view.backgroundColor = UIColor.blue
                 case 2:
-                    qquizVC?.quizChoice = db.createQuiz(technologyId: 3)
+                    quizVC?.quizChoice = db.createQuiz(technologyId: 3)
                     quizVC?.techChoice = 3
                     quizVC?.view.backgroundColor = UIColor.green
                 default:
