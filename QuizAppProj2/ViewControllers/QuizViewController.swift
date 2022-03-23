@@ -151,6 +151,8 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func pressNext(_ sender: Any) {
         //store answer
+        
+        
         if answerSelection == correctLocation{
             totalCorrect += 1
         }
