@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     var db = DBHelper()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //q.connect()
        // q.insertInitial()
         var f1 = db.prepareDatabaseFile()
