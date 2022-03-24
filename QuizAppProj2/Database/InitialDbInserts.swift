@@ -337,7 +337,7 @@ class InitialDbInserts{
         }
         
         // Ranking table. It has a composite primary key composed from the foreign keys technologyId and userId.
-        if sqlite3_exec(db, "create table if not exists ranking (userId integer, technologyId integer, rankingValue integer, primary key(userId, technologyId), foreign key (userId) references user (id), foreign key (technologyId) references technology (id))", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists ranking (name text, userId integer, technologyId integer, rankingValue integer, primary key(userId, technologyId), foreign key (userId) references user (id), foreign key (technologyId) references technology (id))", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create ranking table --> ", err)

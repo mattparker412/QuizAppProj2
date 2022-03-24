@@ -14,7 +14,7 @@ var db = DBHelper()
 var userName : String?
 var userID : Int?
 class ViewController: UIViewController {
-    //var i = InitialDbInserts()
+   // var i = InitialDbInserts()
     
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
                 if sqlite3_open(f1, &db.db) != SQLITE_OK{
                     print("can't open database")
                 }
-                db.connect()
+               // db.connect()
         
         //let db = DBHelper()
         

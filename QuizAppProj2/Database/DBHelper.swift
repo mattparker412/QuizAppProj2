@@ -67,7 +67,7 @@ class DBHelper{
         }
         
         // Ranking table. It has a composite primary key composed from the foreign keys technologyId and userId.
-        if sqlite3_exec(db, "create table if not exists ranking (userId integer, technologyId integer, rankingValue integer, primary key(userId, technologyId), foreign key (userId) references user (id), foreign key (technologyId) references technology (id))", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists ranking (name text, userId integer, technologyId integer, rankingValue integer, primary key(userId, technologyId), foreign key (userId) references user (id), foreign key (technologyId) references technology (id))", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create ranking table --> ", err)
@@ -493,7 +493,7 @@ class DBHelper{
        return feedBacks
     }// End getFeedBacks
     
-    func storeRanking(userID : Int, techID : Int, rankScore : Int){
+    func storeRanking(userName : String, userID : Int, techID : Int, rankScore : Int){
         var pointer : OpaquePointer?
         
         let strTechID = String(techID)
@@ -512,7 +512,7 @@ class DBHelper{
         while(sqlite3_step(pointer) == SQLITE_ROW){
             
             // Get the id.
-             oldRank = Int(sqlite3_column_int(pointer, 2))
+            oldRank = Int(sqlite3_column_int(pointer, 3))
             newRank = rankScore + oldRank
         }
         
@@ -533,24 +533,29 @@ class DBHelper{
         }
         else{
             
-            let query3 = "insert into ranking (userID, technologyID, rankingValue) values (?,?,?)"
+            let query3 = "insert into ranking (name, userID, technologyID, rankingValue) values (?,?,?,?)"
             
             if sqlite3_prepare(db, query3, -1, &pointer, nil) != SQLITE_OK{
                 let err = String(cString: sqlite3_errmsg(db)!)
                 print("There is an error at insert new ranking --> ", err)
             }
             
-            if sqlite3_bind_int(pointer, 1, (Int32(userID)) ) != SQLITE_OK{
+            if sqlite3_bind_text(pointer, 1, ((userName as NSString).utf8String), -1, nil) != SQLITE_OK{
+                let err = String(cString: sqlite3_errmsg(db)!)
+                print("There is an error at insert ranking bind name --> ", err)
+            }
+            
+            if sqlite3_bind_int(pointer, 2, (Int32(userID)) ) != SQLITE_OK{
                 let err = String(cString: sqlite3_errmsg(db)!)
                 print("There is an error at insert id bind int --> ", err)
             }
             
-            if sqlite3_bind_int(pointer, 2, (Int32(techID)) ) != SQLITE_OK{
+            if sqlite3_bind_int(pointer, 3, (Int32(techID)) ) != SQLITE_OK{
                 let err = String(cString: sqlite3_errmsg(db)!)
                 print("There is an error at insert techid bind int --> ", err)
             }
             
-            if sqlite3_bind_int(pointer, 3, (Int32(rankScore)) ) != SQLITE_OK{
+            if sqlite3_bind_int(pointer, 4, (Int32(rankScore)) ) != SQLITE_OK{
                 let err = String(cString: sqlite3_errmsg(db)!)
                 print("There is an error at insert rankscore bind int --> ", err)
             }
@@ -585,18 +590,19 @@ class DBHelper{
             //userRankingDict[Int(sqlite3_column_int(pointer, 0))] = Int(sqlite3_column_int(pointer, 2))
             //dictUsers.append(Int(sqlite3_column_int(pointer, 0)))
             //dictRankings.append(Int(sqlite3_column_int(pointer, 2)))
-            let id = Int(sqlite3_column_int(pointer, 0))
-            let rankscore = Int(sqlite3_column_int(pointer, 2))
-            let rankingObj = Ranking(userId: id, technologyId: techID, rank: rankscore)
+            let name = String(cString:sqlite3_column_text(pointer, 0))
+            let id = Int(sqlite3_column_int(pointer, 1))
+            let rankscore = Int(sqlite3_column_int(pointer, 3))
+            let rankingObj = Ranking(username: name, userId: id, technologyId: techID, rank: rankscore)
             rankingArray.append(rankingObj)
         }
 //        print(dictUsers)
 //        print(dictRankings)
-        for r in rankingArray{
-            print(r.userId)
-            print(r.technologyId)
-            print(r.ranking)
-        }
+//        for r in rankingArray{
+//            print(r.userId)
+//            print(r.technologyId)
+//            print(r.ranking)
+//        }
         return rankingArray
     }
     

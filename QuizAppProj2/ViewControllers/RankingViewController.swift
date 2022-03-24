@@ -26,7 +26,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var techs = ["Swift","Java","Android"]
     var swiftArray = [Ranking]()
     var androidArray = [Ranking]()
-    var iosArray = [Ranking]()
+    var javaArray = [Ranking]()
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
     }
@@ -42,9 +42,9 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 0:
             return swiftArray.count
         case 1:
-            return androidArray.count
+            return javaArray.count
         case 2:
-            return iosArray.count
+            return androidArray.count
         default:
             return 0
         }
@@ -57,11 +57,11 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         switch indexPath.section{
         case 0:
-            cell.textLabel?.text = "\(swiftArray[indexPath.row].userId) \(swiftArray[indexPath.row].ranking)"
+            cell.textLabel?.text = "\(indexPath.row + 1) \(swiftArray[indexPath.row].userName!) \(swiftArray[indexPath.row].ranking)"
         case 1:
-            cell.textLabel?.text = "\(androidArray[indexPath.row].userId) \(androidArray[indexPath.row].ranking)"
+            cell.textLabel?.text = "\(indexPath.row + 1) \(javaArray[indexPath.row].userName!) \(javaArray[indexPath.row].ranking)"
         case 2:
-            cell.textLabel?.text = "\(iosArray[indexPath.row].userId) \(iosArray[indexPath.row].ranking)"
+            cell.textLabel?.text = "\(indexPath.row + 1) \(androidArray[indexPath.row].userName!) \(androidArray[indexPath.row].ranking)"
         default:
             print("do nothing")
         }
@@ -83,8 +83,8 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         menu = createMenu.setUpSideMenu(menu: menu, controller: self)
         // Do any additional setup after loading the view.
         swiftArray = db.getTopRanking(techID: 1)
-        androidArray = db.getTopRanking(techID: 2)
-        iosArray = db.getTopRanking(techID: 3)
+        javaArray = db.getTopRanking(techID: 2)
+        androidArray = db.getTopRanking(techID: 3)
         tableView.delegate = self
         tableView.dataSource = self
         
