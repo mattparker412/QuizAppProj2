@@ -7,23 +7,31 @@
 
 import UIKit
 import SideMenu
-class UserPageViewController: UIViewController {
+class UserPageViewController: UIViewController, MenuControllerDelegate {
 
-    var menu: SideMenuNavigationController?
-    let createMenu = CallMenuList()
-    
+    private var sideMenu: SideMenuNavigationController?
+    let views = ["Subscription","Quizzes","Feedback","Ranking","Logout"]
+    let menuCaller = CreateSideMenu()
     
     @IBAction func didTapMenu(){
-        present(menu! ,animated: true)
-        //let menulist = MenuListController()
+        present(sideMenu!, animated: true)
+    }
+
+    let navigator = NavigateToController()
+    func didSelectMenuItem(named: String) {
+        sideMenu?.dismiss(animated: true, completion: { [weak self] in
+            
+            var controllerToNav = self?.navigator.viewControllerSwitch(named: named)
+            self?.navigator.navToController(current: self!, storyboard: controllerToNav![0] as! String, identifier: controllerToNav![1] as! String, controller: controllerToNav![2] as! UIViewController)
+
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
-        // Do any additional setup after loading the view.
-        print("inside user")
+        let menu = MenuController(with: views)
+        menu.delegate = self
+        sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
     }
     
 

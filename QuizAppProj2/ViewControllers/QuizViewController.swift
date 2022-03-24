@@ -134,16 +134,10 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     let createMenu = CallMenuList()
     
     
-    @IBAction func didTapMenu(){
-        present(menu! ,animated: true)
-        //let menulist = MenuListController()
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
-        
-
         clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer)
         switch techChoice{
         case 1:
