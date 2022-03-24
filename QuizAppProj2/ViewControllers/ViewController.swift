@@ -97,7 +97,9 @@ class ViewController: UIViewController {
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UIViewController
         //self.navigationController?.pushViewController(nextViewController, animated: true)
         self.view?.window?.rootViewController = nextViewController
+        self.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated:false, completion: nil)
+
     }
     
     func navigateToQuizPage(){
