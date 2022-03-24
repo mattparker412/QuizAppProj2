@@ -30,6 +30,7 @@ class SubscribeViewController: UIViewController {
         if(validator.validateCreditCard(creditCard: creditCard.text!, cvc: cvc.text!, expMonth: expireMonth.text!, expYear: expireYear.text! , error: errorLabel) == true){
             //once textfield is validated isSubscribed gets updated in database
             //once updated, move to quiz view controller
+            
         }
     }
     

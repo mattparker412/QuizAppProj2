@@ -23,6 +23,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         return 1
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = "Reviews"
@@ -51,6 +52,15 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         myTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         myTable.delegate = self
         myTable.dataSource = self
+        
+        let db = DBHelper()
+        
+        let feedBacks = db.getFeedBacks()
+           //print(feedBacks)
+           
+           for f in feedBacks{
+               print(f["name"]! + " ----> " + f["feedback"]!)
+           }
     }
 
     

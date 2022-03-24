@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D212D8F27EBCC84000B85C4 /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */; };
+		2D212DB827EBF9B1000B85C4 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2D212DB727EBF9B1000B85C4 /* SideMenu */; };
 		2D3557F727E7C9B4002B103C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F627E7C9B4002B103C /* Question.swift */; };
 		2D3557F927E7C9C5002B103C /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F827E7C9C5002B103C /* Ranking.swift */; };
 		2D3557FD27E7C9E3002B103C /* Technology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557FC27E7C9E3002B103C /* Technology.swift */; };
@@ -137,6 +138,7 @@
 				84492ED127EBA949000127D7 /* MessageKit in Frameworks */,
 				84492ED427EBAA07000127D7 /* InputBarAccessoryView in Frameworks */,
 				84C1E8C927E29C3D001B298A /* FacebookLogin in Frameworks */,
+				2D212DB827EBF9B1000B85C4 /* SideMenu in Frameworks */,
 				84C1E8C727E29C3D001B298A /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +304,7 @@
 				84C1E8C827E29C3D001B298A /* FacebookLogin */,
 				84492ED027EBA949000127D7 /* MessageKit */,
 				84492ED327EBAA07000127D7 /* InputBarAccessoryView */,
+				2D212DB727EBF9B1000B85C4 /* SideMenu */,
 			);
 			productName = QuizAppProj2;
 			productReference = 84308D9427E4F02F00F8E694 /* QuizAppProj2.app */;
@@ -339,6 +342,7 @@
 				84C1E8C527E29C3D001B298A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				84492ECE27EBA856000127D7 /* XCRemoteSwiftPackageReference "MessageKit" */,
 				84492ED227EBAA07000127D7 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				2D212DB627EBF9B1000B85C4 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 84AC26C127DC09ED0053BF92;
 			projectDirPath = "";
@@ -704,6 +708,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2D212DB627EBF9B1000B85C4 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		84492ECE27EBA856000127D7 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MessageKit/MessageKit";
@@ -731,6 +743,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2D212DB727EBF9B1000B85C4 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D212DB627EBF9B1000B85C4 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
 		84492ED027EBA949000127D7 /* MessageKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 84492ECE27EBA856000127D7 /* XCRemoteSwiftPackageReference "MessageKit" */;
