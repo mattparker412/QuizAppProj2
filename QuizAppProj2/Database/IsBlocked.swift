@@ -9,5 +9,5 @@ import Foundation
 
 enum IsBlocked: Int{
     
-    case isNotBlocked = 0, isBlocked
+    case isNotBlocked = 0, isBlocked = 1
 }

@@ -309,7 +309,7 @@ class InitialDbInserts{
     func connect(){
     
     // Create the file path.
-    let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("quizDB.sqlite")
+    let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("quizzer.db")
     
         //Print the file path.
         print(filePath)
@@ -323,7 +323,7 @@ class InitialDbInserts{
         // Create the tables.
         
         // User Table.
-        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text,  password text, isSubscribed integer, isBlocked integer)", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer)", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create user table --> ", err)
@@ -337,7 +337,7 @@ class InitialDbInserts{
         }
         
         // Ranking table. It has a composite primary key composed from the foreign keys technologyId and userId.
-        if sqlite3_exec(db, "create table if not exists ranking (userId integer, technologyId integer, rankingValue integer, primary key(userId, technologyId), foreign key (userId) references user (id), foreign key (technologyId) references technology (id))", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists ranking (name text, userId integer, technologyId integer, rankingValue integer, primary key(userId, technologyId), foreign key (userId) references user (id), foreign key (technologyId) references technology (id))", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create ranking table --> ", err)
