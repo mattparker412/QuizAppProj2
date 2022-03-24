@@ -8,6 +8,8 @@
 import UIKit
 import SideMenu
 class UserPageViewController: UIViewController {
+    
+    
 
     var menu: SideMenuNavigationController?
     let createMenu = CallMenuList()
@@ -20,10 +22,12 @@ class UserPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         menu = createMenu.setUpSideMenu(menu: menu, controller: self)
         // Do any additional setup after loading the view.
         print("inside user")
+        print(userID)
+        print(userName)
     }
     
 

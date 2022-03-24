@@ -309,7 +309,7 @@ class InitialDbInserts{
     func connect(){
     
     // Create the file path.
-    let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("quizDB.sqlite")
+    let filePath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("quizzer.db")
     
         //Print the file path.
         print(filePath)
@@ -323,7 +323,7 @@ class InitialDbInserts{
         // Create the tables.
         
         // User Table.
-        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text,  password text, isSubscribed integer, isBlocked integer)", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer)", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create user table --> ", err)

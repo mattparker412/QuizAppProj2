@@ -9,7 +9,6 @@ import UIKit
 
 class QuizSubmittedViewController: UIViewController {
     
-    var userID : Int?
     
     @IBOutlet weak var goToRanking: UIButton!
     

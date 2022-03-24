@@ -13,23 +13,24 @@ class QuizCollectionViewController: UICollectionViewController {
     
     let techNames = ["Swift", "Java", "Android", "Coming Soon"]
     let techImgs = ["swiftlogo", "javalogo", "androidlogo"]
-    var userID : Int? = Int.random(in: 1...1000)
-    var db = DBHelper()
+    var userID : Int?
+    var username : String?
+    
     
 
-    var menu: SideMenuNavigationController?
-    let createMenu = CallMenuList()
-    
-    
-    @IBAction func didTapMenu(){
-        present(menu! ,animated: true)
-        //let menulist = MenuListController()
-    }
+//    var menu: SideMenuNavigationController?
+//    let createMenu = CallMenuList()
+//    
+//    
+//    @IBAction func didTapMenu(){
+//        present(menu! ,animated: true)
+//        //let menulist = MenuListController()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
-        db.connect()
+//        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
+        
        
 
         // Register cell classes
@@ -72,8 +73,8 @@ class QuizCollectionViewController: UICollectionViewController {
             if let locationIndex = sender as? NSIndexPath{
                 let quizVC = segue.destination as? QuizViewController
                 quizVC?.pickQuestion = Int.random(in: 0...4)
-                quizVC?.db = db
-                quizVC?.userID = userID
+                
+                
                 switch locationIndex.row{
                 case 0:
                     

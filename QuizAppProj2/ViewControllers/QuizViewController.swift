@@ -12,8 +12,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var quizTimer: UILabel!
     @IBOutlet weak var quizTable: UITableView!
     @IBOutlet weak var nextButton: UIButton!
-    var db : DBHelper?
-    var userID : Int?
+    
     var remainingQuestions = [0,1,2,3,4]
     var questionNumber = 1
     var pickQuestion : Int?
@@ -130,18 +129,18 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var textLabel: UILabel!
     public var text : String? = nil
     var clock = Clock()
-    var menu: SideMenuNavigationController?
-    let createMenu = CallMenuList()
-    
-    
-    @IBAction func didTapMenu(){
-        present(menu! ,animated: true)
-        //let menulist = MenuListController()
-    }
+//    var menu: SideMenuNavigationController?
+//    let createMenu = CallMenuList()
+//
+//
+//    @IBAction func didTapMenu(){
+//        present(menu! ,animated: true)
+//        //let menulist = MenuListController()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
+        //menu = createMenu.setUpSideMenu(menu: menu, controller: self)
         
 
         clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer)
@@ -165,7 +164,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             totalCorrect += 1
         }
         else{
-            print("Selected row:",answerSelection!,"Correct answer was:", correctLocation)
+            print("Selected row:",answerSelection!,"Correct answer was:", correctLocation!)
         }
         remainingQuestions.remove(at: pickQuestion!)
         if questionNumber < 4 {
@@ -183,9 +182,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             performSegue(withIdentifier: "quizSubmitted", sender: self)
             let calculator = CalculateRanking()
             let rankscore = calculator.calculateRank(timeLeft: clock.leftOver, correctAnswers: totalCorrect)
-            db?.storeRanking(userID: userID!, techID: techChoice!, rankScore: rankscore)
+            db.storeRanking(userID: userID!, techID: techChoice!, rankScore: rankscore)
             
-            print("Finished in", 1800-clock.leftOver,"seconds, with rank score of ",rankscore)
+            print(userName!, "Finished in", 1800-clock.leftOver,"seconds, with rank score of ",rankscore)
             clock.stopTimerTest()
             print("Total correct answers:",totalCorrect)
             

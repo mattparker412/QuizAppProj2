@@ -10,27 +10,21 @@ import UIKit
 import FBSDKLoginKit
 import SQLite3
 
+var db = DBHelper()
+var userName : String?
+var userID : Int?
 class ViewController: UIViewController {
-    let adminUser = "admin"
-    let adminPass = "123"
-    let userUser1 = "user1"
-    let userPass1 = "123"
-    let userUser2 = "user2"
-    let userPass2 = "123"
-    var isSubbed = false
-    var isAdmin = false
+    //var i = InitialDbInserts()
     
-    var i = InitialDbInserts()
-    var db = DBHelper()
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
     @IBOutlet weak var error: UILabel!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        i.connect()
-        i.insertInitial()
+        //i.connect()
+        //i.insertInitial()
         
         
         var f1 = db.prepareDatabaseFile()
@@ -39,15 +33,14 @@ class ViewController: UIViewController {
                 }
                 db.connect()
         
-        let db = DBHelper()
-        //print("*********************************************************")
+        //let db = DBHelper()
         
-     let feedBacks = db.getFeedBacks()
-        //print(feedBacks)
-        
-        for f in feedBacks{
-            print(f["name"]! + " ----> " + f["feedback"]!)
-        }
+//     let feedBacks = db.getFeedBacks()
+//        //print(feedBacks)
+//
+//        for f in feedBacks{
+//            print(f["name"]! + " ----> " + f["feedback"]!)
+//        }
         
         //i.connect()
         //i.insertInitial()
@@ -55,12 +48,12 @@ class ViewController: UIViewController {
         pass.isSecureTextEntry = true
         let loginButton = FBLoginButton()
         loginButton.permissions = ["public_profile", "email"]
-        loginButton.center = view.center
+        loginButton.center = CGPoint(x: view.center.x, y: 600)
         view.addSubview(loginButton)
         if let token = AccessToken.current,
                 !token.isExpired {
                 // User is logged in, do work such as go to next view controller.
-           
+            
             }
         else{
             
@@ -69,22 +62,26 @@ class ViewController: UIViewController {
     
     let validation = InputValidation()
     @IBAction func login(_ sender: Any) {
-        if validation.validateLoginInput(username: user.text!, password: pass.text!, error: error) == true{
-            if (user.text! == userUser1 && pass.text! == userPass1){
-                print("user1 logged in")
-                isSubbed = false
-                //nav()
-                navigateToUserController()
-            } else if(user.text! == userUser2 && pass.text! == userPass2){
-                print("user2 logged in")
-                isSubbed = true
-                //navigate directly to quiz page
-            } else if(user.text! == adminUser && pass.text! == adminPass){
-                print("admin logged in")
-                isAdmin = true
-                //navigate to admin page
-                navigateToAdmin()
+        if db.checkUsernameExists(userName: user.text!) || db.checkAdminUsernameExists(userName: user.text!){
+            if db.checkUser(userName: user.text!, pass: pass.text!) == true{
+                print(user.text!,"logged in as user")
+                userName = user.text!
+                userID = db.getUserID(userName: userName!)
+                    //nav()
+                    navigateToUserController()
             }
+            else if db.checkAdmin(userName: user.text!, pass: pass.text!) == true{
+                print(user.text!, "logged in as admin")
+                userName = user.text!
+                
+                navigateToAdmin()
+                }
+            else{
+                print("error wrong password")
+            }
+        }
+        else{
+            print("username does not exist, please sign up")
         }
     }
     
@@ -101,6 +98,8 @@ class ViewController: UIViewController {
         self.view?.window?.rootViewController = nextViewController
         self.modalPresentationStyle = .fullScreen
         self.present(nextViewController, animated:false, completion: nil)
+        
+        
 
     }
     
@@ -114,6 +113,7 @@ class ViewController: UIViewController {
     func navigateToAdmin(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Admin", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "adminPage") as! AdminViewController
+        nextViewController.modalPresentationStyle = .fullScreen
         //self.navigationController?.pushViewController(nextViewController, animated: true)
         self.present(nextViewController, animated:false, completion: nil)
     }

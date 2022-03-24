@@ -97,7 +97,7 @@ class InputValidation{
     func checkValidAccount(userName: String, password: String) -> Bool {
         
         // Connect to the data base.
-        let db = DBHelper()
+        
         return db.checkUser(userName:userName, pass: password)
     }
 }
