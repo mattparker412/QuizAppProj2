@@ -20,12 +20,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
     @IBOutlet weak var error: UILabel!
+    let wrongPass = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //i.connect()
         //i.insertInitial()
+        
+        
+        wrongPass.center = CGPoint(x: view.center.x, y: 420)
+        wrongPass.textColor = .red
+        wrongPass.textAlignment = .center
+        wrongPass.numberOfLines = 2
         
         
         var f1 = db.prepareDatabaseFile()
@@ -65,6 +72,7 @@ class ViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         if db.checkUsernameExists(userName: user.text!) || db.checkAdminUsernameExists(userName: user.text!){
             if db.checkUser(userName: user.text!, pass: pass.text!) == true{
+                
                 print(user.text!,"logged in as user")
                 userName = user.text!
                 userID = db.getUserID(userName: userName!)
@@ -78,10 +86,19 @@ class ViewController: UIViewController {
                 navigateToAdmin()
                 }
             else{
+                
+                wrongPass.text = "Error: Wrong Password"
+                
+                view.addSubview(wrongPass)
+                wrongPass.shake()
                 print("error wrong password")
             }
         }
         else{
+            wrongPass.text = "Error: Username Does Not Exist, Please Sign Up"
+            
+            view.addSubview(wrongPass)
+            wrongPass.shake()
             print("username does not exist, please sign up")
         }
     }
@@ -226,5 +243,15 @@ class ViewController: UIViewController {
     }
     
 */
+    
+}
+extension UIView{
+    func shake(){
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.duration = 2
+        animation.values = [-20, 20, -20, 20, -20, 20, -5, 5, 0]
+        layer.add(animation, forKey: "shake")
+    }
 }
 

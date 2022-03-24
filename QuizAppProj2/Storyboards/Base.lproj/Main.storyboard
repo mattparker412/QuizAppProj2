@@ -148,7 +148,7 @@
         <!--User Page View Controller-->
         <scene sceneID="Vhh-3c-85H">
             <objects>
-                <viewController id="1qg-X3-6B2" customClass="UserPageViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userPage" id="1qg-X3-6B2" customClass="UserPageViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nuR-if-16t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,7 +176,7 @@
                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Y9N-00-2yD" kind="presentation" modalPresentationStyle="fullScreen" id="JWw-1t-keR"/>
+                                    <segue destination="cA4-37-W0F" kind="presentation" modalPresentationStyle="fullScreen" id="JWw-1t-keR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZj-z2-9nk">
@@ -218,7 +218,7 @@
             <objects>
                 <viewController storyboardIdentifier="feedbackPage" id="Pl3-mA-f7O" customClass="FeedbackViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jzg-FQ-3aU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-J7-ADC">
@@ -230,7 +230,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="leave feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swe-ze-4Qt">
-                                <rect key="frame" x="107" y="422" width="202" height="21"/>
+                                <rect key="frame" x="107" y="334" width="202" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -272,24 +272,25 @@
                             <constraint firstItem="NcV-2D-10B" firstAttribute="top" secondItem="MEr-J7-ADC" secondAttribute="bottom" constant="8" id="xE6-72-oah"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ymD-xz-DKO"/>
                     <connections>
                         <outlet property="micro" destination="MEr-J7-ADC" id="EYs-WP-udF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoI-kI-JGu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5102.898550724638" y="417.85714285714283"/>
+            <point key="canvasLocation" x="6013.04347826087" y="417.85714285714283"/>
         </scene>
         <!--Ranking View Controller-->
         <scene sceneID="7Qa-EP-ctZ">
             <objects>
                 <viewController storyboardIdentifier="rankingPage" id="fhw-h3-ITk" customClass="RankingViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Cw-zd-Fqm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-jC-abe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Cnf-03-iSi">
@@ -325,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4z-kO-GMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4981" y="-392"/>
+            <point key="canvasLocation" x="5889.8550724637689" y="-392.41071428571428"/>
         </scene>
         <!--Subscribe View Controller-->
         <scene sceneID="2VX-NG-Zj4">
@@ -401,7 +402,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="subscribe"/>
                                 <connections>
                                     <action selector="subscribe:" destination="ACT-ll-GIQ" eventType="touchUpInside" id="NRK-Oa-QAa"/>
-                                    <segue destination="Y9N-00-2yD" kind="show" id="iyZ-tu-vrY"/>
+                                    <segue destination="cA4-37-W0F" kind="show" id="iyZ-tu-vrY"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="owt-Mp-Xtf">
@@ -458,7 +459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUd-Ia-Toa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3286.9565217391305" y="513.61607142857144"/>
+            <point key="canvasLocation" x="4197.1014492753629" y="513.61607142857144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yn2-Hs-1Z3">
@@ -515,7 +516,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Completed Quiz!" id="ZfC-Ww-3Gj">
-                                        <barButtonItem key="rightBarButtonItem" title="Menu" id="1mc-kr-1si">
+                                        <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="1mc-kr-1si">
                                             <connections>
                                                 <action selector="didTapMenu" destination="Cad-eR-BeE" id="5tJ-7U-2q5"/>
                                             </connections>
@@ -541,7 +542,7 @@
                         <outlet property="goToQuizzes" destination="aMJ-AT-BUc" id="dc3-cj-01p"/>
                         <outlet property="goToRanking" destination="4jo-sd-WC1" id="8AD-eK-ZuY"/>
                         <segue destination="fhw-h3-ITk" kind="show" identifier="goToRanking" id="9oP-Xj-RYL"/>
-                        <segue destination="Y9N-00-2yD" kind="presentation" identifier="goToQuiz" modalPresentationStyle="fullScreen" id="fzk-Zo-bgm"/>
+                        <segue destination="cA4-37-W0F" kind="presentation" identifier="goToQuiz" modalPresentationStyle="fullScreen" id="fzk-Zo-bgm"/>
                         <segue destination="Pl3-mA-f7O" kind="show" identifier="goToFeedback" id="UzS-z2-f0Q"/>
                     </connections>
                 </viewController>
@@ -549,7 +550,7 @@
             </objects>
             <point key="canvasLocation" x="2451" y="-881"/>
         </scene>
-        <!--Quiz Collection View Controller-->
+        <!--Quizzes-->
         <scene sceneID="Q9f-TE-2g5">
             <objects>
                 <collectionViewController storyboardIdentifier="quizPage" id="Y9N-00-2yD" customClass="QuizCollectionViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
@@ -560,13 +561,13 @@
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="jc4-3l-klR">
                             <size key="itemSize" width="198" height="350"/>
                             <size key="estimatedItemSize" width="198" height="350"/>
-                            <size key="headerReferenceSize" width="200" height="73"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="6" minY="0.0" maxX="6" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mcell" id="5hm-jg-6Nq" customClass="QuizCollectionViewCell" customModule="QuizAppProj2" customModuleProvider="target">
-                                <rect key="frame" x="6" y="73" width="198" height="350"/>
+                                <rect key="frame" x="6" y="0.0" width="198" height="350"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ias-Fc-LdI">
                                     <rect key="frame" x="0.0" y="0.0" width="198" height="350"/>
@@ -592,32 +593,19 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OGU-ss-Ieg">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="73"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEy-9t-jTK">
-                                    <rect key="frame" x="0.0" y="9" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <items>
-                                        <navigationItem title="Quizzes" id="VYY-sN-rDM">
-                                            <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="X0P-1C-h1K">
-                                                <connections>
-                                                    <action selector="didTapMenu" destination="Y9N-00-2yD" id="dSB-CR-Nba"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </navigationItem>
-                                    </items>
-                                </navigationBar>
-                            </subviews>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="Y9N-00-2yD" id="cFc-0Y-kT0"/>
                             <outlet property="delegate" destination="Y9N-00-2yD" id="aeq-cg-NvO"/>
                         </connections>
                     </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="0bQ-At-gpg"/>
+                    <navigationItem key="navigationItem" title="Quizzes" id="VYY-sN-rDM">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="X0P-1C-h1K">
+                            <connections>
+                                <action selector="didTapMenu" destination="Y9N-00-2yD" id="dSB-CR-Nba"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="QtJ-yr-a3G" kind="presentation" identifier="quizSegue" modalPresentationStyle="fullScreen" id="iHA-Mg-eSX"/>
@@ -625,7 +613,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maN-MB-Rr1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3287" y="-108"/>
+            <point key="canvasLocation" x="4197.1014492753629" y="-108.48214285714285"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="poI-Qu-6cn">
@@ -707,11 +695,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlH-qW-KbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4241" y="-291"/>
+            <point key="canvasLocation" x="5150.7246376811599" y="-291.29464285714283"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Xh-YC-d7d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cA4-37-W0F" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="YS8-lM-7W0"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ctx-Y8-1Dr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y9N-00-2yD" kind="relationship" relationship="rootViewController" id="qpT-io-EFH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F5A-rq-uuT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3286.9565217391305" y="-108.48214285714285"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JWw-1t-keR"/>
+        <segue reference="fzk-Zo-bgm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="free" width="164" height="350"/>

@@ -16,7 +16,7 @@ class InputValidation{
         return true
     }
     func validateYear(yearExpire: String) -> Bool{
-        if(yearExpire.count != 2 || Int(yearExpire)! > 12 || Int(yearExpire)! < 1 || checkContainsOnlyDigits(stringToCheck: yearExpire) == false){
+        if(yearExpire.count != 2 || Int(yearExpire)! < 22 || Int(yearExpire)! < 1 || checkContainsOnlyDigits(stringToCheck: yearExpire) == false){
             return false
         }
         return true
@@ -56,15 +56,19 @@ class InputValidation{
         if(validateCCNumber(creditCardNumber: creditCard) == false || validateCVC(cvc: cvc) == false) || validateMonth(monthExpire: expMonth) == false || validateYear(yearExpire: expYear) == false
         {
             if(validateCCNumber(creditCardNumber: creditCard) == false){
+                print("cc number")
                 error.text = "Invalid credit card number"
             }
             else if(validateMonth(monthExpire: expMonth) == false){
+                print("month bad")
                 error.text = "Invalid month"
             }
             else if(validateYear(yearExpire: expYear) == false){
+                print("year bad")
                 error.text = "Invalid year"
             }
             else if(validateCVC(cvc: cvc) == false){
+                print("cvc bad")
                 error.text = "Invalid cvc"
             }
             return false

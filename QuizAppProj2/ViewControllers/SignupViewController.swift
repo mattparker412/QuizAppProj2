@@ -13,8 +13,13 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var error: UILabel!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    let wrongPass = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
     override func viewDidLoad() {
         super.viewDidLoad()
+        wrongPass.center = CGPoint(x: view.center.x, y: 350)
+        wrongPass.textColor = .red
+        wrongPass.textAlignment = .center
+        wrongPass.numberOfLines = 2
 
         // Do any additional setup after loading the view.
     }
@@ -36,6 +41,9 @@ class SignupViewController: UIViewController {
                     self.performSegue(withIdentifier: "backToLogin", sender: self)
                 }
                 else{
+                    wrongPass.text = "Error: Username Already Exists"
+                    view.addSubview(wrongPass)
+                    wrongPass.shake()
                     print("user exists")
                 }
             }
@@ -46,11 +54,17 @@ class SignupViewController: UIViewController {
                     self.performSegue(withIdentifier: "backToLogin", sender: self)
                 }
                 else{
+                    wrongPass.text = "Error: Admin Already Exists"
+                    view.addSubview(wrongPass)
+                    wrongPass.shake()
                     print("admin exists")
                 }
             }
         }
         else{
+            wrongPass.text = "Error: Invalid Input"
+            view.addSubview(wrongPass)
+            wrongPass.shake()
             print("please enter valid input")
         }
     }
