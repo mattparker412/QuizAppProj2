@@ -139,17 +139,17 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer)
-        switch techChoice{
-        case 1:
-            textLabel.text = "Swift"
-        case 2:
-            textLabel.text = "Java"
-        case 3:
-            textLabel.text = "Android"
-        default:
-            textLabel.text = "Error"
-            
-        }
+//        switch techChoice{
+//        case 1:
+//            textLabel.text = "Swift"
+//        case 2:
+//            textLabel.text = "Java"
+//        case 3:
+//            textLabel.text = "Android"
+//        default:
+//            textLabel.text = "Error"
+//            
+//        }
 
     }
     
