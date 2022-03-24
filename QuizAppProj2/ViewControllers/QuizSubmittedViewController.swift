@@ -9,7 +9,6 @@ import UIKit
 import SideMenu
 class QuizSubmittedViewController: UIViewController, MenuControllerDelegate {
     
-    var userID : Int?
     
     @IBOutlet weak var goToRanking: UIButton!
     

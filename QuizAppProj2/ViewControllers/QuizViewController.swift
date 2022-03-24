@@ -12,8 +12,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var quizTimer: UILabel!
     @IBOutlet weak var quizTable: UITableView!
     @IBOutlet weak var nextButton: UIButton!
-    var db : DBHelper?
-    var userID : Int?
+    
     var remainingQuestions = [0,1,2,3,4]
     var questionNumber = 1
     var pickQuestion : Int?
@@ -138,6 +137,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer)
         switch techChoice{
         case 1:
@@ -155,11 +155,15 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func pressNext(_ sender: Any) {
         //store answer
+        if answerSelection == nil{
+            print("please select an answer")
+            return
+        }
         if answerSelection == correctLocation{
             totalCorrect += 1
         }
         else{
-            print("Selected row:",answerSelection!,"Correct answer was:", correctLocation)
+            print("Selected row:",answerSelection!,"Correct answer was:", correctLocation!)
         }
         remainingQuestions.remove(at: pickQuestion!)
         if questionNumber < 4 {
@@ -174,17 +178,19 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             nextButton.setTitle("Submit", for: .normal)
         }
         if questionNumber == 6{
-            performSegue(withIdentifier: "quizSubmitted", sender: self)
+            clock.stopTimerTest()
+            
             let calculator = CalculateRanking()
             let rankscore = calculator.calculateRank(timeLeft: clock.leftOver, correctAnswers: totalCorrect)
-            db?.storeRanking(userID: userID!, techID: techChoice!, rankScore: rankscore)
+            db.storeRanking(userName: userName!, userID: userID!, techID: techChoice!, rankScore: rankscore)
             
-            print("Finished in", 1800-clock.leftOver,"seconds, with rank score of ",rankscore)
-            clock.stopTimerTest()
+            print(userName!, "Finished in", 1800-clock.leftOver,"seconds, with rank score of ",rankscore)
+            
             print("Total correct answers:",totalCorrect)
-            
+            performSegue(withIdentifier: "quizSubmitted", sender: self)
         }
         if questionNumber != 6{
+            answerSelection = nil
             quizTable.reloadData()
         }
         

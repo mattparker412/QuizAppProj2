@@ -32,6 +32,10 @@ class UserPageViewController: UIViewController, MenuControllerDelegate {
         let menu = MenuController(with: views)
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
+
+        print("inside user")
+        print(userID)
+        print(userName)
     }
     
 

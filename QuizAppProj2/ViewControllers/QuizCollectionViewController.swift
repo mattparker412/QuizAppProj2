@@ -41,6 +41,7 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
         db.connect()
+
        
 
         // Register cell classes
@@ -83,8 +84,8 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
             if let locationIndex = sender as? NSIndexPath{
                 let quizVC = segue.destination as? QuizViewController
                 quizVC?.pickQuestion = Int.random(in: 0...4)
-                quizVC?.db = db
-                quizVC?.userID = userID
+                
+                
                 switch locationIndex.row{
                 case 0:
                     
