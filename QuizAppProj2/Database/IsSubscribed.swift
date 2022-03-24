@@ -9,5 +9,5 @@ import Foundation
 
 enum IsSubscribed: Int{
     
-    case isNotSubscribed = 0, isSubscribed
+    case isNotSubscribed = 0, isSubscribed = 1
 }
