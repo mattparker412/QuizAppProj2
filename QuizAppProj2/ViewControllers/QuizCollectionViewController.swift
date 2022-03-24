@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SideMenu
 
 
 class QuizCollectionViewController: UICollectionViewController {
@@ -17,8 +17,18 @@ class QuizCollectionViewController: UICollectionViewController {
     var db = DBHelper()
     
 
+    var menu: SideMenuNavigationController?
+    let createMenu = CallMenuList()
+    
+    
+    @IBAction func didTapMenu(){
+        present(menu! ,animated: true)
+        //let menulist = MenuListController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
         db.connect()
        
 

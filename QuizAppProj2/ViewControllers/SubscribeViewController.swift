@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SideMenu
 class SubscribeViewController: UIViewController {
 
     @IBOutlet weak var errorLabel: UILabel!
@@ -14,9 +14,19 @@ class SubscribeViewController: UIViewController {
     @IBOutlet weak var expireYear: UITextField!
     @IBOutlet weak var cvc: UITextField!
     @IBOutlet weak var creditCard: UITextField!
-         override func viewDidLoad() {
-            super.viewDidLoad()
-         }
+    var menu: SideMenuNavigationController?
+    let createMenu = CallMenuList()
+    
+    
+    @IBAction func didTapMenu(){
+        present(menu! ,animated: true)
+        //let menulist = MenuListController()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
+    }
     
     let validator = InputValidation()
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

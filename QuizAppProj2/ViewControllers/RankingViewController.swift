@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SideMenu
 
 var db = DBHelper()
 
@@ -68,8 +69,18 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    var menu: SideMenuNavigationController?
+    let createMenu = CallMenuList()
+    
+    
+    @IBAction func didTapMenu(){
+        present(menu! ,animated: true)
+        //let menulist = MenuListController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
         // Do any additional setup after loading the view.
         swiftArray = db.getTopRanking(techID: 1)
         androidArray = db.getTopRanking(techID: 2)

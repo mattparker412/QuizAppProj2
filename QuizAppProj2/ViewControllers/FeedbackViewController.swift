@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 import Speech
-
+import SideMenu
 
 class FeedbackViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -46,8 +46,18 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet var myTable : UITableView!
     
+    var menu: SideMenuNavigationController?
+    let createMenu = CallMenuList()
+    
+    
+    @IBAction func didTapMenu(){
+        present(menu! ,animated: true)
+        //let menulist = MenuListController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
         // Do any additional setup after loading the view.
         myTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         myTable.delegate = self

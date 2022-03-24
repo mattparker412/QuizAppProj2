@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rER-eM-hEB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -46,17 +46,18 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="sYP-f3-G2x"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31.884057971014496" y="39.508928571428569"/>
+            <point key="canvasLocation" x="942.02898550724649" y="39.508928571428569"/>
         </scene>
         <!--Admin All Users View Controller-->
         <scene sceneID="2pG-YD-lU4">
             <objects>
                 <viewController id="hxu-62-gD0" customClass="AdminAllUsersViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ood-6z-h5p">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="all users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYG-At-c2a">
@@ -74,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQQ-fF-nK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792.75362318840587" y="501.5625"/>
+            <point key="canvasLocation" x="1702.8985507246377" y="501.5625"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gGX-ES-leU">
@@ -118,14 +119,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="402-RQ-Vm3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543.4782608695652" y="502.90178571428567"/>
+            <point key="canvasLocation" x="2464" y="502"/>
         </scene>
         <!--Admin Create Quiz View Controller-->
         <scene sceneID="fzJ-7a-fxb">
             <objects>
                 <viewController id="BI8-qt-PjR" customClass="AdminCreateQuizViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nkn-uu-J51">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="create quiz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1W-fP-SCd">
@@ -239,7 +240,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAJ-3l-4TH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792.75362318840587" y="-161.38392857142856"/>
+            <point key="canvasLocation" x="1702.8985507246377" y="-161.38392857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="f8P-eH-7y1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rER-eM-hEB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dII-QZ-aMj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="bp1-mH-R5J"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OnK-1R-szH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31.884057971014496" y="39.508928571428569"/>
         </scene>
     </scenes>
     <resources>

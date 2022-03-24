@@ -20,16 +20,18 @@ class ViewController: UIViewController {
     var isSubbed = false
     var isAdmin = false
     
-    //var i = InitialDbInserts()
+    var i = InitialDbInserts()
     var db = DBHelper()
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
     @IBOutlet weak var error: UILabel!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       // i.connect()
-       // i.insertInitial()
+        i.connect()
+        i.insertInitial()
+        
         
         var f1 = db.prepareDatabaseFile()
                 if sqlite3_open(f1, &db.db) != SQLITE_OK{
