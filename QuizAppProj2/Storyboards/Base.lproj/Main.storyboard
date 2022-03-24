@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fhw-h3-ITk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -47,8 +47,8 @@
                                     <segue destination="6WG-F4-uMj" kind="show" id="rgQ-pK-sVH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHR-p7-0Gi">
-                                <rect key="frame" x="186" y="572" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHR-p7-0Gi">
+                                <rect key="frame" x="186" y="572" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -158,7 +158,7 @@
                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Y9N-00-2yD" kind="show" id="JWw-1t-keR"/>
+                                    <segue destination="Y9N-00-2yD" kind="presentation" id="JWw-1t-keR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZj-z2-9nk">
@@ -172,6 +172,19 @@
                                     <segue destination="ACT-ll-GIQ" kind="show" id="A85-qv-b9J"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uPF-er-7Om">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="OCW-F7-g2m">
+                                        <barButtonItem key="rightBarButtonItem" title="Menu" id="dVl-y6-eVa">
+                                            <connections>
+                                                <action selector="didTapMenu" destination="1qg-X3-6B2" id="dVC-KY-8dQ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rap-YS-7AW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -190,29 +203,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-J7-ADC">
-                                <rect key="frame" x="188" y="291" width="40.5" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-J7-ADC">
+                                <rect key="frame" x="188" y="465" width="41.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="mic.fill" catalog="system" title=""/>
                                 <connections>
                                     <action selector="activeMicro:" destination="Pl3-mA-f7O" eventType="touchUpInside" id="U4R-9t-Ma5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="leave feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swe-ze-4Qt">
-                                <rect key="frame" x="107" y="262" width="202" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="leave feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swe-ze-4Qt">
+                                <rect key="frame" x="107" y="422" width="202" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="by5-l3-ys6">
-                                <rect key="frame" x="0.0" y="126" width="414" height="128"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Kky-cA-F9V"/>
-                                </constraints>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcV-2D-10B">
-                                <rect key="frame" x="144" y="362" width="124" height="31"/>
+                                <rect key="frame" x="145" y="504" width="124" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="submit"/>
@@ -220,6 +226,13 @@
                                     <action selector="submitMsg:" destination="Pl3-mA-f7O" eventType="touchUpInside" id="GJH-Tu-gqF"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="by5-l3-ys6">
+                                <rect key="frame" x="0.0" y="238" width="414" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Kky-cA-F9V"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rKf-Kw-GDI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -231,11 +244,17 @@
                             <constraint firstItem="swe-ze-4Qt" firstAttribute="centerX" secondItem="MEr-J7-ADC" secondAttribute="centerX" id="C3D-qv-932"/>
                             <constraint firstItem="by5-l3-ys6" firstAttribute="leading" secondItem="rKf-Kw-GDI" secondAttribute="leading" id="FOk-SH-caw"/>
                             <constraint firstItem="rKf-Kw-GDI" firstAttribute="trailing" secondItem="swe-ze-4Qt" secondAttribute="trailing" constant="105" id="FpX-cB-439"/>
-                            <constraint firstItem="by5-l3-ys6" firstAttribute="top" secondItem="rKf-Kw-GDI" secondAttribute="top" constant="38" id="RtZ-qV-Zzc"/>
                             <constraint firstItem="swe-ze-4Qt" firstAttribute="leading" secondItem="rKf-Kw-GDI" secondAttribute="leading" constant="107" id="Y2c-vs-JeC"/>
+                            <constraint firstItem="by5-l3-ys6" firstAttribute="top" secondItem="rKf-Kw-GDI" secondAttribute="top" constant="150" id="cnd-O1-ggo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Feedback" id="frc-9a-0CC"/>
+                    <navigationItem key="navigationItem" title="Feedback" id="frc-9a-0CC">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="r0b-7x-KIe">
+                            <connections>
+                                <action selector="didTapMenu" destination="Pl3-mA-f7O" id="y0z-68-tlQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="micro" destination="MEr-J7-ADC" id="EYs-WP-udF"/>
                         <outlet property="myTable" destination="by5-l3-ys6" id="MjV-ah-Qsx"/>
@@ -277,7 +296,13 @@
                             <constraint firstItem="E8q-jC-abe" firstAttribute="top" secondItem="WzA-WP-Mn4" secondAttribute="top" id="nLc-jo-uMS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mcu-ag-Qh5"/>
+                    <navigationItem key="navigationItem" id="mcu-ag-Qh5">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="MsK-ZC-QAG">
+                            <connections>
+                                <action selector="didTapMenu" destination="fhw-h3-ITk" id="fuD-sR-f5U"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="E8q-jC-abe" id="mjT-re-0TJ"/>
                     </connections>
@@ -294,13 +319,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set up subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMg-RQ-V3b">
-                                <rect key="frame" x="89" y="101" width="188" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="credit card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXd-IW-tCF">
                                 <rect key="frame" x="45" y="229" width="85" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -396,6 +414,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lh-bt-xn9">
+                                <rect key="frame" x="-5" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Set Subscription" id="wbr-HR-pWt">
+                                        <barButtonItem key="rightBarButtonItem" title="Menu" id="bVv-w5-XUn">
+                                            <connections>
+                                                <action selector="didTapMenu" destination="ACT-ll-GIQ" id="05p-uy-kl8"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Mf-qK-Z1u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -494,19 +525,19 @@
             <objects>
                 <collectionViewController id="Y9N-00-2yD" customClass="QuizCollectionViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="B4b-RK-g2E">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="6" minimumInteritemSpacing="6" id="jc4-3l-klR">
                             <size key="itemSize" width="198" height="350"/>
                             <size key="estimatedItemSize" width="198" height="350"/>
-                            <size key="headerReferenceSize" width="200" height="45"/>
+                            <size key="headerReferenceSize" width="200" height="73"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="6" minY="0.0" maxX="6" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mcell" id="5hm-jg-6Nq" customClass="QuizCollectionViewCell" customModule="QuizAppProj2" customModuleProvider="target">
-                                <rect key="frame" x="6" y="45" width="198" height="350"/>
+                                <rect key="frame" x="6" y="73" width="198" height="350"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ias-Fc-LdI">
                                     <rect key="frame" x="0.0" y="0.0" width="198" height="350"/>
@@ -533,16 +564,22 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OGU-ss-Ieg">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="73"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Technology Quizzes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4O-Cv-3Sj">
-                                    <rect key="frame" x="34" y="0.0" width="346" height="45"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEy-9t-jTK">
+                                    <rect key="frame" x="0.0" y="9" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <items>
+                                        <navigationItem title="Quizzes" id="VYY-sN-rDM">
+                                            <barButtonItem key="rightBarButtonItem" title="Menu" id="X0P-1C-h1K">
+                                                <connections>
+                                                    <action selector="didTapMenu" destination="Y9N-00-2yD" id="dSB-CR-Nba"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </navigationItem>
+                                    </items>
+                                </navigationBar>
                             </subviews>
                         </collectionReusableView>
                         <connections>
@@ -550,14 +587,16 @@
                             <outlet property="delegate" destination="Y9N-00-2yD" id="aeq-cg-NvO"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="0bQ-At-gpg"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="QtJ-yr-a3G" kind="presentation" identifier="quizSegue" modalPresentationStyle="fullScreen" id="iHA-Mg-eSX"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maN-MB-Rr1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3287" y="-186"/>
+            <point key="canvasLocation" x="3286.9565217391305" y="-186.16071428571428"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="poI-Qu-6cn">
@@ -567,14 +606,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Java" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tZ-dH-fOm">
-                                <rect key="frame" x="179.5" y="44" width="55.5" height="34"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="quizTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sNl-gA-XGe">
-                                <rect key="frame" x="35" y="137" width="345" height="540"/>
+                                <rect key="frame" x="33" y="223" width="345" height="540"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -612,8 +645,8 @@
                                     <outlet property="delegate" destination="QtJ-yr-a3G" id="qVI-Mr-ivy"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rez-H9-LKH">
-                                <rect key="frame" x="180" y="732.5" width="54" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rez-H9-LKH">
+                                <rect key="frame" x="178" y="771" width="54" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Next"/>
                                 <connections>
@@ -624,6 +657,25 @@
                                 <rect key="frame" x="153" y="767" width="108" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-PQ-yBy">
+                                <rect key="frame" x="-2" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="nwp-Vq-aKr">
+                                        <barButtonItem key="rightBarButtonItem" title="Menu" id="WVn-no-qIa">
+                                            <connections>
+                                                <action selector="didTapMenu" destination="QtJ-yr-a3G" id="7nt-lE-L6n"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Java" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tZ-dH-fOm">
+                                <rect key="frame" x="180" y="127" width="55.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -670,8 +722,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fzk-Zo-bgm"/>
-        <segue reference="UzS-z2-f0Q"/>
+        <segue reference="JWw-1t-keR"/>
+        <segue reference="oMq-cx-vlk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="free" width="164" height="350"/>

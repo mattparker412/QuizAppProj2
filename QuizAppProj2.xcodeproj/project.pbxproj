@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2D212D8F27EBCC84000B85C4 /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */; };
 		2D212DB827EBF9B1000B85C4 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2D212DB727EBF9B1000B85C4 /* SideMenu */; };
+		2D212DBA27EC1C7F000B85C4 /* MenuListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212DB927EC1C7F000B85C4 /* MenuListController.swift */; };
+		2D212DBC27EC1CCC000B85C4 /* CallMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212DBB27EC1CCC000B85C4 /* CallMenuList.swift */; };
 		2D3557F727E7C9B4002B103C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F627E7C9B4002B103C /* Question.swift */; };
 		2D3557F927E7C9C5002B103C /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F827E7C9C5002B103C /* Ranking.swift */; };
 		2D3557FD27E7C9E3002B103C /* Technology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557FC27E7C9E3002B103C /* Technology.swift */; };
@@ -74,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
+		2D212DB927EC1C7F000B85C4 /* MenuListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListController.swift; sourceTree = "<group>"; };
+		2D212DBB27EC1CCC000B85C4 /* CallMenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallMenuList.swift; sourceTree = "<group>"; };
 		2D3557F627E7C9B4002B103C /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		2D3557F827E7C9C5002B103C /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		2D3557FC27E7C9E3002B103C /* Technology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technology.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				2D35584427E820DA002B103C /* AdminAllUsersViewController.swift */,
 				2D35584627E820E6002B103C /* AdminCreateQuizViewController.swift */,
 				2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */,
+				2D212DB927EC1C7F000B85C4 /* MenuListController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				84308D9C27E4F1D700F8E694 /* Utilities.swift */,
 				2DA63A3027E4D9C500F088CB /* SortingAlgorithm.swift */,
 				84308DA027E4F8C500F8E694 /* QuizTableViewCell.swift */,
+				2D212DBB27EC1CCC000B85C4 /* CallMenuList.swift */,
 			);
 			path = ViewLogicComponents;
 			sourceTree = "<group>";
@@ -427,7 +433,9 @@
 				2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */,
 				84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */,
 				2D35580327E7CA20002B103C /* IsBlocked.swift in Sources */,
+				2D212DBA27EC1C7F000B85C4 /* MenuListController.swift in Sources */,
 				2D3558FD27EB7509002B103C /* InitialDbInserts.swift in Sources */,
+				2D212DBC27EC1CCC000B85C4 /* CallMenuList.swift in Sources */,
 				84AC26D027DC09EE0053BF92 /* SceneDelegate.swift in Sources */,
 				2DA63A2B27E4D15400F088CB /* RankingViewController.swift in Sources */,
 				84308DA127E4F8C500F8E694 /* QuizTableViewCell.swift in Sources */,

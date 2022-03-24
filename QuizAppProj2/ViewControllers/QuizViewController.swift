@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SideMenu
 class QuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var quizTimer: UILabel!
@@ -130,8 +130,18 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var textLabel: UILabel!
     public var text : String? = nil
     var clock = Clock()
+    var menu: SideMenuNavigationController?
+    let createMenu = CallMenuList()
+    
+    
+    @IBAction func didTapMenu(){
+        present(menu! ,animated: true)
+        //let menulist = MenuListController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
         
 
         clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer)
