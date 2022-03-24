@@ -94,7 +94,7 @@ class ViewController: UIViewController {
     }
     func navigateToUserController(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavigation") as! UINavigationController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UIViewController
         //self.navigationController?.pushViewController(nextViewController, animated: true)
         self.view?.window?.rootViewController = nextViewController
         self.present(nextViewController, animated:false, completion: nil)

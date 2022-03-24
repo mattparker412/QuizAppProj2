@@ -48,6 +48,7 @@
 		84308D9B27E4F1CF00F8E694 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308D9A27E4F1CF00F8E694 /* QuizViewController.swift */; };
 		84308D9D27E4F1D700F8E694 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308D9C27E4F1D700F8E694 /* Utilities.swift */; };
 		84308DA127E4F8C500F8E694 /* QuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84308DA027E4F8C500F8E694 /* QuizTableViewCell.swift */; };
+		84333DC027EC034F00910150 /* QuizSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333DBF27EC034F00910150 /* QuizSubmittedViewController.swift */; };
 		84492ED127EBA949000127D7 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84492ED027EBA949000127D7 /* MessageKit */; };
 		84492ED427EBAA07000127D7 /* InputBarAccessoryView in Frameworks */ = {isa = PBXBuildFile; productRef = 84492ED327EBAA07000127D7 /* InputBarAccessoryView */; };
 		84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */; };
@@ -113,6 +114,7 @@
 		84308D9A27E4F1CF00F8E694 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		84308D9C27E4F1D700F8E694 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		84308DA027E4F8C500F8E694 /* QuizTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewCell.swift; sourceTree = "<group>"; };
+		84333DBF27EC034F00910150 /* QuizSubmittedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizSubmittedViewController.swift; sourceTree = "<group>"; };
 		84AC26CD27DC09EE0053BF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AC26CF27DC09EE0053BF92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84AC26D127DC09EE0053BF92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				84308D9827E4F1B100F8E694 /* QuizCollectionViewController.swift */,
 				84308D9A27E4F1CF00F8E694 /* QuizViewController.swift */,
 				2D91747927E3806C00151288 /* QuizPageViewController.swift */,
+				84333DBF27EC034F00910150 /* QuizSubmittedViewController.swift */,
 				2DA63A2A27E4D15400F088CB /* RankingViewController.swift */,
 				2DA63A7927E7138400F088CB /* FeedbackViewController.swift */,
 				2D3558F827EA5260002B103C /* ChatViewController.swift */,
@@ -407,6 +410,7 @@
 				2D35590527EB753F002B103C /* Feedback.swift in Sources */,
 				84AC26D227DC09EE0053BF92 /* ViewController.swift in Sources */,
 				2D35590927EB75BE002B103C /* IsSubscribed.swift in Sources */,
+				84333DC027EC034F00910150 /* QuizSubmittedViewController.swift in Sources */,
 				2D35590127EB7521002B103C /* QuizesTaken.swift in Sources */,
 				2D3557F727E7C9B4002B103C /* Question.swift in Sources */,
 				2D91747D27E385A200151288 /* InputValidation.swift in Sources */,

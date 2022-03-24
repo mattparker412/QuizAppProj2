@@ -170,7 +170,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             nextButton.setTitle("Submit", for: .normal)
         }
         if questionNumber == 6{
-            performSegue(withIdentifier: "backtoquizhome", sender: self)
+            performSegue(withIdentifier: "quizSubmitted", sender: self)
             let calculator = CalculateRanking()
             let rankscore = calculator.calculateRank(timeLeft: clock.leftOver, correctAnswers: totalCorrect)
             db?.storeRanking(userID: userID!, techID: techChoice!, rankScore: rankscore)

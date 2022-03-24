@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ACT-ll-GIQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -191,7 +191,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-J7-ADC">
-                                <rect key="frame" x="187.5" y="291" width="41.5" height="31"/>
+                                <rect key="frame" x="188" y="291" width="40.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="mic.fill" catalog="system" title=""/>
                                 <connections>
@@ -254,7 +254,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-jC-abe">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Cnf-03-iSi">
@@ -277,6 +277,7 @@
                             <constraint firstItem="E8q-jC-abe" firstAttribute="top" secondItem="WzA-WP-Mn4" secondAttribute="top" id="nLc-jo-uMS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="mcu-ag-Qh5"/>
                     <connections>
                         <outlet property="tableView" destination="E8q-jC-abe" id="mjT-re-0TJ"/>
                     </connections>
@@ -290,7 +291,7 @@
             <objects>
                 <viewController id="ACT-ll-GIQ" customClass="SubscribeViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pGR-qq-X8d">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set up subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMg-RQ-V3b">
@@ -423,12 +424,70 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1qg-X3-6B2" kind="relationship" relationship="rootViewController" id="L3v-9X-KoZ"/>
+                        <segue destination="Cad-eR-BeE" kind="relationship" relationship="rootViewController" id="mg7-6F-70c"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ics-zN-SJs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626" y="80"/>
+            <point key="canvasLocation" x="1543" y="-577"/>
+        </scene>
+        <!--Quiz Submitted View Controller-->
+        <scene sceneID="5Z2-ed-IhC">
+            <objects>
+                <viewController id="Cad-eR-BeE" customClass="QuizSubmittedViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wai-4y-1MC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-sd-WC1">
+                                <rect key="frame" x="145" y="316" width="124.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Go To Rankings"/>
+                                <connections>
+                                    <action selector="rankPressed:" destination="Cad-eR-BeE" eventType="touchUpInside" id="u68-Wc-ygx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe1-WS-7p4">
+                                <rect key="frame" x="136.5" y="432.5" width="141" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Give Us Feedback"/>
+                                <connections>
+                                    <action selector="feedbackPressed:" destination="Cad-eR-BeE" eventType="touchUpInside" id="fSh-vg-PrA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMJ-AT-BUc">
+                                <rect key="frame" x="136" y="562" width="142.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Take Another Quiz"/>
+                                <connections>
+                                    <action selector="quizPressed:" destination="Cad-eR-BeE" eventType="touchUpInside" id="UYP-h6-98q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KYk-4t-Muf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4jo-sd-WC1" firstAttribute="centerX" secondItem="wai-4y-1MC" secondAttribute="centerX" id="11I-vj-JK7"/>
+                            <constraint firstItem="oe1-WS-7p4" firstAttribute="centerY" secondItem="wai-4y-1MC" secondAttribute="centerY" id="7zf-i6-4um"/>
+                            <constraint firstItem="oe1-WS-7p4" firstAttribute="top" secondItem="4jo-sd-WC1" secondAttribute="bottom" constant="85.5" id="ICy-Dd-PsS"/>
+                            <constraint firstItem="aMJ-AT-BUc" firstAttribute="centerX" secondItem="wai-4y-1MC" secondAttribute="centerX" id="UWQ-TB-SkT"/>
+                            <constraint firstItem="oe1-WS-7p4" firstAttribute="centerX" secondItem="wai-4y-1MC" secondAttribute="centerX" id="qoY-ar-EvL"/>
+                            <constraint firstItem="aMJ-AT-BUc" firstAttribute="top" secondItem="oe1-WS-7p4" secondAttribute="bottom" constant="98.5" id="u5z-DX-s8T"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GyV-t7-ONl"/>
+                    <connections>
+                        <outlet property="goToFeedback" destination="oe1-WS-7p4" id="58g-pj-8nA"/>
+                        <outlet property="goToQuizzes" destination="aMJ-AT-BUc" id="dc3-cj-01p"/>
+                        <outlet property="goToRanking" destination="4jo-sd-WC1" id="8AD-eK-ZuY"/>
+                        <segue destination="fhw-h3-ITk" kind="show" identifier="goToRanking" id="9oP-Xj-RYL"/>
+                        <segue destination="Y9N-00-2yD" kind="presentation" identifier="goToQuiz" modalPresentationStyle="fullScreen" id="fzk-Zo-bgm"/>
+                        <segue destination="Pl3-mA-f7O" kind="show" identifier="goToFeedback" id="UzS-z2-f0Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Knn-1h-CsD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2451" y="-881"/>
         </scene>
         <!--Quiz Collection View Controller-->
         <scene sceneID="Q9f-TE-2g5">
@@ -584,7 +643,7 @@
                         <outlet property="quizTable" destination="sNl-gA-XGe" id="dVi-FD-22e"/>
                         <outlet property="quizTimer" destination="gCP-FP-6Gd" id="WSl-u4-uUM"/>
                         <outlet property="textLabel" destination="3tZ-dH-fOm" id="bJK-Nx-slW"/>
-                        <segue destination="Y9N-00-2yD" kind="presentation" identifier="backtoquizhome" modalPresentationStyle="fullScreen" id="Odd-sC-Gt8"/>
+                        <segue destination="fOj-4Y-dPz" kind="presentation" identifier="quizSubmitted" modalPresentationStyle="fullScreen" id="H73-Rs-9p3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlH-qW-KbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -611,7 +670,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iyZ-tu-vrY"/>
+        <segue reference="fzk-Zo-bgm"/>
+        <segue reference="UzS-z2-f0Q"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="free" width="164" height="350"/>
