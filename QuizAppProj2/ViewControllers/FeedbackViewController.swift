@@ -10,7 +10,7 @@ import AVFoundation
 import Speech
 import SideMenu
 
-class FeedbackViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedbackViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MenuControllerDelegate {
 
     @IBOutlet weak var micro: UIButton!
     let audioEng = AVAudioEngine()
@@ -44,24 +44,35 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
     
 
     
-    @IBOutlet var myTable : UITableView!
+    //@IBOutlet var myTable : UITableView!
     
-    var menu: SideMenuNavigationController?
-    let createMenu = CallMenuList()
-    
+    private var sideMenu: SideMenuNavigationController?
+    let views = ["Subscription","Quizzes","Feedback","Ranking","Logout"]
+    let menuCaller = CreateSideMenu()
     
     @IBAction func didTapMenu(){
-        present(menu! ,animated: true)
-        //let menulist = MenuListController()
+        present(sideMenu!, animated: true)
+    }
+
+    let navigator = NavigateToController()
+    func didSelectMenuItem(named: String) {
+        sideMenu?.dismiss(animated: true, completion: { [weak self] in
+            
+            var controllerToNav = self?.navigator.viewControllerSwitch(named: named)
+            self?.navigator.navToController(current: self!, storyboard: controllerToNav![0] as! String, identifier: controllerToNav![1] as! String, controller: controllerToNav![2] as! UIViewController)
+
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menu = createMenu.setUpSideMenu(menu: menu, controller: self)
+        let menu = MenuController(with: views)
+        menu.delegate = self
+        sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
         // Do any additional setup after loading the view.
-        myTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        myTable.delegate = self
-        myTable.dataSource = self
+        //myTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //myTable.delegate = self
+        //myTable.dataSource = self
         
         let db = DBHelper()
         

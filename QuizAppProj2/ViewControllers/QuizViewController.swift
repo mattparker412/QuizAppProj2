@@ -129,19 +129,14 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var textLabel: UILabel!
     public var text : String? = nil
     var clock = Clock()
-//    var menu: SideMenuNavigationController?
-//    let createMenu = CallMenuList()
-//
-//
-//    @IBAction func didTapMenu(){
-//        present(menu! ,animated: true)
-//        //let menulist = MenuListController()
-//    }
+    var menu: SideMenuNavigationController?
+    let createMenu = CallMenuList()
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //menu = createMenu.setUpSideMenu(menu: menu, controller: self)
-        
 
         clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer)
         switch techChoice{

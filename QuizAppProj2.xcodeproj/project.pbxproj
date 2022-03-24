@@ -11,6 +11,9 @@
 		2D212DB827EBF9B1000B85C4 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 2D212DB727EBF9B1000B85C4 /* SideMenu */; };
 		2D212DBA27EC1C7F000B85C4 /* MenuListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212DB927EC1C7F000B85C4 /* MenuListController.swift */; };
 		2D212DBC27EC1CCC000B85C4 /* CallMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212DBB27EC1CCC000B85C4 /* CallMenuList.swift */; };
+		2D212DF027ECD340000B85C4 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212DEF27ECD340000B85C4 /* SideMenu.swift */; };
+		2D212DF227ECD360000B85C4 /* CreateSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212DF127ECD360000B85C4 /* CreateSideMenu.swift */; };
+		2D212DF427ECD389000B85C4 /* NavigateToController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D212DF327ECD388000B85C4 /* NavigateToController.swift */; };
 		2D3557F727E7C9B4002B103C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F627E7C9B4002B103C /* Question.swift */; };
 		2D3557F927E7C9C5002B103C /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557F827E7C9C5002B103C /* Ranking.swift */; };
 		2D3557FD27E7C9E3002B103C /* Technology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3557FC27E7C9E3002B103C /* Technology.swift */; };
@@ -78,6 +81,9 @@
 		2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
 		2D212DB927EC1C7F000B85C4 /* MenuListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListController.swift; sourceTree = "<group>"; };
 		2D212DBB27EC1CCC000B85C4 /* CallMenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallMenuList.swift; sourceTree = "<group>"; };
+		2D212DEF27ECD340000B85C4 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		2D212DF127ECD360000B85C4 /* CreateSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSideMenu.swift; sourceTree = "<group>"; };
+		2D212DF327ECD388000B85C4 /* NavigateToController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateToController.swift; sourceTree = "<group>"; };
 		2D3557F627E7C9B4002B103C /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		2D3557F827E7C9C5002B103C /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		2D3557FC27E7C9E3002B103C /* Technology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Technology.swift; sourceTree = "<group>"; };
@@ -237,6 +243,9 @@
 				2DA63A3027E4D9C500F088CB /* SortingAlgorithm.swift */,
 				84308DA027E4F8C500F8E694 /* QuizTableViewCell.swift */,
 				2D212DBB27EC1CCC000B85C4 /* CallMenuList.swift */,
+				2D212DEF27ECD340000B85C4 /* SideMenu.swift */,
+				2D212DF127ECD360000B85C4 /* CreateSideMenu.swift */,
+				2D212DF327ECD388000B85C4 /* NavigateToController.swift */,
 			);
 			path = ViewLogicComponents;
 			sourceTree = "<group>";
@@ -404,6 +413,8 @@
 				2DA63A2F27E4D71100F088CB /* CalculateRanking.swift in Sources */,
 				84308D9B27E4F1CF00F8E694 /* QuizViewController.swift in Sources */,
 				84308D9727E4F17F00F8E694 /* QuizCollectionViewCell.swift in Sources */,
+				2D212DF427ECD389000B85C4 /* NavigateToController.swift in Sources */,
+				2D212DF027ECD340000B85C4 /* SideMenu.swift in Sources */,
 				2DA63A7A27E7138400F088CB /* FeedbackViewController.swift in Sources */,
 				2D57CA9827E24A070072646F /* AdminViewController.swift in Sources */,
 				2D57CA9A27E24BB70072646F /* SignupViewController.swift in Sources */,
@@ -442,6 +453,7 @@
 				2DA63A2D27E4D61D00F088CB /* UseMicrophone.swift in Sources */,
 				2D3558F927EA5260002B103C /* ChatViewController.swift in Sources */,
 				2D35580127E7CA11002B103C /* DBHelper.swift in Sources */,
+				2D212DF227ECD360000B85C4 /* CreateSideMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

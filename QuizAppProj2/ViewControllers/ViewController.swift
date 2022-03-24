@@ -13,6 +13,7 @@ import SQLite3
 var db = DBHelper()
 var userName : String?
 var userID : Int?
+
 class ViewController: UIViewController {
    // var i = InitialDbInserts()
     
