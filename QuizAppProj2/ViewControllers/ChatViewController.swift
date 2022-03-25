@@ -50,6 +50,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("message to append")
         print(messageToAppend)
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
@@ -64,6 +65,17 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
         messages.append(Message(sender: currentUser, messageId: "4", sentDate: Date().addingTimeInterval(-40000), kind: .text("Long message Long message Long message Long message Long message")))
         messages.append(Message(sender: otherUser, messageId: "5", sentDate: Date().addingTimeInterval(-20000), kind: .text("Look, it works. Long messageLong message Long messageLong messageLong messageLong messageLong messageLong messageLong messageLong message")))
         messages.append(Message(sender: currentUser, messageId: "6", sentDate: Date().addingTimeInterval(-10000), kind: .text("Hahaha")))
+        for index in 0..<db.getFeedBacks().count{
+            var name = db.getFeedBacks()[index]["name"]
+            var message = db.getFeedBacks()[index]["feedback"]
+            print(name)
+            print(message)
+            name = db.getUserName(userId: Int(name!)!)
+            message = message! + " - " + name!
+            print(message!)
+            messages.append(Message(sender: otherUser, messageId: String(messages.count+index+1), sentDate: Date(), kind: .text(message!)))
+        }
+        //print(db.getFeedBacks())
     }
     
     override func viewDidAppear(_ animated: Bool){
