@@ -70,13 +70,13 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
 // When scrolling down too quickly, it seems like program gets malloc errors. need to debuk/error check this later
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > tableView.contentSize.height - 100 - scrollView.frame.size.height{
+        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height){
             guard !dataFetcher.isPaginating else {
                 //data being fetched already
                 return
             }
             self.tableView.tableFooterView = createSpinnerFooter()
-            dataFetcher.fetchData(pagination: true, completion: {[weak self] result in
+            dataFetcher.fetchData(pagination: true){[weak self] result in
                 DispatchQueue.main.async {
                     self?.tableView.tableFooterView = nil
                 }
@@ -89,7 +89,7 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
                 case .failure(_):
                     break
                 }
-            })
+            }
         }
     }
 }
