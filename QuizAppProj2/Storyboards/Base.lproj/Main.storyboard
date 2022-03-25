@@ -864,7 +864,7 @@
         <!--Navigation Controller-->
         <scene sceneID="6Xh-YC-d7d">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cA4-37-W0F" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="quizNav" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="cA4-37-W0F" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YS8-lM-7W0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ctx-Y8-1Dr">
@@ -900,7 +900,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iyZ-tu-vrY"/>
+        <segue reference="JWw-1t-keR"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.15646258499999999" blue="0.11284513810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>

@@ -84,14 +84,29 @@ class ViewController: UIViewController {
                 userName = user.text!
                 userID = db.getUserID(userName: userName!)
                 if db.getSubStatus(userid: userID!) == 0{
+                    isSubscribed = false
                     quizzesLeft = 2 - db.checkQuizzesTaken(userid: userID!, date: dateFormatter.string(from: date))
                 }
                 else{
+                    isSubscribed = true
                     quizzesLeft = -1
+                }
+                if db.getBlockStatus(userID: db.getUserID(userName: userName!)) == 1{
+                    wrongPass.text = "Account Blocked"
+                    view.addSubview(wrongPass)
+                    
+                    wrongPass.shake()
+                } else{
+                    if isSubscribed == true{
+                        navigateToQuizPage()
+                    }
+                    else{
+                        navigateToUserController()
+                    }
                 }
                 
                     //nav()
-                    navigateToUserController()
+                    //navigateToUserController()
             }
             else if db.checkAdmin(userName: user.text!, pass: pass.text!) == true{
                 print(user.text!, "logged in as admin")
@@ -145,7 +160,7 @@ class ViewController: UIViewController {
     
     func navigateToQuizPage(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UserPageViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "quizNav") as! UINavigationController
         //self.navigationController?.pushViewController(nextViewController, animated: true)
         self.present(nextViewController, animated:false, completion: nil)
     }

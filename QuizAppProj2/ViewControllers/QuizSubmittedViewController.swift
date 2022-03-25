@@ -36,7 +36,9 @@ class QuizSubmittedViewController: UIViewController, MenuControllerDelegate {
         super.viewDidLoad()
         let menu = MenuController(with: views)
         menu.delegate = self
-        let quizLeft = UILabel(frame: CGRect(x: 120, y: 50, width: 300, height: 50))
+        let quizLeft = UILabel(frame: CGRect(x: view.center.x, y: 50, width: 140, height: 50))
+        quizLeft.center.x = view.center.x
+        //quizLeft.center = CGPoint(x: view.center.x, y: 50)
         if isSubscribed == false{
             quizLeft.text = "Quizzes Left: \(quizzesLeft!)"
             view.addSubview(quizLeft)
