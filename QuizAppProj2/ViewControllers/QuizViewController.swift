@@ -187,6 +187,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(userName!, "Finished in", 1800-clock.leftOver,"seconds, with rank score of ",rankscore)
             
             print("Total correct answers:",totalCorrect)
+            db.quizTaken(quiz: quizChoice!, userid: userID!, score: rankscore, currentDate: dateFormatter.string(from: date))
+            if isSubscribed == false{
+                quizzesLeft! -= 1
+            }
+        
             performSegue(withIdentifier: "quizSubmitted", sender: self)
         }
         if questionNumber != 6{

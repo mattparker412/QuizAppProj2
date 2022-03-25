@@ -36,6 +36,11 @@ class QuizSubmittedViewController: UIViewController, MenuControllerDelegate {
         super.viewDidLoad()
         let menu = MenuController(with: views)
         menu.delegate = self
+        let quizLeft = UILabel(frame: CGRect(x: 120, y: 50, width: 300, height: 50))
+        if isSubscribed == false{
+            quizLeft.text = "Quizzes Left: \(quizzesLeft!)"
+            view.addSubview(quizLeft)
+        }
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
         Utilities.styleButton(goToRanking)
         Utilities.styleButton(goToQuizzes)
@@ -54,7 +59,16 @@ class QuizSubmittedViewController: UIViewController, MenuControllerDelegate {
     }
     
     @IBAction func quizPressed(_ sender: Any) {
+        if quizzesLeft != 0{
         performSegue(withIdentifier: "goToQuiz", sender: self)
+        }
+        else{
+            let noQuiz = UILabel(frame: CGRect(x: 100 , y: 500, width: 300, height: 50))
+            noQuiz.text = "Error: No quizzes left today"
+            noQuiz.textColor = .red
+            view.addSubview(noQuiz)
+            print("error: no quizzes left today")
+        }
     }
 }
 

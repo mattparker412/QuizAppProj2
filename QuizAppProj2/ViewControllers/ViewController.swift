@@ -13,6 +13,12 @@ import SQLite3
 var db = DBHelper()
 var userName : String?
 var userID : Int?
+var isSubscribed = false
+let date = Date()
+let dateFormatter = DateFormatter()
+var quizzesLeft : Int?
+
+
 
 class ViewController: UIViewController {
    // var i = InitialDbInserts()
@@ -27,9 +33,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //i.connect()
         //i.insertInitial()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        print(dateFormatter.string(from: date))
         
         
-        wrongPass.center = CGPoint(x: view.center.x, y: 420)
+        wrongPass.center = CGPoint(x: view.center.x, y: view.center.y + 200)
         wrongPass.textColor = .red
         wrongPass.textAlignment = .center
         wrongPass.numberOfLines = 2
@@ -72,10 +80,16 @@ class ViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         if db.checkUsernameExists(userName: user.text!) || db.checkAdminUsernameExists(userName: user.text!){
             if db.checkUser(userName: user.text!, pass: pass.text!) == true{
-                
                 print(user.text!,"logged in as user")
                 userName = user.text!
                 userID = db.getUserID(userName: userName!)
+                if db.getSubStatus(userid: userID!) == 0{
+                    quizzesLeft = 2 - db.checkQuizzesTaken(userid: userID!, date: dateFormatter.string(from: date))
+                }
+                else{
+                    quizzesLeft = -1
+                }
+                
                     //nav()
                     navigateToUserController()
             }
@@ -91,6 +105,7 @@ class ViewController: UIViewController {
                 
                 view.addSubview(wrongPass)
                 wrongPass.shake()
+                
                 print("error wrong password")
             }
         }
@@ -111,14 +126,21 @@ class ViewController: UIViewController {
     }
     func navigateToUserController(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UIViewController
-        //self.navigationController?.pushViewController(nextViewController, animated: true)
-        self.view?.window?.rootViewController = nextViewController
-        self.modalPresentationStyle = .fullScreen
-        self.present(nextViewController, animated:false, completion: nil)
-        
-        
-
+        if quizzesLeft != 0{
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UIViewController
+            //self.navigationController?.pushViewController(nextViewController, animated: true)
+            self.view?.window?.rootViewController = nextViewController
+            self.modalPresentationStyle = .fullScreen
+            self.present(nextViewController, animated:false, completion: nil)
+        }
+        else{
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavigation") as! UIViewController
+            //self.navigationController?.pushViewController(nextViewController, animated: true)
+            self.view?.window?.rootViewController = nextViewController
+            self.modalPresentationStyle = .fullScreen
+            self.present(nextViewController, animated:false, completion: nil)
+        }
+    
     }
     
     func navigateToQuizPage(){

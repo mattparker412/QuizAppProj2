@@ -19,6 +19,11 @@ class UserPageViewController: UIViewController, MenuControllerDelegate {
 
     let navigator = NavigateToController()
     func didSelectMenuItem(named: String) {
+        if named == "Quizzes"{
+            if quizzesLeft == 0{
+                print("Error: No quizzes left")
+            }
+        }
         sideMenu?.dismiss(animated: true, completion: { [weak self] in
             
             var controllerToNav = self?.navigator.viewControllerSwitch(named: named)

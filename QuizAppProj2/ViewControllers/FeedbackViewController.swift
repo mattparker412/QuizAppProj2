@@ -74,7 +74,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         //myTable.delegate = self
         //myTable.dataSource = self
         
-        let db = DBHelper()
+        
         
         let feedBacks = db.getFeedBacks()
            //print(feedBacks)

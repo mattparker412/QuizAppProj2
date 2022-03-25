@@ -16,7 +16,7 @@ class SignupViewController: UIViewController {
     let wrongPass = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
     override func viewDidLoad() {
         super.viewDidLoad()
-        wrongPass.center = CGPoint(x: view.center.x, y: 350)
+        wrongPass.center = CGPoint(x: view.center.x, y: view.center.y)
         wrongPass.textColor = .red
         wrongPass.textAlignment = .center
         wrongPass.numberOfLines = 2

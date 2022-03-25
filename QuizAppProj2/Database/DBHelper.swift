@@ -364,6 +364,7 @@ class DBHelper{
         var answer2: String?
         var answer3: String?
         var rightAnswer: String?
+        var quizid : Int?
         
         
         let techId = String(technologyId)
@@ -408,9 +409,18 @@ class DBHelper{
             print("id --> ", q.id)
         }
         //print(questions[0].id, "***************************")
+        let query2 = "select * from quizes order by id desc limit 1"
         
+        if sqlite3_prepare(db, query2, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at set quiz id --> ", err)
+            
+        }
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            quizid = Int(sqlite3_column_int(pointer, 0)) + 1
+        }
         // Create a quizz object.
-        let quizz = Quizz(technologyId: technologyId, questions: questions)
+        let quizz = Quizz(technologyId: technologyId, questions: questions, quizID: quizid!)
         
         // Insert quizz into the database(quizes table).
         let insertQuiz = "insert into quizes (technologyId, q1, q2, q3, q4, q5) values (?,?,?,?,?,?)"
@@ -463,6 +473,76 @@ class DBHelper{
         return quizz
     }// End of create quizz.
     
+    func quizTaken(quiz : Quizz, userid : Int, score : Int, currentDate : String){
+        var pointer : OpaquePointer?
+        
+        let insertQuiz = "insert into quizzestaken (quizid, technologyid, userid, score, date) values (?,?,?,?,?)"
+        
+        if sqlite3_prepare_v2(db, insertQuiz, -1, &pointer, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+        if sqlite3_bind_int(pointer, 1, (Int32(quiz.quizId)) ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        if sqlite3_bind_int(pointer, 2, (Int32(quiz.technologyId)) ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+    
+        if sqlite3_bind_int(pointer, 3, Int32(userid) ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        if sqlite3_bind_int(pointer, 4, Int32(score) ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        if sqlite3_bind_text(pointer, 5, ((currentDate as NSString).utf8String), -1, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at insert ranking bind name --> ", err)
+        }
+        if sqlite3_step(pointer) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        
+    }
+    
+    func checkQuizzesTaken(userid : Int, date : String) -> Int{
+        var pointer : OpaquePointer?
+        
+        var quizzesTaken = 0
+        
+        let query = "select * from quizzestaken where userId = " + String(userid) + " and date = '" + date + "'"
+        print(query)
+        if sqlite3_prepare_v2(db, query, -1, &pointer, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            print("in while loop")
+            quizzesTaken += 1
+        }
+        if sqlite3_step(pointer) != SQLITE_DONE {
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+            
+        }
+        
+        
+        return quizzesTaken
+    }
     
     // This function returns an array of dictionaries.
     //Each dictionary contains the user name and user feedback of each feedback received.
@@ -658,6 +738,48 @@ class DBHelper{
             print("There is an error at addnewadmin done step --> ", err)
         }
         
+    }
+    
+    func changeSubStatus(subStatus : Bool, userid : Int) -> Bool{
+        var pointer : OpaquePointer?
+        var newStatus : Int?
+        
+        if subStatus == false{
+            newStatus = 1
+        }
+        else{
+            newStatus = 0
+        }
+        let query2 = "update user set isSubscribed = " + String(newStatus!) + " where id = " + String(userid)
+        if sqlite3_prepare(db, query2, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at insert sub status prep --> ", err)
+        }
+        
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at sub step done --> ", err)
+        }
+        return !subStatus
+    }
+    
+    func getSubStatus(userid : Int) -> Int{
+        var pointer : OpaquePointer?
+        var subStatus : Int?
+        
+        let query = "select * from user where id = '" + String(userid) + "'"
+        
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.getsubstatus --> ", err)
+        }
+        
+        while(sqlite3_step(pointer)) == SQLITE_ROW
+        {
+            subStatus = Int(sqlite3_column_int(pointer,3))
+        }
+        
+        return subStatus!
     }
     
 }

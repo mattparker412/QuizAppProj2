@@ -55,7 +55,12 @@ class MenuController: UITableViewController{
         
         //relay to delegate about menu item selection
         let selectedItem = menuItems[indexPath.row]
-        delegate?.didSelectMenuItem(named: selectedItem)
+        if selectedItem == "Quizzes" && quizzesLeft == 0{
+            print("No quizzes left today")
+        }
+        else{
+            delegate?.didSelectMenuItem(named: selectedItem)
+        }
     }
 }
 

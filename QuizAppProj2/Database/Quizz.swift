@@ -17,9 +17,10 @@ class Quizz{
     
     // An list of question.
     var questions =  [Question]()
+    var quizId : Int
     
-    init (technologyId: Int, questions: [Question]){
-        
+    init (technologyId: Int, questions: [Question], quizID : Int){
+        self.quizId = quizID
         self.technologyId = technologyId
         self.questions = questions
         

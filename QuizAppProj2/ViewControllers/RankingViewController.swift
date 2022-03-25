@@ -15,8 +15,9 @@ import SideMenu
 class RankingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MenuControllerDelegate {
     
     
-    @IBOutlet var tableView: UITableView!
     
+    
+    @IBOutlet weak var tableView: UITableView!
     
     //all the in the arrays is supposed to be queried from the database
 //    var scores = [["10000","15000","14000","13000","12050","12510","11051","13775","11200","10501"],["2100","2050","2007","2001","2010","2200","2300","2400","2600","2800",],["3100","3200","3300","3400","3500","3700","370","3650","33651","3100"]]
@@ -54,14 +55,19 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RankingTableViewCell
+        cell.leftLabel.textColor = .link
+        cell.rightLabel.textColor = .link
         switch indexPath.section{
         case 0:
-            cell.textLabel?.text = "\(indexPath.row + 1) \(swiftArray[indexPath.row].userName!) \(swiftArray[indexPath.row].ranking)"
+            cell.leftLabel.text = "\(indexPath.row + 1). \t  \(swiftArray[indexPath.row].userName!)"
+            cell.rightLabel.text = "Score: \(swiftArray[indexPath.row].ranking)"
         case 1:
-            cell.textLabel?.text = "\(indexPath.row + 1) \(javaArray[indexPath.row].userName!) \(javaArray[indexPath.row].ranking)"
+            cell.leftLabel.text = "\(indexPath.row + 1). \t  \(javaArray[indexPath.row].userName!)"
+            cell.rightLabel.text = "Score: \(javaArray[indexPath.row].ranking)"
         case 2:
-            cell.textLabel?.text = "\(indexPath.row + 1) \(androidArray[indexPath.row].userName!) \(androidArray[indexPath.row].ranking)"
+            cell.leftLabel.text = "\(indexPath.row + 1). \t  \(androidArray[indexPath.row].userName!)"
+            cell.rightLabel.text = "Score: \(androidArray[indexPath.row].ranking)"
         default:
             print("do nothing")
         }
@@ -90,6 +96,7 @@ class RankingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         let menu = MenuController(with: views)
+        
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
         // Do any additional setup after loading the view.

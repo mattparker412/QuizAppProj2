@@ -44,6 +44,10 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
         if(validator.validateCreditCard(creditCard: creditCard.text!, cvc: cvc.text!, expMonth: expireMonth.text!, expYear: expireYear.text! , error: errorLabel) == false){
             return false
         } else {
+            
+            isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
+            //print(isSubscribed)
+            quizzesLeft = -1
             return true
         }
     }
