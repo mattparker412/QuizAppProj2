@@ -36,6 +36,7 @@
 		2D57CA9627E2491E0072646F /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D57CA9527E2491E0072646F /* Admin.storyboard */; };
 		2D57CA9827E24A070072646F /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA9727E24A070072646F /* AdminViewController.swift */; };
 		2D57CA9A27E24BB70072646F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57CA9927E24BB70072646F /* SignupViewController.swift */; };
+		2D57E3D527ED94C5002F6FE5 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D57E3D427ED94C5002F6FE5 /* UserInfoViewController.swift */; };
 		2D91747327E37EC500151288 /* QuizAppProj2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91747227E37EC500151288 /* QuizAppProj2Tests.swift */; };
 		2D91747A27E3806C00151288 /* QuizPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91747927E3806C00151288 /* QuizPageViewController.swift */; };
 		2D91747D27E385A200151288 /* InputValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D91747C27E385A200151288 /* InputValidation.swift */; };
@@ -107,6 +108,7 @@
 		2D57CA9527E2491E0072646F /* Admin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
 		2D57CA9727E24A070072646F /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		2D57CA9927E24BB70072646F /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		2D57E3D427ED94C5002F6FE5 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		2D91747227E37EC500151288 /* QuizAppProj2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppProj2Tests.swift; sourceTree = "<group>"; };
 		2D91747927E3806C00151288 /* QuizPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageViewController.swift; sourceTree = "<group>"; };
 		2D91747C27E385A200151288 /* InputValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidation.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				2D35584627E820E6002B103C /* AdminCreateQuizViewController.swift */,
 				2D212D8E27EBCC84000B85C4 /* SubscribeViewController.swift */,
 				2D212DB927EC1C7F000B85C4 /* MenuListController.swift */,
+				2D57E3D427ED94C5002F6FE5 /* UserInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				2D91748627E3919B00151288 /* Clock.swift in Sources */,
 				2D57CA2E27E0ED390072646F /* UserPageViewController.swift in Sources */,
 				84AC26CE27DC09EE0053BF92 /* AppDelegate.swift in Sources */,
+				2D57E3D527ED94C5002F6FE5 /* UserInfoViewController.swift in Sources */,
 				2D35580327E7CA20002B103C /* IsBlocked.swift in Sources */,
 				2D212DBA27EC1C7F000B85C4 /* MenuListController.swift in Sources */,
 				2D3558FD27EB7509002B103C /* InitialDbInserts.swift in Sources */,

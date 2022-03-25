@@ -15,7 +15,7 @@ var userName : String?
 var userID : Int?
 
 class ViewController: UIViewController {
-   // var i = InitialDbInserts()
+    //var i = InitialDbInserts()
     
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
@@ -249,7 +249,7 @@ extension UIView{
     func shake(){
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        animation.duration = 2
+        animation.duration = 1
         animation.values = [-20, 20, -20, 20, -20, 20, -5, 5, 0]
         layer.add(animation, forKey: "shake")
     }
