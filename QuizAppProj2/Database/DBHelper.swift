@@ -588,7 +588,8 @@ class DBHelper{
         
         var pointer: OpaquePointer?
         
-        let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
+        //let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
+        let query = "select userId, review from feedback"
         
         // Connect the pointer to the database, and apply the query.
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
