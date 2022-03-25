@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pl3-mA-f7O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -325,6 +325,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcV-2D-10B">
                                 <rect key="frame" x="145" y="504" width="124" height="31"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="submit"/>
@@ -354,6 +355,17 @@
                                     <color key="shadowColor" name="AccentColor"/>
                                 </navigationBarAppearance>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLg-iZ-Q8m">
+                                <rect key="frame" x="146" y="553" width="124" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="collectionViewBackground"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="reviews"/>
+                                <connections>
+                                    <segue destination="acB-Ve-nyc" kind="show" id="o99-g8-MEb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rKf-Kw-GDI"/>
                         <color key="backgroundColor" name="AccentColor"/>
@@ -378,6 +390,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoI-kI-JGu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6013.04347826087" y="417.85714285714283"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="xYe-la-No7">
+            <objects>
+                <viewController storyboardIdentifier="chatPage" id="acB-Ve-nyc" customClass="ChatViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2hS-6z-zho">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aAb-mi-IxE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3BH-eo-eIn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxz-50-x2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6761" y="418"/>
         </scene>
         <!--Ranking View Controller-->
         <scene sceneID="7Qa-EP-ctZ">
@@ -850,6 +878,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="HQV-Eu-2dF"/>
         <segue reference="fzk-Zo-bgm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.15646258499999999" blue="0.11284513810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

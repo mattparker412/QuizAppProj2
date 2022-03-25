@@ -264,6 +264,24 @@ class DBHelper{
         return id!
     }
     
+    func getUserName(userId:Int) -> String{
+        var pointer : OpaquePointer?
+        var name : String?
+        let query = "select * from user where id = '" + String(userId) + "'"
+        
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.getUserID() --> ", err)
+        }
+        
+        print(String(sqlite3_column_int(pointer,1)))
+        while(sqlite3_step(pointer)) == SQLITE_ROW
+        {
+            name = String(sqlite3_column_int(pointer,1))
+        }
+        return name ?? ""
+    }
+    
     // Check username exists.
     func checkUsernameExists(userName:String) -> Bool{
         
@@ -364,7 +382,7 @@ class DBHelper{
         
         var pointer: OpaquePointer?
         
-        let query = "insert into feedback (id, feedBack) values (?,?)"
+        let query = "insert into feedback (userId, review) values (?,?)"
         
         if sqlite3_prepare_v2(db, query, -1, &pointer, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
@@ -511,7 +529,8 @@ class DBHelper{
         
         var pointer: OpaquePointer?
         
-        let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
+        //let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
+        let query = "select userId, review from feedback"
         
         // Connect the pointer to the database, and apply the query.
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
