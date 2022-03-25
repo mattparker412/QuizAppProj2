@@ -323,15 +323,6 @@
                                 <color key="textColor" name="collectionViewBackground"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcV-2D-10B">
-                                <rect key="frame" x="145" y="504" width="124" height="31"/>
-                                <color key="tintColor" name="collectionViewBackground"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="submit"/>
-                                <connections>
-                                    <action selector="submitMsg:" destination="Pl3-mA-f7O" eventType="touchUpInside" id="GJH-Tu-gqF"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKT-Kt-xa6">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -354,6 +345,27 @@
                                     <color key="shadowColor" name="AccentColor"/>
                                 </navigationBarAppearance>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvU-AL-Vx7">
+                                <rect key="frame" x="145" y="594" width="124" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="collectionViewBackground"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="reviews"/>
+                                <connections>
+                                    <segue destination="V94-hj-yLS" kind="show" id="Rm6-KW-3QC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcV-2D-10B">
+                                <rect key="frame" x="145" y="532" width="124" height="31"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="collectionViewBackground"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="submit"/>
+                                <connections>
+                                    <action selector="submitMsg:" destination="Pl3-mA-f7O" eventType="touchUpInside" id="GJH-Tu-gqF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rKf-Kw-GDI"/>
                         <color key="backgroundColor" name="AccentColor"/>
@@ -897,6 +909,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUu-pP-Qrd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="80.357142857142847"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="Ei6-kC-W4U">
+            <objects>
+                <viewController storyboardIdentifier="chatPage" id="V94-hj-yLS" customClass="ChatViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hQQ-gy-H8e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="agL-6I-ydu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="d0S-PJ-Y2E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MnC-Uj-mEP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7799" y="434"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

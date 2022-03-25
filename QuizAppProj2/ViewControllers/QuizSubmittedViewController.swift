@@ -37,6 +37,8 @@ class QuizSubmittedViewController: UIViewController, MenuControllerDelegate {
         let menu = MenuController(with: views)
         menu.delegate = self
         let quizLeft = UILabel(frame: CGRect(x: view.center.x, y: 50, width: 140, height: 50))
+        quizLeft.textAlignment = .center
+        quizLeft.adjustsFontSizeToFitWidth = true
         quizLeft.center.x = view.center.x
         //quizLeft.center = CGPoint(x: view.center.x, y: 50)
         if isSubscribed == false{

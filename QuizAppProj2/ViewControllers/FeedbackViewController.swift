@@ -74,7 +74,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         //myTable.delegate = self
         //myTable.dataSource = self
         
-        let db = DBHelper()
+       // let db = DBHelper()
         
         let feedBacks = db.getFeedBacks()
            //print(feedBacks)
@@ -109,8 +109,11 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             let msg = resp?.bestTranscription.formattedString
-            print(msg)
+            let fdbackMsg = UILabel(frame: CGRect(x: self.view.safeAreaInsets.left, y: 20, width: self.view.frame.width, height: 500))
+            fdbackMsg.numberOfLines = 10
+            fdbackMsg.textColor = .systemPink
             self.finalMsg = msg
+            self.view.addSubview(fdbackMsg)
             
             var str : String = ""
             for seg in  resp!.bestTranscription.segments{
