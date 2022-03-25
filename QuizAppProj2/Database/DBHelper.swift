@@ -277,7 +277,7 @@ class DBHelper{
         print(String(sqlite3_column_int(pointer,1)))
         while(sqlite3_step(pointer)) == SQLITE_ROW
         {
-            name = String(sqlite3_column_int(pointer,1))
+            name = String(cString:sqlite3_column_text(pointer, 1))
         }
         return name ?? ""
     }
