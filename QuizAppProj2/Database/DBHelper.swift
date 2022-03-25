@@ -326,7 +326,7 @@ class DBHelper{
         
         var pointer: OpaquePointer?
         
-        let query = "insert into feedback (id, feedBack) values (?,?)"
+        let query = "insert into feedback (userId, review) values (?,?)"
         
         if sqlite3_prepare_v2(db, query, -1, &pointer, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db)!)
