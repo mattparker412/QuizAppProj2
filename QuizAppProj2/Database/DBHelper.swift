@@ -112,6 +112,44 @@ class DBHelper{
     } // End of connect().
     
     
+    // Print all users. This function is used in the DataFetcher.
+    func getAllUsers() -> [String] {
+        
+        var userList = [String]()
+        var pointer: OpaquePointer?
+        
+        let query = "select name from user"
+        
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.getAllUsers() --> ", err)
+        }
+            while(sqlite3_step(pointer)) == SQLITE_ROW
+            {
+                let name = String(cString:sqlite3_column_text(pointer, 0))
+                
+                // Get the id.
+                /*let id = Int(sqlite3_column_int(pointer,0))
+                let name = String(cString:sqlite3_column_text(pointer, 1))
+                let pass = String(cString: sqlite3_column_text(pointer, 2))
+                let isSubRaw = Int(sqlite3_column_int(pointer, 3))
+                let isBlockedRaw = Int(sqlite3_column_int(pointer, 4))
+                
+                //Create the enums.
+                let isSubscribed = IsSubscribed(rawValue: isSubRaw)
+                let isBlocked = IsBlocked(rawValue: isBlockedRaw)
+                
+                // Create a user object.
+                let user = User(id: id, name: name, password: pass, subscribed: isSubscribed!, blocked: isBlocked!)
+            */
+                // Add the returned users to the array.
+                userList.append(name)
+            }
+            return userList
+        
+    }// End of getAllUsers()
+    
+    
     // Check user account.
     func checkUser(userName:String, pass: String) -> Bool{
         

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rER-eM-hEB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rER-eM-hEB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +12,7 @@
         <!--Admin View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="adminPage" id="Y6W-OH-hqX" customClass="AdminViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="adminPage" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="AdminViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,13 +53,29 @@
                                     <segue destination="hxu-62-gD0" kind="show" id="lEx-TU-uaX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jc9-NU-vCP">
+                                <rect key="frame" x="254" y="791" width="150" height="50"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NkB-Ip-gQb"/>
+                                    <constraint firstAttribute="width" constant="150" id="wYq-xC-yDf"/>
+                                </constraints>
+                                <color key="tintColor" name="collectionViewBackground"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="logout"/>
+                                <connections>
+                                    <segue destination="Whv-h2-mTj" kind="show" id="oej-Bc-bim"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
                             <constraint firstItem="VcX-Kq-4gM" firstAttribute="top" secondItem="uWe-sC-s26" secondAttribute="bottom" constant="30" id="1NJ-1g-BMd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VcX-Kq-4gM" secondAttribute="bottom" constant="415" id="5r4-3S-Dam"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jc9-NU-vCP" secondAttribute="bottom" constant="21" id="RK4-gF-yjy"/>
                             <constraint firstItem="VcX-Kq-4gM" firstAttribute="leading" secondItem="uWe-sC-s26" secondAttribute="leading" id="Wh8-6K-4hu"/>
+                            <constraint firstItem="jc9-NU-vCP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="254" id="Ye5-gJ-lv1"/>
                             <constraint firstItem="VcX-Kq-4gM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="127" id="fRH-Nt-5JH"/>
                         </constraints>
                     </view>
@@ -69,10 +85,20 @@
             </objects>
             <point key="canvasLocation" x="942.02898550724649" y="39.508928571428569"/>
         </scene>
+        <!--loginPage-->
+        <scene sceneID="cwZ-5C-qg2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="loginPage" id="Whv-h2-mTj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lD4-Nc-v4R"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGD-ZU-4Rg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="943" y="465"/>
+        </scene>
         <!--Admin All Users View Controller-->
         <scene sceneID="2pG-YD-lU4">
             <objects>
-                <viewController id="hxu-62-gD0" customClass="AdminAllUsersViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="hxu-62-gD0" customClass="AdminAllUsersViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ood-6z-h5p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="1702.8985507246377" y="501.5625"/>
         </scene>
-        <!--View Controller-->
+        <!--User Info View Controller-->
         <scene sceneID="gGX-ES-leU">
             <objects>
-                <viewController id="4hh-oz-xNK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userInfo" id="4hh-oz-xNK" customClass="UserInfoViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NGg-Nh-QEq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,11 +150,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdK-aB-uKy">
-                                <rect key="frame" x="88" y="413" width="60" height="31"/>
+                                <rect key="frame" x="200" y="416" width="109" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="block"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuy-Go-Wdo">
+                                <rect key="frame" x="104" y="416" width="90" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="collectionViewBackground"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="home"/>
+                                <connections>
+                                    <segue destination="Y6W-OH-hqX" kind="show" id="0C2-as-fIS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Ie-sA-wxs"/>
@@ -137,14 +175,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="402-RQ-Vm3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2464" y="502"/>
+            <point key="canvasLocation" x="2462.3188405797105" y="501.5625"/>
         </scene>
         <!--Admin Create Quiz View Controller-->
         <scene sceneID="fzJ-7a-fxb">
             <objects>
                 <viewController id="BI8-qt-PjR" customClass="AdminCreateQuizViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nkn-uu-J51">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="create quiz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1W-fP-SCd">
@@ -280,6 +318,9 @@
             <point key="canvasLocation" x="31.884057971014496" y="39.508928571428569"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0C2-as-fIS"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

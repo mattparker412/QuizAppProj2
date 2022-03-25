@@ -13,6 +13,7 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
     
     private let dataFetcher = DataFetcher()
     private var data = [String]()
+    var user: String?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
@@ -24,6 +25,15 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
+
+        let currentCell = tableView.cellForRow(at: indexPath!)! as UITableViewCell
+
+        print(currentCell.textLabel!.text)
+        let navigator = NavigateToController()
+        navigator.navToController(current: self, storyboard: "Admin", identifier: "userInfo", controller: UserInfoViewController())
+    }
     private func createSpinnerFooter() -> UIView{
         let footerView = UIView(frame: CGRect(x:0,y:0, width: view.frame.size.width, height:100))
         let spinner = UIActivityIndicatorView()
@@ -34,18 +44,24 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+        //super.viewDidLayoutSubviews()
+        var callCount = 0
         tableView.frame = view.bounds
-        dataFetcher.fetchData(completion: {[weak self] result in switch result{
-                case .success(let data):
-                    self?.data.append(contentsOf: data)
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
+
+        if callCount < 1{
+            callCount += 1
+            
+            dataFetcher.fetchData(pagination: false, completion: {[weak self] result in switch result{
+                    case .success(let data):
+                        self?.data.append(contentsOf: data)
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadData()
+                        }
+                    case .failure(_):
+                        break
                     }
-                case .failure(_):
-                    break
-                }
-        })
+            })
+        }
     }
 
     //creates tableview
@@ -75,7 +91,9 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
                 //data being fetched already
                 return
             }
+            
             self.tableView.tableFooterView = createSpinnerFooter()
+            //print("right before function call in scroll view")
             dataFetcher.fetchData(pagination: true){[weak self] result in
                 DispatchQueue.main.async {
                     self?.tableView.tableFooterView = nil
@@ -91,6 +109,11 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let svc = segue.destination as!  UserInfoViewController
+        svc.userName = user
     }
 }
 
