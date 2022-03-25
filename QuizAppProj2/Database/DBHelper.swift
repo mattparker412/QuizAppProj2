@@ -543,6 +543,41 @@ class DBHelper{
         
         return quizzesTaken
     }
+    func getAllUsers() -> [String] {
+        
+        var userList = [String]()
+        var pointer: OpaquePointer?
+        
+        let query = "select name from user"
+        
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.getAllUsers() --> ", err)
+        }
+            while(sqlite3_step(pointer)) == SQLITE_ROW
+            {
+                let name = String(cString:sqlite3_column_text(pointer, 0))
+                
+                // Get the id.
+                /*let id = Int(sqlite3_column_int(pointer,0))
+                let name = String(cString:sqlite3_column_text(pointer, 1))
+                let pass = String(cString: sqlite3_column_text(pointer, 2))
+                let isSubRaw = Int(sqlite3_column_int(pointer, 3))
+                let isBlockedRaw = Int(sqlite3_column_int(pointer, 4))
+                
+                //Create the enums.
+                let isSubscribed = IsSubscribed(rawValue: isSubRaw)
+                let isBlocked = IsBlocked(rawValue: isBlockedRaw)
+                
+                // Create a user object.
+                let user = User(id: id, name: name, password: pass, subscribed: isSubscribed!, blocked: isBlocked!)
+            */
+                // Add the returned users to the array.
+                userList.append(name)
+            }
+            return userList
+        
+    }// End of getAllUsers()
     
     // This function returns an array of dictionaries.
     //Each dictionary contains the user name and user feedback of each feedback received.
@@ -685,7 +720,115 @@ class DBHelper{
 //        }
         return rankingArray
     }
+    func getUserName(userId:Int) -> String{
+        var pointer : OpaquePointer?
+        var name : String?
+        let query = "select * from user where id = '" + String(userId) + "'"
+        
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.getUserID() --> ", err)
+        }
+        
+        print(String(sqlite3_column_int(pointer,1)))
+        while(sqlite3_step(pointer)) == SQLITE_ROW
+        {
+            name = String(cString:sqlite3_column_text(pointer, 1))
+        }
+        return name ?? ""
+    }
+    func getTotalScoreForUser(userName : String) -> [Int]{
+        var pointer : OpaquePointer?
+        
+        
+        let query = "select * from ranking where name = '" + userName + "'"
+        var index = 0
+        var scoreResult = [0,0,0]
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at get ranking --> ", err)
+            
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            print("entered while loop")
+            // Get the id.
+            print(Int(sqlite3_column_int(pointer, 3)))
+            scoreResult[index] = Int(sqlite3_column_int(pointer, 3))
+            index += 1
+        }
+        
+           
     
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at update ranking step --> ", err)
+        }
+        
+       
+        return scoreResult
+        
+    }// end store ranking
+    
+    func getBlockStatus(userID :  Int)-> Int{
+        var pointer : OpaquePointer?
+        var blockStatus : Int?
+        
+        let query = "select * from user where id = " + String(userID)
+        
+        //sqlite prepare gives query to pointer
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            blockStatus = Int(sqlite3_column_int(pointer, 4))
+            print("inside while block status")
+            print(blockStatus)
+        }
+        
+        
+        return blockStatus!
+    }
+    
+    func updateBlockTrue(userID :  Int){
+        var pointer : OpaquePointer?
+        
+        let query = "update user set isBlocked = 1 where id = " + String(userID)
+        
+        //sqlite prepare gives query to pointer
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at update ranking step --> ", err)
+        }
+        
+        
+    }
+    
+    func updateBlockFalse(userID :  Int){
+        var pointer : OpaquePointer?
+        
+        let query = "update user set isBlocked = 0 where id = " + String(userID)
+        
+        //sqlite prepare gives query to pointer
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at update ranking step --> ", err)
+        }
+        
+        
+    }
     func addNewUser(userName : String, passWord : String){
         var pointer : OpaquePointer?
         

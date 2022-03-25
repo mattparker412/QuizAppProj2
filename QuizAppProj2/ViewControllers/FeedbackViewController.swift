@@ -74,7 +74,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         //myTable.delegate = self
         //myTable.dataSource = self
         
-        
+        let db = DBHelper()
         
         let feedBacks = db.getFeedBacks()
            //print(feedBacks)
@@ -86,6 +86,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
 
     
     func startSpeechRec(){
+        finalMsg = ""
         let nd = audioEng.inputNode
         let recordF = nd.outputFormat(forBus: 0)
         nd.installTap(onBus: 0, bufferSize: 1024, format: recordF)
@@ -140,12 +141,19 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
             //send data to database
             //store message id
             // message in finalMsg
-            print("data saved to db")
+            db.saveFeedback(userId: 1, feedBack: finalMsg!)
         } else {
             print("no message to send")
         }
     }
+    
+//    @IBAction func navToChatView(_ sender: Any) {
+//        let navigator = NavigateToController()
+//        navigator.navToController(current: self, storyboard: "Main", identifier: "chatPage", controller: ChatViewController())
+//    }
+    
     @IBAction func activeMicro(_ sender: Any) {
+        
         isStart = !isStart
         if isStart {
             startSpeechRec()
@@ -166,7 +174,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("enter prepare")
         let svc = segue.destination as!  ChatViewController
-            svc.messageToAppend = finalMsg!
+            svc.messageToAppend = finalMsg ?? ""
         }
     
 

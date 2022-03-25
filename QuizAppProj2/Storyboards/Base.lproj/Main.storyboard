@@ -51,7 +51,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="loginPage" id="BYZ-38-t0r" customClass="ViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginPage" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -393,14 +393,14 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Cnf-03-iSi" customClass="RankingTableViewCell" customModule="QuizAppProj2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cnf-03-iSi" id="i33-GP-R4q">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b13-Vw-qxR">
-                                                    <rect key="frame" x="20" y="11" width="195" height="20.5"/>
+                                                    <rect key="frame" x="20" y="11.5" width="195" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="195" id="jlI-ve-bSe"/>
                                                     </constraints>
@@ -409,7 +409,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8i-lW-gDe">
-                                                    <rect key="frame" x="223" y="11" width="171" height="20.5"/>
+                                                    <rect key="frame" x="223" y="11" width="171" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="171" id="91m-6a-Xoc"/>
                                                     </constraints>

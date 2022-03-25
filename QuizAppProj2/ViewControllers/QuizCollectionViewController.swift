@@ -92,15 +92,15 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
                     quizVC?.quizChoice = db.createQuiz(technologyId: 1)
                     
                     quizVC?.techChoice = 1
-                    quizVC?.view.backgroundColor = UIColor.red
+                    //quizVC?.view.backgroundColor = UIColor.red
                 case 1:
                     quizVC?.quizChoice = db.createQuiz(technologyId: 2)
                     quizVC?.techChoice = 2
-                    quizVC?.view.backgroundColor = UIColor.blue
+                    //quizVC?.view.backgroundColor = UIColor.blue
                 case 2:
                     quizVC?.quizChoice = db.createQuiz(technologyId: 3)
                     quizVC?.techChoice = 3
-                    quizVC?.view.backgroundColor = UIColor.green
+                   // quizVC?.view.backgroundColor = UIColor.green
                 default:
                     print("error")
                     
