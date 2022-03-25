@@ -231,6 +231,7 @@
                     <connections>
                         <outlet property="androidScore" destination="jWE-0y-5jT" id="2Bu-A1-rx1"/>
                         <outlet property="averageScore" destination="CFB-DT-yOD" id="MDD-iG-t9y"/>
+                        <outlet property="blockButton" destination="mdK-aB-uKy" id="bU4-fV-wzt"/>
                         <outlet property="iOSScore" destination="KS9-zX-QKK" id="nv5-ys-Z8d"/>
                         <outlet property="swiftScore" destination="2Hw-rL-kZ3" id="A98-d4-Muy"/>
                         <outlet property="user" destination="YAA-vl-SxF" id="WoA-iU-u4J"/>

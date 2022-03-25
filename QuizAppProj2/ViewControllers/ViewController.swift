@@ -77,14 +77,20 @@ class ViewController: UIViewController {
                 userName = user.text!
                 userID = db.getUserID(userName: userName!)
                     //nav()
+                if db.getBlockStatus(userID: db.getUserID(userName: userName!)) == 1{
+                    view.addSubview(wrongPass)
+                    wrongPass.text = "Account Blocked"
+                    wrongPass.shake()
+                } else{
                     navigateToUserController()
+                }
             }
             else if db.checkAdmin(userName: user.text!, pass: pass.text!) == true{
                 print(user.text!, "logged in as admin")
                 userName = user.text!
                 
                 navigateToAdmin()
-                }
+            }
             else{
                 
                 wrongPass.text = "Error: Wrong Password"

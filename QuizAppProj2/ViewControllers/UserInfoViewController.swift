@@ -13,7 +13,9 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var iOSScore: UILabel!
     @IBOutlet weak var androidScore: UILabel!
     @IBOutlet weak var averageScore: UILabel!
+    @IBOutlet weak var blockButton: UIButton!
     var userName: String?
+    var blockedStatus = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         user.text = userName!
@@ -31,8 +33,24 @@ class UserInfoViewController: UIViewController {
         averageScore.text = String(sumScores/3)
     }
     
+    override func viewDidLayoutSubviews() {
+        if(blockedStatus == 1){
+            blockButton.setTitle("unblock", for: .normal)
+        }else if (blockedStatus == 0){
+            blockButton.setTitle("unblock", for: .normal)
+        }
+    }
     @IBAction func blockUser(_ sender: Any) {
-        print("block pressed")
+        if(db.getBlockStatus(userID: db.getUserID(userName: userName!)) == 1){
+            blockedStatus = 0
+            db.updateBlockFalse(userID: db.getUserID(userName: userName!))
+            blockButton.setTitle("block", for: .normal)
+        } else if (db.getBlockStatus(userID: db.getUserID(userName: userName!)) == 0){
+            blockedStatus = 1
+            db.updateBlockTrue(userID: db.getUserID(userName: userName!))
+            blockButton.setTitle("unblock", for: .normal)
+        }
+        //print(db.getBlockStatus(userID: db.getUserID(userName: userName!)))
     }
     
 }

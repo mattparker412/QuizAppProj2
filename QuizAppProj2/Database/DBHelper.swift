@@ -660,6 +660,67 @@ class DBHelper{
         
     }// end store ranking
     
+    
+    func getBlockStatus(userID :  Int)-> Int{
+        var pointer : OpaquePointer?
+        var blockStatus : Int?
+        
+        let query = "select * from user where id = " + String(userID)
+        
+        //sqlite prepare gives query to pointer
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            blockStatus = Int(sqlite3_column_int(pointer, 4))
+            print("inside while block status")
+            print(blockStatus)
+        }
+        
+        
+        return blockStatus!
+    }
+    
+    func updateBlockTrue(userID :  Int){
+        var pointer : OpaquePointer?
+        
+        let query = "update user set isBlocked = 1 where id = " + String(userID)
+        
+        //sqlite prepare gives query to pointer
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at update ranking step --> ", err)
+        }
+        
+        
+    }
+    
+    func updateBlockFalse(userID :  Int){
+        var pointer : OpaquePointer?
+        
+        let query = "update user set isBlocked = 0 where id = " + String(userID)
+        
+        //sqlite prepare gives query to pointer
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at update ranking step --> ", err)
+        }
+        
+        
+    }
+    
     func getTopRanking(techID : Int) -> [Ranking]{
         var pointer : OpaquePointer?
         
