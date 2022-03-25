@@ -30,9 +30,12 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
 
         let currentCell = tableView.cellForRow(at: indexPath!)! as UITableViewCell
 
-        print(currentCell.textLabel!.text)
-        let navigator = NavigateToController()
-        navigator.navToController(current: self, storyboard: "Admin", identifier: "userInfo", controller: UserInfoViewController())
+        user = currentCell.textLabel!.text
+        print("user")
+        print(user)
+        self.performSegue(withIdentifier: "toUserInfo", sender: self)
+//        let navigator = NavigateToController()
+//        navigator.navToController(current: self, storyboard: "Admin", identifier: "userInfo", controller: UserInfoViewController())
     }
     private func createSpinnerFooter() -> UIView{
         let footerView = UIView(frame: CGRect(x:0,y:0, width: view.frame.size.width, height:100))
@@ -113,6 +116,8 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let svc = segue.destination as!  UserInfoViewController
+        print("user again")
+        print(user!)
         svc.userName = user
     }
 }

@@ -8,22 +8,31 @@
 import UIKit
 
 class UserInfoViewController: UIViewController {
+    @IBOutlet weak var user: UILabel!
+    @IBOutlet weak var swiftScore: UILabel!
+    @IBOutlet weak var iOSScore: UILabel!
+    @IBOutlet weak var androidScore: UILabel!
+    @IBOutlet weak var averageScore: UILabel!
     var userName: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        user.text = userName!
+        print("user 3")
         print(userName)
         // Do any additional setup after loading the view.
+        let scores = (db.getTotalScoreForUser(userName: userName!))
+        swiftScore.text = String(scores[0])
+        iOSScore.text = String(scores[1])
+        androidScore.text = String(scores[2])
+        var sumScores = 0
+        for score in 0..<scores.count{
+            sumScores += scores[score]
+        }
+        averageScore.text = String(sumScores/3)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func blockUser(_ sender: Any) {
+        print("block pressed")
     }
-    */
-
+    
 }

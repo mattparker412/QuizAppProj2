@@ -624,7 +624,41 @@ class DBHelper{
         }
         
         
-    }
+    }// end store ranking
+    
+    
+    func getTotalScoreForUser(userName : String) -> [Int]{
+        var pointer : OpaquePointer?
+        
+        
+        let query = "select * from ranking where name = '" + userName + "'"
+        var index = 0
+        var scoreResult = [0,0,0]
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at get ranking --> ", err)
+            
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            print("entered while loop")
+            // Get the id.
+            print(Int(sqlite3_column_int(pointer, 3)))
+            scoreResult[index] = Int(sqlite3_column_int(pointer, 3))
+            index += 1
+        }
+        
+           
+    
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at update ranking step --> ", err)
+        }
+        
+       
+        return scoreResult
+        
+    }// end store ranking
     
     func getTopRanking(techID : Int) -> [Ranking]{
         var pointer : OpaquePointer?

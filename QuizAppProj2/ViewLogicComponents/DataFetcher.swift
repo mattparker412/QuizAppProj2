@@ -124,7 +124,6 @@ class DataFetcher{
 //
 //            }
             guard getFetchFunctionCount > 0 else {
-                print("entered once")
                 completion(.success(pagination && getFetchFunctionCount > 0 ? newData : originalData))
                 if pagination{
                     self.isPaginating = false
