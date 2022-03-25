@@ -36,6 +36,10 @@ class UserPageViewController: UIViewController, MenuControllerDelegate {
         print("inside user")
         print(userID)
         print(userName)
+       // let navigationBarApp = UINavigationBarAppearance()
+       // navigationBarApp.shadowColor = .clear
+        //self.navigationBar.scrollEdgeAppearance = navigationBarApp
+        
     }
     
 

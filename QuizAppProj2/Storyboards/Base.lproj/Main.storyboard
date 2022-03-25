@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -56,16 +56,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QJU-Aa-587">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QJU-Aa-587">
                                 <rect key="frame" x="122" y="287" width="170" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGU-zW-JIt">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGU-zW-JIt">
                                 <rect key="frame" x="122" y="361" width="170" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -252,22 +249,28 @@
                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="ACT-ll-GIQ" kind="show" id="A85-qv-b9J"/>
+                                    <segue destination="ACT-ll-GIQ" kind="presentation" modalPresentationStyle="fullScreen" id="A85-qv-b9J"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uPF-er-7Om">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="barTintColor" name="AccentColor"/>
                                 <items>
                                     <navigationItem id="OCW-F7-g2m">
                                         <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="dVl-y6-eVa">
-                                            <color key="tintColor" name="AccentColor"/>
+                                            <color key="tintColor" red="1" green="0.15646258499999999" blue="0.11284513810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="didTapMenu" destination="1qg-X3-6B2" id="dVC-KY-8dQ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <navigationBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </navigationBarAppearance>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subscribe page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78i-SS-HgA">
                                 <rect key="frame" x="20" y="112" width="186" height="65"/>
@@ -315,11 +318,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="leave feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swe-ze-4Qt">
-
-                                <rect key="frame" x="107" y="422" width="202" height="27.5"/>
+                                <rect key="frame" x="107" y="334" width="202" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
                                 <color key="textColor" name="collectionViewBackground"/>
-
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcV-2D-10B">
@@ -334,16 +335,24 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKT-Kt-xa6">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" name="AccentColor"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Title" id="Ryv-2d-dzR">
                                         <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="zyd-N9-YEI">
-                                            <color key="tintColor" name="AccentColor"/>
+                                            <color key="tintColor" red="1" green="0.15646258499999999" blue="0.11284513810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="didTapMenu" destination="Pl3-mA-f7O" id="HkF-1G-Rww"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <navigationBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <color key="shadowColor" name="AccentColor"/>
+                                </navigationBarAppearance>
                             </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rKf-Kw-GDI"/>
@@ -380,7 +389,8 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-jC-abe">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Cnf-03-iSi">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -404,6 +414,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mcu-ag-Qh5">
                         <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="MsK-ZC-QAG">
+                            <color key="tintColor" red="1" green="0.15646258499999999" blue="0.11284513810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapMenu" destination="fhw-h3-ITk" id="fuD-sR-f5U"/>
                             </connections>
@@ -422,7 +433,7 @@
             <objects>
                 <viewController storyboardIdentifier="subPage" id="ACT-ll-GIQ" customClass="SubscribeViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pGR-qq-X8d">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="credit card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXd-IW-tCF">
@@ -493,7 +504,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="subscribe"/>
                                 <connections>
                                     <action selector="subscribe:" destination="ACT-ll-GIQ" eventType="touchUpInside" id="NRK-Oa-QAa"/>
-                                    <segue destination="cA4-37-W0F" kind="show" id="iyZ-tu-vrY"/>
+                                    <segue destination="cA4-37-W0F" kind="presentation" modalPresentationStyle="currentContext" id="iyZ-tu-vrY"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="owt-Mp-Xtf">
@@ -522,18 +533,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lh-bt-xn9">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lh-bt-xn9">
                                 <rect key="frame" x="0.0" y="55" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <color key="barTintColor" name="AccentColor"/>
                                 <items>
                                     <navigationItem id="wbr-HR-pWt">
                                         <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="bVv-w5-XUn">
+                                            <color key="tintColor" red="1" green="0.15646258499999999" blue="0.11284513810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="didTapMenu" destination="ACT-ll-GIQ" id="05p-uy-kl8"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <navigationBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <color key="shadowColor" name="AccentColor"/>
+                                </navigationBarAppearance>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Setup Subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIb-xF-UXj">
                                 <rect key="frame" x="45" y="145" width="215" height="65"/>
@@ -620,15 +639,21 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AL6-9b-p6s">
                                 <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" name="AccentColor"/>
                                 <items>
                                     <navigationItem title="Completed Quiz!" id="ZfC-Ww-3Gj">
                                         <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="1mc-kr-1si">
+                                            <color key="tintColor" red="1" green="0.15646258499999999" blue="0.11284513810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="didTapMenu" destination="Cad-eR-BeE" id="5tJ-7U-2q5"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <navigationBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <color key="shadowColor" name="AccentColor"/>
+                                </navigationBarAppearance>
                             </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KYk-4t-Muf"/>
@@ -707,6 +732,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Quizzes" id="VYY-sN-rDM">
                         <barButtonItem key="rightBarButtonItem" title="Menu" image="line.3.horizontal" catalog="system" id="X0P-1C-h1K">
+                            <color key="tintColor" systemColor="systemPinkColor"/>
                             <connections>
                                 <action selector="didTapMenu" destination="Y9N-00-2yD" id="dSB-CR-Nba"/>
                             </connections>
@@ -826,6 +852,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="fzk-Zo-bgm"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="0.15646258499999999" blue="0.11284513810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="carat.png" width="16" height="28"/>
         <image name="free" width="164" height="350"/>
