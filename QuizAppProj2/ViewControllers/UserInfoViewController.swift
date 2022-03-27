@@ -22,7 +22,6 @@ class UserInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         user.text = userName!
-        print("user 3")
         print(userName)
         // Do any additional setup after loading the view.
         let scores = (db.getTotalScoreForUser(userName: userName!))

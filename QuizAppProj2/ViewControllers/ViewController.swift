@@ -84,6 +84,7 @@ class ViewController: UIViewController {
                 print(user.text!,"logged in as user")
                 userName = user.text!
                 userID = db.getUserID(userName: userName!)
+                
                 if db.getSubStatus(userid: userID!) == 0{
                     isSubscribed = false
                     quizzesLeft = 2 - db.checkQuizzesTaken(userid: userID!, date: dateFormatter.string(from: date))
@@ -99,7 +100,7 @@ class ViewController: UIViewController {
                     wrongPass.shake()
                 } else{
                     if isSubscribed == true{
-                        navigateToQuizPage()
+                        navigateToMyAccountPage()
                     }
                     else{
                         navigateToUserController()
@@ -159,9 +160,9 @@ class ViewController: UIViewController {
     
     }
     
-    func navigateToQuizPage(){
+    func navigateToMyAccountPage(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "quizNav") as! UINavigationController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "myAccount") as! UIViewController
         //self.navigationController?.pushViewController(nextViewController, animated: true)
         self.present(nextViewController, animated:false, completion: nil)
     }

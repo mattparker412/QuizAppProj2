@@ -47,7 +47,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
     //@IBOutlet var myTable : UITableView!
     
     private var sideMenu: SideMenuNavigationController?
-    let views = ["Subscription","Quizzes","Feedback","Ranking","Logout"]
+    let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
     let menuCaller = CreateSideMenu()
     
     @IBAction func didTapMenu(){
