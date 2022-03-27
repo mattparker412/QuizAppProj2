@@ -9,7 +9,7 @@ import UIKit
 
 class MenuListController: UITableViewController {
 
-    var items = ["Subscription","Quizzes","Feedback","Ranking","Logout"]
+    var items = ["MyAccount", "Subscription","Quizzes","Feedback","Ranking","Logout"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

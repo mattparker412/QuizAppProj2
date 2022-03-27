@@ -17,7 +17,10 @@ class NavigateToController{
     
     //"Subscription","Quizzes","Feedback","Ranking","Logout"
     func viewControllerSwitch(named: String) -> Array<Any>{
-        if named == "Subscription"{
+        
+        if named == "MyAccount"{
+            return ["Main","myAccount", MyAccountViewController()]
+        } else if named == "Subscription"{
             return ["Main","subPage", SubscribeViewController()]
         } else if named == "Quizzes"{
             return ["Main","quizPage", QuizCollectionViewController()]

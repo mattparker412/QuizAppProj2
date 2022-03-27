@@ -14,6 +14,9 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var androidScore: UILabel!
     @IBOutlet weak var averageScore: UILabel!
     @IBOutlet weak var blockButton: UIButton!
+//    var subscribedDate : Date?
+//    var currentDate : Date?
+//    var subscribedDate = Date("2014-05-20")
     var userName: String?
     var blockedStatus = 0
     override func viewDidLoad() {
