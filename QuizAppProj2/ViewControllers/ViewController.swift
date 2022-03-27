@@ -17,6 +17,7 @@ var isSubscribed = false
 let date = Date()
 let dateFormatter = DateFormatter()
 var quizzesLeft : Int?
+let color = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)
 
 
 

@@ -109,12 +109,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             let msg = resp?.bestTranscription.formattedString
-            let fdbackMsg = UILabel(frame: CGRect(x: self.view.safeAreaInsets.left, y: 20, width: self.view.frame.width, height: 500))
-            fdbackMsg.numberOfLines = 10
-            fdbackMsg.textColor = .systemPink
-            fdbackMsg.text = msg
             self.finalMsg = msg
-            self.view.addSubview(fdbackMsg)
             
             var str : String = ""
             for seg in  resp!.bestTranscription.segments{
@@ -138,6 +133,14 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         }
         print("final msg")
         print(finalMsg!)
+        
+        let fdbackMsg = UILabel(frame: CGRect(x: self.view.safeAreaInsets.left, y: 20, width: self.view.frame.width, height: 500))
+        fdbackMsg.numberOfLines = 10
+        fdbackMsg.textColor = .systemPink
+        fdbackMsg.text = finalMsg!
+        
+        self.view.addSubview(fdbackMsg)
+        
     }
     
     @IBAction func submitMsg(_ sender: Any) {
@@ -145,7 +148,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
             //send data to database
             //store message id
             // message in finalMsg
-            db.saveFeedback(userId: 1, feedBack: finalMsg!)
+            db.saveFeedback(userId: userID!, feedBack: finalMsg!)
         } else {
             print("no message to send")
         }
