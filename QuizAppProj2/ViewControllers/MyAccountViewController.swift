@@ -17,10 +17,12 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
     @IBOutlet weak var averageScore: UILabel!
     @IBOutlet weak var subDate: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var rank: UILabel!
+    @IBOutlet weak var claimButton: UIButton!
     var isSubbed = false
     
     
-    var userName: String?
+    var username: String?
     private var sideMenu: SideMenuNavigationController?
     let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
     let menuCaller = CreateSideMenu()
@@ -44,7 +46,42 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         let menu = MenuController(with: views)
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
-        print(userID)
+        print("top three")
+        var topSwiftThree = db.getTopThree(techID: 1)
+        var topiOSThree = db.getTopThree(techID: 2)
+        var topAndroidThree = db.getTopThree(techID: 3)
+        var myRanks = [Int]()
+        username = db.getUserName(userId: userID!)
+        if(topiOSThree.contains(username!)){
+            myRanks.append(topiOSThree.firstIndex(of: username!)! + 1)
+        }
+        if(topSwiftThree.contains(username!)){
+            myRanks.append(topSwiftThree.firstIndex(of: username!)! + 1)
+        }
+        if(topAndroidThree.contains(username!)){
+            myRanks.append(topAndroidThree.firstIndex(of: username!)! + 1)
+        }
+        let date = Date()
+        var dateComponent = DateComponents()
+        dateComponent.day = 5
+        let exampleDate = Calendar.current.date(byAdding: dateComponent, to: Date())
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: exampleDate!)
+        let dayOfMonth = components.day
+        print("day of month")
+        print(dayOfMonth)
+        if myRanks.contains(1){
+            rank.text = "Rank 1!"
+            if dayOfMonth! == 1{claimButton.isHidden = false}
+        } else if (myRanks.contains(2)){
+            rank.text = "Rank 2!"
+            if dayOfMonth! == 1{claimButton.isHidden = false}
+        } else if (myRanks.contains(3)){
+            rank.text = "Rank 3!"
+            if dayOfMonth! == 1{claimButton.isHidden = false}
+        }
+        
         user.text = db.getUserName(userId: userID!)
         var account = db.getUserName(userId: userID!)
         // print(userName) why is this even nil?
@@ -81,5 +118,27 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         isSubscribed = db.changeSubStatus(subStatus: false, userid: userID!)
         subDate.text = "No subscription"
         print("subscription cancelled")
+    }
+
+    @IBAction func claimRewards(){
+        var rankText: String!
+        rankText = rank.text!
+        switch rankText{
+            case "Rank 1!":
+                print("hello")
+            subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 1)
+            claimButton.isHidden = true
+            
+            case "Rank 2!":
+            subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 2)
+            claimButton.isHidden = true
+            case "Rank 3!":
+            subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 3)
+            claimButton.isHidden = true
+            default:
+                print("goodbye")
+        
+        }
+        print("rewards claimed")
     }
 }
