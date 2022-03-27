@@ -16,6 +16,8 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
     @IBOutlet weak var androidScore: UILabel!
     @IBOutlet weak var averageScore: UILabel!
     @IBOutlet weak var subDate: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
+    var isSubbed = false
     
     
     var userName: String?
@@ -47,21 +49,13 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         var account = db.getUserName(userId: userID!)
         // print(userName) why is this even nil?
         
-        //date data supposed to be from database
-        var endOfSubscription = Date() // gets date. can add 10, 20, or 30 if option is available because of rank 1,2,3 position in a technology
-        
-        let formatter = DateFormatter()
-        formatter.timeZone = .current
-        formatter.dateStyle = .medium
-        formatter.locale = .current
-        formatter.dateFormat = "MM/dd/yyyy"
-        
-        // example of adding more days to user who has good rank
-        var dateComponent = DateComponents()
-        dateComponent.day = 10
-        let futureDate = Calendar.current.date(byAdding: dateComponent, to: endOfSubscription)
-        
-        subDate.text = formatter.string(from: futureDate!)
+        if(String(db.getEnd(userId: userID!)) == ""){
+            subDate.text = "No subscription"
+            isSubbed = false
+        } else {
+            subDate.text = String(db.getEnd(userId: userID!))
+            isSubbed = true
+        }
         
         // Do any additional setup after loading the view.
         let scores = (db.getTotalScoreForUser(userName: account))
@@ -76,4 +70,16 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
     }
     
 
+    @IBAction func cancelSub(){
+        if isSubbed == false{
+            errorLabel.backgroundColor = color
+            errorLabel.textColor = .red
+            errorLabel.text = "No subscription to cancel"
+        }
+        db.updateSubStartDate(userid: userID!, subStatus: false, subscriptionType: false)
+        //db.updateSubEndDate(userid: userID!, startDate: db.getSubStartDate(userid: userID!), subStatus: isSubscribed, subscriptionType: isMonthly!)
+        isSubscribed = db.changeSubStatus(subStatus: false, userid: userID!)
+        subDate.text = "No subscription"
+        print("subscription cancelled")
+    }
 }

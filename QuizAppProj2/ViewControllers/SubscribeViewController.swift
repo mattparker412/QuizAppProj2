@@ -15,6 +15,7 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
     @IBOutlet weak var cvc: UITextField!
     @IBOutlet weak var creditCard: UITextField!
     private var sideMenu: SideMenuNavigationController?
+    var isMonthly : Bool?
     
     var startSubscriptionDate = Date() // start date of subscription; store in DB
     var endSubscriptionDate = Date() // end of subscription, should add 30 days if monthly or 365 if annually is checked
@@ -43,18 +44,35 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
     }
     
+    @IBAction func checkedMonthly(){
+        isMonthly = true
+        print("isMonthly")
+    }
+    @IBAction func checkedAnnually(){
+        isMonthly = false
+        print("is annually")
+    }
     let validator = InputValidation()
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if(validator.validateCreditCard(creditCard: creditCard.text!, cvc: cvc.text!, expMonth: expireMonth.text!, expYear: expireYear.text! , error: errorLabel) == false){
             return false
         } else {
             
-            isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
-            //print(isSubscribed)
-            quizzesLeft = -1
-            return true
+            if isMonthly == nil{
+                errorLabel.text = "Subscription type must be selected."
+                return false
+            } else{
+                
+                db.updateSubStartDate(userid: userID!, subStatus: true, subscriptionType: isMonthly!)
+                //db.updateSubEndDate(userid: userID!, startDate: db.getSubStartDate(userid: userID!), subStatus: isSubscribed, subscriptionType: isMonthly!)
+                isSubscribed = db.changeSubStatus(subStatus: true, userid: userID!)
+                //print(isSubscribed)
+                quizzesLeft = -1
+                return true
+            }
         }
     }
+    
     @IBAction func subscribe(_ sender: Any) {
         if(validator.validateCreditCard(creditCard: creditCard.text!, cvc: cvc.text!, expMonth: expireMonth.text!, expYear: expireYear.text! , error: errorLabel) == true){
             //once textfield is validated isSubscribed gets updated in database

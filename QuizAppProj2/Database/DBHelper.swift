@@ -53,7 +53,7 @@ class DBHelper{
         // Create the tables.
         
         // User Table.
-        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer)", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer, startSubDate text, endSubDate text)", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create user table --> ", err)
@@ -579,6 +579,8 @@ class DBHelper{
         
     }// End of getAllUsers()
     
+    
+    
     // This function returns an array of dictionaries.
     //Each dictionary contains the user name and user feedback of each feedback received.
     func getFeedBacks() -> [[String:String]]{
@@ -607,6 +609,53 @@ class DBHelper{
         }
         
        return feedBacks
+    }// End getFeedBacks
+    
+    
+    func getEndSubDate(userid : Int) -> String{
+        print("inside while of getendsubdate")
+        print(userid)
+        var pointer: OpaquePointer?
+        var endDate : String?
+        //let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
+        let query = "select endSubDate from user where id = " + String(userid)
+
+        // Connect the pointer to the database, and apply the query.
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.getSubStartDate() --> ", err)
+        }
+
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+
+            print(String(cString: sqlite3_column_text(pointer,1)))
+
+            endDate = String(cString: sqlite3_column_text(pointer,6))
+
+        }
+
+       return endDate ?? "No subscription"
+    }// End getEndStartDate
+    
+    func getEnd(userId: Int)-> String{
+        
+        var pointer: OpaquePointer?
+        var output : String?
+        //let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
+        let query = "select endSubDate from user where id = " + String(userId)
+        
+        // Connect the pointer to the database, and apply the query.
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at DBHelper.getFeedBacks() --> ", err)
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            
+            output = String(cString:sqlite3_column_text(pointer,0))
+        }
+        
+       return output!
     }// End getFeedBacks
     
     func storeRanking(userName : String, userID : Int, techID : Int, rankScore : Int){
@@ -884,21 +933,121 @@ class DBHelper{
         
     }
     
+
+    
+    func updateSubStartDate(userid : Int, subStatus : Bool, subscriptionType: Bool){
+        var pointer : OpaquePointer?
+        var startDateAsString : String?
+        if subStatus == false{
+            startDateAsString = ""
+        }else if subStatus == true{
+            let formatter = DateFormatter()
+            formatter.timeZone = .current
+            formatter.dateStyle = .medium
+            formatter.locale = .current
+            formatter.dateFormat = "MM/dd/yyyy"
+            startDateAsString = formatter.string(from: Date())
+        }
+        let query = "update user set startSubDate = '" + startDateAsString! + "' where id = " + String(userid)
+        updateSubEndDate(userid: userid, startDate: startDateAsString!, subStatus: subStatus, subscriptionType: subscriptionType)
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at insert sub status prep --> ", err)
+        }
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at sub step done --> ", err)
+        }
+    }
+    
+    func updateSubEndDate(userid : Int, startDate : String, subStatus :  Bool, subscriptionType : Bool){
+        
+        var pointer : OpaquePointer?
+        var endDateAsString : String?
+        if subStatus == false{
+            endDateAsString = ""
+        }
+        else if subStatus == true{
+            var dateComponent = DateComponents()
+            if subscriptionType == true{
+                dateComponent.day = 30
+            } else if subscriptionType == false{
+                dateComponent.day = 365
+            }
+            let futureDate = Calendar.current.date(byAdding: dateComponent, to: Date())
+
+            let formatter = DateFormatter()
+            formatter.timeZone = .current
+            formatter.dateStyle = .medium
+            formatter.locale = .current
+            formatter.dateFormat = "MM/dd/yyyy"
+
+            let startDateAsString = formatter.string(from: Date())
+            endDateAsString = formatter.string(from: futureDate!)
+            
+        }
+        print("end date")
+        print(endDateAsString!)
+        let query = "update user set endSubDate = '" + endDateAsString! + "' where id = " + String(userid)
+        
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at insert sub status prep --> ", err)
+        }
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at sub step done --> ", err)
+        }
+    }
+    
     func changeSubStatus(subStatus : Bool, userid : Int) -> Bool{
         var pointer : OpaquePointer?
         var newStatus : Int?
         
+        //date data supposed to be from database
+//        var endOfSubscription = Date() // gets date. can add 10, 20, or 30 if option is available because of rank 1,2,3 position in a technology
+//
+//
+//        // example of adding more days to user who has good rank
+//        var dateComponent = DateComponents()
+//        if subscriptionType == true{
+//            dateComponent.day = 30
+//        } else if subscriptionType == false{
+//            dateComponent.day = 365
+//        }
+//        let futureDate = Calendar.current.date(byAdding: dateComponent, to: Date())
+//
+//        let formatter = DateFormatter()
+//        formatter.timeZone = .current
+//        formatter.dateStyle = .medium
+//        formatter.locale = .current
+//        formatter.dateFormat = "MM/dd/yyyy"
+//
+//        let startDateAsString = formatter.string(from: Date())
+//        let endDateAsString = formatter.string(from: futureDate!)
+        //subDate.text = formatter.string(from: futureDate!)
+        
         if subStatus == false{
-            newStatus = 1
-        }
-        else{
             newStatus = 0
         }
+        else if subStatus == true{
+            newStatus = 1
+        }
         let query2 = "update user set isSubscribed = " + String(newStatus!) + " where id = " + String(userid)
+       // let query3 = "update user set startSubDate = " + String(startDateAsString) + " where id = " + String(userid)
+        //let query4 = "update user set endSubDate = " + String(endDateAsString) + " where id = " + String(userid)
         if sqlite3_prepare(db, query2, -1, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at insert sub status prep --> ", err)
         }
+//        if sqlite3_prepare(db, query3, -1, &pointer, nil) != SQLITE_OK{
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("There is an error at insert sub status prep --> ", err)
+//        }
+//        if sqlite3_prepare(db, query4, -1, &pointer, nil) != SQLITE_OK{
+//            let err = String(cString: sqlite3_errmsg(db)!)
+//            print("There is an error at insert sub status prep --> ", err)
+//        }
         
         if sqlite3_step(pointer) != SQLITE_DONE{
             let err = String(cString: sqlite3_errmsg(db)!)
