@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import UserNotifications
 
-class AdminCreateQuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+
+class AdminCreateQuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UNUserNotificationCenterDelegate{
+    
+    // This variable is needed for notification.
+    var notificationGranded: Bool = false
     
     @IBOutlet weak var quizName: UITextField!
     @IBOutlet weak var question: UITextField!
@@ -24,6 +29,8 @@ class AdminCreateQuizViewController: UIViewController, UIPickerViewDelegate, UIP
                            5:"Question Five"
     ]
     let technologies = ["Apple", "Swift", "Android"]
+    
+   
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -72,20 +79,75 @@ class AdminCreateQuizViewController: UIViewController, UIPickerViewDelegate, UIP
     //submits manual quiz to database
     @IBAction func submitManualQuiz(_ sender: Any) {
         print("quiz submitted")
+        
+        // ***************** Notification code ****************************
+        // Check if authorization for notifications was granded by the user.
+         if notificationGranded
+         {
+             let content = UNMutableNotificationContent()
+             content.title = "There is a new quizz."
+             content.subtitle = "From Quizzer"
+             content.body = "There is a new quizz. Sign into your account and test your knowledge."
+             content.categoryIdentifier = "New quizz"
+             
+             // Set the trigger of the notification ( timer in this case).
+             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+             
+             // Set the request of the notification.
+             let request = UNNotificationRequest(identifier: "5 seconds.message",
+                                                 content: content,
+                                                 trigger: trigger)
+             
+             // Add the notification to the current notification center.
+             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+         }
+        
     }
     
     //creates random quiz and stores in database
     @IBAction func createRandomQuiz(_ sender: Any) {
         print("random quiz created")
+        // ***************** Notification code ****************************
+        // Check if authorization for notifications was granded by the user.
+         if notificationGranded
+         {
+             let content = UNMutableNotificationContent()
+             content.title = "There is a new quizz."
+             content.subtitle = "From Quizzer"
+             content.body = "There is a new quizz. Sign into your account and test your knowledge."
+             content.categoryIdentifier = "New quizz"
+             
+             // Set the trigger of the notification ( timer in this case).
+             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+             
+             // Set the request of the notification.
+             let request = UNNotificationRequest(identifier: "5 seconds.message",
+                                                 content: content,
+                                                 trigger: trigger)
+             
+             // Add the notification to the current notification center.
+             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+         }
     }
     
     @IBOutlet weak var technologyPicker: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         technologyPicker.dataSource = self
         technologyPicker.delegate = self
         
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound], completionHandler: {(granted, error) in})
+        
+        let content = UNMutableNotificationContent()
+        content.title = "New Quizz"
+        content.body = "A new " + pickedTechnology + " is available."
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {(granded, err) in
+            self.notificationGranded = granded
+        })
     }
     
 
