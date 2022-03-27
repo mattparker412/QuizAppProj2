@@ -44,7 +44,6 @@ class InputValidation{
 
         if textCharacterSet.isSubset(of: numbersSet) {
             print("text only contains numbers 0-9")
-            
             return true
         } else {
             print(stringToCheck, " contains invalid credit information")

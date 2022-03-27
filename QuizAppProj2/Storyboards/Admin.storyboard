@@ -363,15 +363,15 @@
                                     <segue destination="2kU-ii-S1Q" kind="show" id="v5c-Nh-vLc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subscription: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sI4-cu-j5U">
-                                <rect key="frame" x="76" y="179" width="105" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sub. expires: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqW-Qw-Rk9">
+                                <rect key="frame" x="70" y="227" width="103" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWU-ya-N83">
-                                <rect key="frame" x="224" y="179" width="114" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not subscribed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hl8-mf-hDz">
+                                <rect key="frame" x="210" y="227" width="117" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -387,6 +387,7 @@
                         <outlet property="averageScore" destination="6p8-79-Ln3" id="hcJ-iR-qzy"/>
                         <outlet property="blockButton" destination="PoX-Bj-1Xd" id="ZMH-HK-euh"/>
                         <outlet property="iOSScore" destination="dT0-sA-Odk" id="MqW-B0-p8w"/>
+                        <outlet property="subDate" destination="hl8-mf-hDz" id="gZR-6A-tqa"/>
                         <outlet property="swiftScore" destination="t2Z-zz-fl4" id="mik-qj-fMy"/>
                         <outlet property="user" destination="GLf-pz-PnT" id="tty-jD-MDu"/>
                     </connections>
