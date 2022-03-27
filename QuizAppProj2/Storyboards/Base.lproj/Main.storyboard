@@ -985,6 +985,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9b-qG-v0s">
+                                <rect key="frame" x="77" y="118" width="43" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swift Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQh-Xd-zuu">
                                 <rect key="frame" x="75" y="211" width="98" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1116,13 +1123,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9b-qG-v0s">
-                                <rect key="frame" x="77" y="118" width="43" height="51"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiV-Uc-CL6">
+                                <rect key="frame" x="75" y="163" width="130" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bX3-Fe-kS7">
+                                <rect key="frame" x="230" y="158" width="131" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" name="collectionViewBackground"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="claim rewards!"/>
+                                <connections>
+                                    <action selector="claimRewards" destination="dke-42-nGI" eventType="touchUpInside" id="qpG-AX-Ntz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FMs-gu-tep"/>
                         <color key="backgroundColor" name="AccentColor"/>
@@ -1131,8 +1149,10 @@
                     <connections>
                         <outlet property="androidScore" destination="eea-1A-Juh" id="sIC-8s-zD7"/>
                         <outlet property="averageScore" destination="UQe-QZ-9AV" id="G2y-Hu-CZO"/>
+                        <outlet property="claimButton" destination="bX3-Fe-kS7" id="DDn-ad-JTh"/>
                         <outlet property="errorLabel" destination="3UX-Dg-pcf" id="Ktj-AV-0aK"/>
                         <outlet property="iOSScore" destination="Isy-Eu-x8U" id="cVY-ss-lP8"/>
+                        <outlet property="rank" destination="EiV-Uc-CL6" id="ydz-ol-8Lj"/>
                         <outlet property="subDate" destination="cIe-XP-1yw" id="rkT-wW-Yeo"/>
                         <outlet property="swiftScore" destination="JDf-AU-OkS" id="lc4-li-61f"/>
                         <outlet property="user" destination="UNf-jn-P68" id="g43-iV-aQT"/>

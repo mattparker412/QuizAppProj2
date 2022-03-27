@@ -612,30 +612,6 @@ class DBHelper{
     }// End getFeedBacks
     
     
-    func getEndSubDate(userid : Int) -> String{
-        print("inside while of getendsubdate")
-        print(userid)
-        var pointer: OpaquePointer?
-        var endDate : String?
-        //let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
-        let query = "select endSubDate from user where id = " + String(userid)
-
-        // Connect the pointer to the database, and apply the query.
-        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
-            let err = String(cString: sqlite3_errmsg(db)!)
-            print("There is an error at DBHelper.getSubStartDate() --> ", err)
-        }
-
-        while(sqlite3_step(pointer) == SQLITE_ROW){
-
-            print(String(cString: sqlite3_column_text(pointer,1)))
-
-            endDate = String(cString: sqlite3_column_text(pointer,6))
-
-        }
-
-       return endDate ?? "No subscription"
-    }// End getEndStartDate
     
     func getEnd(userId: Int)-> String{
         
@@ -734,6 +710,23 @@ class DBHelper{
         
     }
     
+    func getTopThree(techID : Int) -> [String]{
+        var pointer : OpaquePointer?
+        var topThree = [String]()
+        let query = "select name from ranking where technologyID = " + String(techID) + " order by rankingValue desc limit 3"
+        
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            let name = String(cString:sqlite3_column_text(pointer, 0))
+            topThree.append(name)
+        }
+
+        return topThree
+    }
     func getTopRanking(techID : Int) -> [Ranking]{
         var pointer : OpaquePointer?
         
@@ -882,7 +875,7 @@ class DBHelper{
     func addNewUser(userName : String, passWord : String){
         var pointer : OpaquePointer?
         
-        let query3 = "insert into user (name, password, isSubscribed, isBlocked) values (?,?,0,0)"
+        let query3 = "insert into user (name, password, isSubscribed, isBlocked, startSubDate, endSubDate) values (?,?,0,0,'','')"
 
         if sqlite3_prepare(db, query3, -1, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
@@ -959,7 +952,45 @@ class DBHelper{
             print("There is an error at sub step done --> ", err)
         }
     }
-    
+    func addSubTime(userid : Int, endDate : String, rank: Int) -> String{
+        var pointer : OpaquePointer?
+        var dateToAdd: Date?
+        
+        let formatter = DateFormatter()
+        formatter.timeZone = .current
+        formatter.dateStyle = .medium
+        formatter.locale = .current
+        formatter.dateFormat = "MM/dd/yyyy"
+        var dateComponent  = DateComponents()
+        if rank == 1{
+            dateComponent.day = 30
+        } else if rank == 2{
+            dateComponent.day = 20
+        } else if rank == 3{
+            dateComponent.day = 10
+        }
+        dateToAdd = formatter.date(from: endDate)
+        let updatedDate = Calendar.current.date(byAdding: dateComponent, to: dateToAdd!)
+        formatter.timeZone = .current
+        formatter.dateStyle = .medium
+        formatter.locale = .current
+        formatter.dateFormat = "MM/dd/yyyy"
+        let updatedDateAsString = formatter.string(from: updatedDate!)
+        
+        print("updated date")
+        print(updatedDateAsString)
+        let query = "update user set endSubDate = '" + updatedDateAsString + "' where id = " + String(userid)
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at insert sub status prep --> ", err)
+        }
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at sub step done --> ", err)
+        }
+
+        return updatedDateAsString
+    }
     func updateSubEndDate(userid : Int, startDate : String, subStatus :  Bool, subscriptionType : Bool){
         
         var pointer : OpaquePointer?
