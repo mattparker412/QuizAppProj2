@@ -22,6 +22,7 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for : indexPath)
         cell.textLabel?.text = data[indexPath.row]
+        cell.backgroundColor = UIColor(red: 0/255, green: 117/255, blue: 227/255, alpha: 1)
         return cell
     }
     

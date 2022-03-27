@@ -10,10 +10,11 @@ import UIKit
 class Clock{
     var timerTest : Timer?
     var leftOver = 0
+    var endQuiz = false
     func getTime(timeCount : (Int,Int,Int))->(Int,Int,Int){
         return timeCount
     }
-    func countdownTimer(secondsRemaining : Int, remainingTime : UILabel){
+    func countdownTimer(secondsRemaining : Int, remainingTime : UILabel, errorLabel : UILabel){
         
         var time = secondsRemaining
         var minutes : String?
@@ -29,21 +30,30 @@ class Clock{
                 self.leftOver = time
                 print ("\(display)")
                 time -= 1
+                
                 //return time
             }
             else{
+                remainingTime.text = "Out of time!"
+                errorLabel.text = "Cannot continue quiz. Click next to continue."
+                self.endQuiz = true
                 Timer.invalidate()
             }
             
         }
     }
-        func timerActionTest(){
-            print("timer condition \(timerTest!)")
-        }
-        func stopTimerTest(){
-            timerTest?.invalidate()
-            timerTest = nil
-        }
+    
+    func getEndQuiz() -> Bool{
+        return self.endQuiz
+    }
+    
+    func timerActionTest(){
+        print("timer condition \(timerTest!)")
+    }
+    func stopTimerTest(){
+        timerTest?.invalidate()
+        timerTest = nil
+    }
     
     
 }

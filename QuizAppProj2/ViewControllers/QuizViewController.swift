@@ -10,6 +10,7 @@ import SideMenu
 class QuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var quizTimer: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var quizTable: UITableView!
     @IBOutlet weak var nextButton: UIButton!
     
@@ -68,6 +69,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             default:
                 print("impossible error")
+                
                 
             }
         }
@@ -138,7 +140,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer)
+        var time = clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer, errorLabel : errorLabel)
 //        switch techChoice{
 //        case 1:
 //            textLabel.text = "Swift"
@@ -150,55 +152,75 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            textLabel.text = "Error"
 //            
 //        }
+        
 
     }
     
     @IBAction func pressNext(_ sender: Any) {
         //store answer
-        if answerSelection == nil{
-            print("please select an answer")
-            return
-        }
-        if answerSelection == correctLocation{
-            totalCorrect += 1
-        }
-        else{
-            print("Selected row:",answerSelection!,"Correct answer was:", correctLocation!)
-        }
-        remainingQuestions.remove(at: pickQuestion!)
-        if questionNumber < 4 {
-        pickQuestion = Int.random(in: 0...(4-questionNumber))
-        }
-        else{
-            pickQuestion = 0
-        }
-        questionNumber += 1
+        let calculator = CalculateRanking()
+        var rankscore : Int?
         
-        if questionNumber == 5{
-            nextButton.setTitle("Submit", for: .normal)
-        }
-        if questionNumber == 6{
+        if quizTimer.text == "Out of time!"{
             clock.stopTimerTest()
             
-            let calculator = CalculateRanking()
-            let rankscore = calculator.calculateRank(timeLeft: clock.leftOver, correctAnswers: totalCorrect)
-            db.storeRanking(userName: userName!, userID: userID!, techID: techChoice!, rankScore: rankscore)
-            
+            rankscore = calculator.calculateRank(timeLeft: 1800 - clock.leftOver, correctAnswers: totalCorrect)
+            db.storeRanking(userName: userName!, userID: userID!, techID: techChoice!, rankScore: rankscore ?? 0)
             print(userName!, "Finished in", 1800-clock.leftOver,"seconds, with rank score of ",rankscore)
             
             print("Total correct answers:",totalCorrect)
-            db.quizTaken(quiz: quizChoice!, userid: userID!, score: rankscore, currentDate: dateFormatter.string(from: date))
+            db.quizTaken(quiz: quizChoice!, userid: userID!, score: rankscore ?? 0, currentDate: dateFormatter.string(from: date))
             if isSubscribed == false{
                 quizzesLeft! -= 1
             }
         
             performSegue(withIdentifier: "quizSubmitted", sender: self)
+            //performSegue(withIdentifier: "quizSubmitted", sender: self)
+        } else{
+            if answerSelection == nil{
+                print("please select an answer")
+                errorLabel.text = "An answer must be selected"
+                return
+            }
+            if answerSelection == correctLocation{
+                totalCorrect += 1
+            }
+            else{
+                print("Selected row:",answerSelection!,"Correct answer was:", correctLocation!)
+            }
+            remainingQuestions.remove(at: pickQuestion!)
+            if questionNumber < 4 {
+            pickQuestion = Int.random(in: 0...(4-questionNumber))
+            }
+            else{
+                pickQuestion = 0
+            }
+            questionNumber += 1
+            
+            if questionNumber == 5{
+                nextButton.setTitle("Submit", for: .normal)
+            }
+            if questionNumber == 6{
+                clock.stopTimerTest()
+            
+                rankscore = calculator.calculateRank(timeLeft: 1800 - clock.leftOver, correctAnswers: totalCorrect)
+                db.storeRanking(userName: userName!, userID: userID!, techID: techChoice!, rankScore: rankscore ?? 0)
+                
+                print(userName!, "Finished in", 1800-clock.leftOver,"seconds, with rank score of ",rankscore)
+                
+                print("Total correct answers:",totalCorrect)
+                db.quizTaken(quiz: quizChoice!, userid: userID!, score: rankscore ?? 0, currentDate: dateFormatter.string(from: date))
+                if isSubscribed == false{
+                    quizzesLeft! -= 1
+                }
+            
+                performSegue(withIdentifier: "quizSubmitted", sender: self)
+            }
+            if questionNumber != 6{
+                answerSelection = nil
+                quizTable.reloadData()
+            }
         }
-        if questionNumber != 6{
-            answerSelection = nil
-            quizTable.reloadData()
-        }
-        
     }
 
 }
