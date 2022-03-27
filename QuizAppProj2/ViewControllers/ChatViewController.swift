@@ -50,6 +50,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(userName!)
         print("message to append")
         print(messageToAppend)
         messagesCollectionView.messagesDataSource = self

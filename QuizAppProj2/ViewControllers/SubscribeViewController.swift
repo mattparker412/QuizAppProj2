@@ -15,7 +15,11 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
     @IBOutlet weak var cvc: UITextField!
     @IBOutlet weak var creditCard: UITextField!
     private var sideMenu: SideMenuNavigationController?
-    let views = ["Subscription","Quizzes","Feedback","Ranking","Logout"]
+    
+    var startSubscriptionDate = Date() // start date of subscription; store in DB
+    var endSubscriptionDate = Date() // end of subscription, should add 30 days if monthly or 365 if annually is checked
+    
+    let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
     let menuCaller = CreateSideMenu()
     
     @IBAction func didTapMenu(){

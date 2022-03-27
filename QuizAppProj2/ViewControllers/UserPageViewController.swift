@@ -10,7 +10,7 @@ import SideMenu
 class UserPageViewController: UIViewController, MenuControllerDelegate {
 
     private var sideMenu: SideMenuNavigationController?
-    let views = ["Subscription","Quizzes","Feedback","Ranking","Logout"]
+    let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
     let menuCaller = CreateSideMenu()
     
     @IBAction func didTapMenu(){
