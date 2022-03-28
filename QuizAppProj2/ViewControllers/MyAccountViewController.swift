@@ -69,6 +69,10 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         
         let date = Date()
         var dateComponent = DateComponents()
+        
+        //in a fully functioning application, dateComponent.day should be set to 0
+        // it is set to 4 for demo purposes
+        //when set to 0, the application claimRewardButton will only be redisplayed the first of every month
         dateComponent.day = 4 // set this to simulate first day of month claim
         let exampleDate = Calendar.current.date(byAdding: dateComponent, to: Date())
         
