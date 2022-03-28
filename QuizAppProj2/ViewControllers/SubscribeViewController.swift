@@ -14,6 +14,8 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
     @IBOutlet weak var expireYear: UITextField!
     @IBOutlet weak var cvc: UITextField!
     @IBOutlet weak var creditCard: UITextField!
+    @IBOutlet weak var monthlyButton: UIButton!
+    @IBOutlet weak var annuallyButton: UIButton!
     private var sideMenu: SideMenuNavigationController?
     var isMonthly : Bool?
     
@@ -46,10 +48,14 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
     
     @IBAction func checkedMonthly(){
         isMonthly = true
+        monthlyButton.setImage(UIImage(systemName: "checkmark.square"), for: UIControl.State.normal)
+        annuallyButton.setImage(UIImage(systemName: "square"), for: UIControl.State.normal)
         print("isMonthly")
     }
     @IBAction func checkedAnnually(){
         isMonthly = false
+        monthlyButton.setImage(UIImage(systemName: "square"), for: UIControl.State.normal)
+        annuallyButton.setImage(UIImage(systemName: "checkmark.square"), for: UIControl.State.normal)
         print("is annually")
     }
     let validator = InputValidation()
