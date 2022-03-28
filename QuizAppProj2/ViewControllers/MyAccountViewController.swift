@@ -69,7 +69,7 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         
         let date = Date()
         var dateComponent = DateComponents()
-        dateComponent.day = 0 // set this to simulate first day of month claim
+        dateComponent.day = 4 // set this to simulate first day of month claim
         let exampleDate = Calendar.current.date(byAdding: dateComponent, to: Date())
         
         let calendar = Calendar.current
@@ -172,6 +172,7 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         if isSubscribed == false{
             isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
         }
+        db.setClaim(userID: userID!, claimBool: 0)
         quizzesLeft = -1
     }
 }

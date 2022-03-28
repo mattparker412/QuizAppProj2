@@ -399,8 +399,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-jC-abe">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-jC-abe">
+                                <rect key="frame" x="0.0" y="170" width="414" height="638"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -446,6 +446,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ghC-yW-tAW">
+                                <rect key="frame" x="0.0" y="39" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="barTintColor" name="AccentColor"/>
+                                <items>
+                                    <navigationItem id="Xta-yW-ows">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" id="EZ0-Y6-Iw7">
+                                            <connections>
+                                                <action selector="didTapMenu" destination="fhw-h3-ITk" id="phj-eB-3xp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <navigationBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </navigationBarAppearance>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WzA-WP-Mn4"/>
                         <color key="backgroundColor" name="AccentColor"/>
@@ -470,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4z-kO-GMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6890" y="-291"/>
+            <point key="canvasLocation" x="6889.8550724637689" y="-291.29464285714283"/>
         </scene>
         <!--Subscribe View Controller-->
         <scene sceneID="2VX-NG-Zj4">
@@ -667,13 +686,13 @@
         <!--Quiz Submitted View Controller-->
         <scene sceneID="5Z2-ed-IhC">
             <objects>
-                <viewController id="Cad-eR-BeE" customClass="QuizSubmittedViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Cad-eR-BeE" customClass="QuizSubmittedViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wai-4y-1MC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-sd-WC1">
-                                <rect key="frame" x="145" y="289" width="124.5" height="31"/>
+                                <rect key="frame" x="145" y="316" width="124.5" height="31"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Go To Rankings"/>
@@ -682,7 +701,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe1-WS-7p4">
-                                <rect key="frame" x="136.5" y="405.5" width="141" height="31"/>
+                                <rect key="frame" x="136.5" y="432.5" width="141" height="31"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Give Us Feedback"/>
@@ -691,7 +710,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMJ-AT-BUc">
-                                <rect key="frame" x="136" y="535" width="142.5" height="31"/>
+                                <rect key="frame" x="136" y="562" width="142.5" height="31"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Take Another Quiz"/>
@@ -725,7 +744,7 @@
                                     <accessibilityTraits key="traits" staticText="YES" adjustable="YES"/>
                                 </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemRedColor"/>
+                                <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1166,7 +1185,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qRw-ku-L2L"/>
+        <segue reference="Hw2-yY-uRi"/>
         <segue reference="51s-Sk-5vO"/>
         <segue reference="Pfv-X0-oeW"/>
     </inferredMetricsTieBreakers>
