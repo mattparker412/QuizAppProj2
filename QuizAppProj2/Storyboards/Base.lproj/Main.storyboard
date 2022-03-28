@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OlV-cZ-V27">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OlV-cZ-V27">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -71,7 +71,7 @@
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="login"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2UO-k3-ffc"/>
                                 </connections>
@@ -81,7 +81,7 @@
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="signup"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Signup"/>
                                 <connections>
                                     <segue destination="6WG-F4-uMj" kind="show" id="rgQ-pK-sVH"/>
                                 </connections>
@@ -233,7 +233,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="continue">
+                                <buttonConfiguration key="configuration" style="plain" title="Continue">
                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -245,7 +245,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="subscribe">
+                                <buttonConfiguration key="configuration" style="plain" title="Subscribe">
                                     <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -304,7 +304,7 @@
             <objects>
                 <viewController storyboardIdentifier="feedbackPage" id="Pl3-mA-f7O" customClass="FeedbackViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jzg-FQ-3aU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MEr-J7-ADC">
@@ -317,8 +317,8 @@
                                     <action selector="activeMicro:" destination="Pl3-mA-f7O" eventType="touchUpInside" id="U4R-9t-Ma5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="leave feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swe-ze-4Qt">
-                                <rect key="frame" x="107" y="422" width="202" height="27.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swe-ze-4Qt">
+                                <rect key="frame" x="107" y="334" width="202" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
                                 <color key="textColor" name="collectionViewBackground"/>
                                 <nil key="highlightedColor"/>
@@ -351,7 +351,7 @@
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="reviews"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reviews"/>
                                 <connections>
                                     <segue destination="V94-hj-yLS" kind="show" id="Rm6-KW-3QC"/>
                                 </connections>
@@ -361,7 +361,7 @@
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="submit"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Submit"/>
                                 <connections>
                                     <action selector="submitMsg:" destination="Pl3-mA-f7O" eventType="touchUpInside" id="GJH-Tu-gqF"/>
                                 </connections>
@@ -396,11 +396,11 @@
             <objects>
                 <viewController storyboardIdentifier="rankingPage" id="fhw-h3-ITk" customClass="RankingViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Cw-zd-Fqm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-jC-abe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -553,7 +553,7 @@
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="subscribe"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Subscribe"/>
                                 <connections>
                                     <action selector="subscribe:" destination="ACT-ll-GIQ" eventType="touchUpInside" id="NRK-Oa-QAa"/>
                                     <segue destination="dke-42-nGI" kind="presentation" id="Hw2-yY-uRi"/>
@@ -662,34 +662,16 @@
             </objects>
             <point key="canvasLocation" x="5032" y="592"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Yn2-Hs-1Z3">
-            <objects>
-                <navigationController storyboardIdentifier="homeNavigation" automaticallyAdjustsScrollViewInsets="NO" id="fOj-4Y-dPz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="csM-9d-92I">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Cad-eR-BeE" kind="relationship" relationship="rootViewController" id="mg7-6F-70c"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ics-zN-SJs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1346" y="-840"/>
-        </scene>
         <!--Quiz Submitted View Controller-->
         <scene sceneID="5Z2-ed-IhC">
             <objects>
                 <viewController id="Cad-eR-BeE" customClass="QuizSubmittedViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wai-4y-1MC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-sd-WC1">
-                                <rect key="frame" x="145" y="316" width="124.5" height="31"/>
+                                <rect key="frame" x="145" y="289" width="124.5" height="31"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Go To Rankings"/>
@@ -698,7 +680,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oe1-WS-7p4">
-                                <rect key="frame" x="136.5" y="432.5" width="141" height="31"/>
+                                <rect key="frame" x="136.5" y="405.5" width="141" height="31"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Give Us Feedback"/>
@@ -707,7 +689,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMJ-AT-BUc">
-                                <rect key="frame" x="136" y="562" width="142.5" height="31"/>
+                                <rect key="frame" x="136" y="535" width="142.5" height="31"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Take Another Quiz"/>
@@ -734,6 +716,16 @@
                                     <color key="shadowColor" name="AccentColor"/>
                                 </navigationBarAppearance>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d52-Mu-CB9">
+                                <rect key="frame" x="43" y="213" width="328" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" adjustable="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KYk-4t-Muf"/>
                         <color key="backgroundColor" name="AccentColor"/>
@@ -751,6 +743,7 @@
                         <outlet property="goToFeedback" destination="oe1-WS-7p4" id="58g-pj-8nA"/>
                         <outlet property="goToQuizzes" destination="aMJ-AT-BUc" id="dc3-cj-01p"/>
                         <outlet property="goToRanking" destination="4jo-sd-WC1" id="8AD-eK-ZuY"/>
+                        <outlet property="scoreLabel" destination="d52-Mu-CB9" id="KXt-81-jKM"/>
                         <segue destination="fhw-h3-ITk" kind="show" identifier="goToRanking" id="9oP-Xj-RYL"/>
                         <segue destination="cA4-37-W0F" kind="presentation" identifier="goToQuiz" modalPresentationStyle="fullScreen" id="fzk-Zo-bgm"/>
                         <segue destination="Pl3-mA-f7O" kind="show" identifier="goToFeedback" id="UzS-z2-f0Q"/>
@@ -758,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Knn-1h-CsD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2451" y="-881"/>
+            <point key="canvasLocation" x="2450.7246376811595" y="-881.25"/>
         </scene>
         <!--Quizzes-->
         <scene sceneID="Q9f-TE-2g5">
@@ -846,8 +839,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="345" translatesAutoresizingMaskIntoConstraints="NO" id="6gQ-lF-Uc8">
-                                                    <rect key="frame" x="20" y="11.5" width="305" height="20.5"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="345" translatesAutoresizingMaskIntoConstraints="NO" id="6gQ-lF-Uc8">
+                                                    <rect key="frame" x="40" y="11.5" width="265" height="20.5"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                     </accessibility>
@@ -857,10 +850,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="6gQ-lF-Uc8" secondAttribute="trailing" constant="20" symbolic="YES" id="GSX-lF-aPX"/>
-                                                <constraint firstItem="6gQ-lF-Uc8" firstAttribute="leading" secondItem="6DJ-Lh-4rR" secondAttribute="leading" constant="20" symbolic="YES" id="Wm2-ds-vgc"/>
+                                                <constraint firstItem="6gQ-lF-Uc8" firstAttribute="leading" secondItem="6DJ-Lh-4rR" secondAttribute="leadingMargin" constant="20" id="5mC-4d-JtT"/>
                                                 <constraint firstItem="6gQ-lF-Uc8" firstAttribute="centerX" secondItem="6DJ-Lh-4rR" secondAttribute="centerX" id="dM2-4B-gkL"/>
                                                 <constraint firstItem="6gQ-lF-Uc8" firstAttribute="centerY" secondItem="6DJ-Lh-4rR" secondAttribute="centerY" id="ezc-1g-lFI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6gQ-lF-Uc8" secondAttribute="trailing" constant="20" id="neo-7f-QcZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -874,7 +867,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rez-H9-LKH">
-                                <rect key="frame" x="180" y="694" width="54" height="31"/>
+                                <rect key="frame" x="180" y="694" width="82" height="43"/>
                                 <color key="tintColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Next"/>
@@ -917,7 +910,7 @@
                         <outlet property="nextButton" destination="rez-H9-LKH" id="HqJ-ri-twD"/>
                         <outlet property="quizTable" destination="sNl-gA-XGe" id="dVi-FD-22e"/>
                         <outlet property="quizTimer" destination="gCP-FP-6Gd" id="WSl-u4-uUM"/>
-                        <segue destination="fOj-4Y-dPz" kind="presentation" identifier="quizSubmitted" modalPresentationStyle="fullScreen" id="H73-Rs-9p3"/>
+                        <segue destination="Cad-eR-BeE" kind="presentation" identifier="quizSubmitted" id="sB1-G4-FeO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlH-qW-KbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -966,7 +959,7 @@
             <objects>
                 <viewController storyboardIdentifier="chatPage" id="V94-hj-yLS" customClass="ChatViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hQQ-gy-H8e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="agL-6I-ydu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1006,7 +999,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iOS Score: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COD-tB-CDq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Java Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COD-tB-CDq">
                                 <rect key="frame" x="75" y="257" width="88" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1019,7 +1012,7 @@
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="logout"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="Pfv-X0-oeW"/>
                                 </connections>
@@ -1058,7 +1051,7 @@
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="quizzes"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Quizzes"/>
                                 <connections>
                                     <segue destination="Y9N-00-2yD" kind="show" id="51s-Sk-5vO"/>
                                 </connections>
@@ -1069,7 +1062,7 @@
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="cancel subscription"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel Subscription"/>
                                 <connections>
                                     <action selector="cancelSub" destination="dke-42-nGI" eventType="touchUpInside" id="nPc-Tt-dPi"/>
                                 </connections>
@@ -1077,16 +1070,23 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I51-xu-iT1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="tintColor" name="AccentColor"/>
                                 <color key="barTintColor" name="AccentColor"/>
                                 <items>
                                     <navigationItem id="dZp-1M-5ky">
                                         <barButtonItem key="rightBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" id="kbX-Mv-ZSe">
+                                            <color key="tintColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="didTapMenu" destination="dke-42-nGI" id="4Uy-LH-MHE"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <navigationBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </navigationBarAppearance>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sub. expires: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fM7-oK-KjQ">
                                 <rect key="frame" x="75" y="192" width="103" height="21"/>
@@ -1136,7 +1136,7 @@
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" name="collectionViewBackground"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="claim rewards!"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Claim Rewards!"/>
                                 <connections>
                                     <action selector="claimRewards" destination="dke-42-nGI" eventType="touchUpInside" id="qpG-AX-Ntz"/>
                                 </connections>

@@ -20,14 +20,15 @@ class UserInfoViewController: UIViewController {
 //    var currentDate : Date?
 //    var subscribedDate = Date("2014-05-20")
     var userName: String?
-    var blockedStatus = 0
+    var blockedStatus : Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if(String(db.getEnd(userId: userID!)) == ""){
-//            subDate.text = "No subscription"
-//        } else {
-//            subDate.text = String(db.getEnd(userId: userID!))
-//        }
+
+        blockedStatus = db.getBlockStatus(userID: db.getUserID(userName: userName!))
+        if isSubscribed == true{
+            subDate.text = String(db.getEnd(userId: userID!)!)
+        }
+
         user.text = userName!
         print(userName)
         // Do any additional setup after loading the view.
@@ -44,20 +45,20 @@ class UserInfoViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         if(blockedStatus == 1){
-            blockButton.setTitle("unblock", for: .normal)
+            blockButton.setTitle("Unblock", for: .normal)
         }else if (blockedStatus == 0){
-            blockButton.setTitle("block", for: .normal)
+            blockButton.setTitle("Block", for: .normal)
         }
     }
     @IBAction func blockUser(_ sender: Any) {
         if(db.getBlockStatus(userID: db.getUserID(userName: userName!)) == 1){
             blockedStatus = 0
             db.updateBlockFalse(userID: db.getUserID(userName: userName!))
-            blockButton.setTitle("block", for: .normal)
+            blockButton.setTitle("Block", for: .normal)
         } else if (db.getBlockStatus(userID: db.getUserID(userName: userName!)) == 0){
             blockedStatus = 1
             db.updateBlockTrue(userID: db.getUserID(userName: userName!))
-            blockButton.setTitle("unblock", for: .normal)
+            blockButton.setTitle("Unblock", for: .normal)
         }
         //print(db.getBlockStatus(userID: db.getUserID(userName: userName!)))
     }

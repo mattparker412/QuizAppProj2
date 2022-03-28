@@ -138,13 +138,15 @@ class DBHelper{
             let pass = String(cString: sqlite3_column_text(pointer, 2))
             let isSubRaw = Int(sqlite3_column_int(pointer, 3))
             let isBlockedRaw = Int(sqlite3_column_int(pointer, 4))
+            let startDate = String(cString:sqlite3_column_text(pointer, 5))
+            let endDate = String(cString:sqlite3_column_text(pointer, 6))
             
             //Create the enums.
             let isSubscribed = IsSubscribed(rawValue: isSubRaw)
             let isBlocked = IsBlocked(rawValue: isBlockedRaw)
             
             // Create a user object.
-            let user = User(id: id, name: name, password: pass, subscribed: isSubscribed!, blocked: isBlocked!)
+            let user = User(id: id, name: name, password: pass, subscribed: isSubscribed!, blocked: isBlocked!, startDate: startDate, endDate: endDate)
         
             // Add the returned users to the array.
             userList.append(user)
@@ -252,13 +254,15 @@ class DBHelper{
             let pass = String(cString: sqlite3_column_text(pointer, 2))
             let isSubRaw = Int(sqlite3_column_int(pointer, 3))
             let isBlockedRaw = Int(sqlite3_column_int(pointer, 4))
+            let startDate = String(cString: sqlite3_column_text(pointer, 5))
+            let endDate = String(cString: sqlite3_column_text(pointer, 6))
             
             //Create the enums.
             let isSubscribed = IsSubscribed(rawValue: isSubRaw)
             let isBlocked = IsBlocked(rawValue: isBlockedRaw)
             
             // Create a user object.
-            let user = User(id: id, name: name, password: pass, subscribed: isSubscribed!, blocked: isBlocked!)
+            let user = User(id: id, name: name, password: pass, subscribed: isSubscribed!, blocked: isBlocked!, startDate: startDate, endDate: endDate)
         
             // Add the returned users to the array.
             userList.append(user)
@@ -417,10 +421,11 @@ class DBHelper{
             
         }
         while(sqlite3_step(pointer) == SQLITE_ROW){
+
             quizid = Int(sqlite3_column_int(pointer, 0)) + 1
         }
         // Create a quizz object.
-        let quizz = Quizz(technologyId: technologyId, questions: questions, quizID: quizid!)
+        let quizz = Quizz(technologyId: technologyId, questions: questions, quizID: quizid ?? 1)
         
         // Insert quizz into the database(quizes table).
         let insertQuiz = "insert into quizes (technologyId, q1, q2, q3, q4, q5) values (?,?,?,?,?,?)"
@@ -543,6 +548,52 @@ class DBHelper{
         
         return quizzesTaken
     }
+    
+    func addQuestionToDB(techID: Int, question: String, answer1: String, answer2: String, answer3: String, rightAnswer: String){
+        var pointer : OpaquePointer?
+        
+        let query = "insert into question (technologyID, question, answer1, answer2, answer3, rightAnswer) values (?,?,?,?,?,?)"
+        if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare addquestiontodb --> ", err)
+        }
+        
+        if sqlite3_bind_int(pointer, 1, (Int32(techID))) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+
+        }
+    
+        if sqlite3_bind_text(pointer, 2, (question as NSString).utf8String, -1, nil ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+        
+        if sqlite3_bind_text(pointer, 3, (answer1 as NSString).utf8String, -1, nil ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+        
+        if sqlite3_bind_text(pointer, 4, (answer2 as NSString).utf8String, -1, nil ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+        
+        if sqlite3_bind_text(pointer, 5, (answer3 as NSString).utf8String, -1, nil ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+        
+        if sqlite3_bind_text(pointer, 6, (rightAnswer as NSString).utf8String, -1, nil ) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print(err)
+        }
+        
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at done add question step --> ", err)
+        }
+    }
     func getAllUsers() -> [String] {
         
         var userList = [String]()
@@ -613,7 +664,7 @@ class DBHelper{
     
     
     
-    func getEnd(userId: Int)-> String{
+    func getEnd(userId: Int)-> String?{
         
         var pointer: OpaquePointer?
         var output : String?
@@ -1105,10 +1156,10 @@ class DBHelper{
         //subDate.text = formatter.string(from: futureDate!)
         
         if subStatus == false{
-            newStatus = 0
+            newStatus = 1
         }
         else if subStatus == true{
-            newStatus = 1
+            newStatus = 0
         }
         let query2 = "update user set isSubscribed = " + String(newStatus!) + " where id = " + String(userid)
        // let query3 = "update user set startSubDate = " + String(startDateAsString) + " where id = " + String(userid)

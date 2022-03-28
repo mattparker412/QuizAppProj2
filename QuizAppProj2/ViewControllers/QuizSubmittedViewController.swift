@@ -12,9 +12,11 @@ class QuizSubmittedViewController: UIViewController, MenuControllerDelegate {
     
     @IBOutlet weak var goToRanking: UIButton!
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var goToQuizzes: UIButton!
     @IBOutlet weak var goToFeedback: UIButton!
     private var sideMenu: SideMenuNavigationController?
+    var score : Int = 0
     let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
     let menuCaller = CreateSideMenu()
     
@@ -36,6 +38,7 @@ class QuizSubmittedViewController: UIViewController, MenuControllerDelegate {
         super.viewDidLoad()
         let menu = MenuController(with: views)
         menu.delegate = self
+        scoreLabel.text = "Score was \(score)!"
         let quizLeft = UILabel(frame: CGRect(x: view.center.x, y: 50, width: 140, height: 50))
         quizLeft.textAlignment = .center
         quizLeft.adjustsFontSizeToFitWidth = true

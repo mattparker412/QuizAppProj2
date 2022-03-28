@@ -67,20 +67,33 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
             })
         }
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "User List"
+    }
 
     //creates tableview
     private let tableView : UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //tableView.backgroundColor = UIColor(red: 0/255, green: 117/255, blue: 227/255, alpha: 0)
         return tableView
         
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0/255, green: 117/255, blue: 227/255, alpha: 1)
         // Do any additional setup after loading the view.
         
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.backgroundColor = .clear
+        
 
         //implement tableviews delegate
         tableView.delegate = self
