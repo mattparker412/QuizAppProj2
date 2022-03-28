@@ -24,7 +24,5 @@ class Ranking {
         self.ranking = rank
     }
     
-//    func setRanking(quizResult: Int) -> Int{
-//        return self.ranking
-//    }
+
 }

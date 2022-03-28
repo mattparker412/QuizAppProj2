@@ -73,7 +73,7 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         //in a fully functioning application, dateComponent.day should be set to 0
         // it is set to 4 for demo purposes
         //when set to 0, the application claimRewardButton will only be redisplayed the first of every month
-        dateComponent.day = 4 // set this to simulate first day of month claim
+        dateComponent.day = 4 // set this to 0 to simulate first day of month claim reward functionality
         let exampleDate = Calendar.current.date(byAdding: dateComponent, to: Date())
         
         let calendar = Calendar.current
@@ -102,7 +102,6 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         
         user.text = db.getUserName(userId: userID!)
         var account = db.getUserName(userId: userID!)
-        // print(userName) why is this even nil?
         
         if(isSubscribed == false){
             subDate.text = "No subscription"
@@ -132,7 +131,6 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
             errorLabel.text = "No subscription to cancel"
         }
         db.updateSubStartDate(userid: userID!, subStatus: false, subscriptionType: false)
-        //db.updateSubEndDate(userid: userID!, startDate: db.getSubStartDate(userid: userID!), subStatus: isSubscribed, subscriptionType: isMonthly!)
         isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
         quizzesLeft = 2 - db.checkQuizzesTaken(userid: userID!, date: dateFormatter.string(from: date))
         if quizzesLeft! < 0{
@@ -169,9 +167,7 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
             claimButton.isHidden = true
             default:
                 print("goodbye")
-        
         }
-        //db.changeSubStatus(subStatus: true, userid: userID!)
         print("rewards claimed")
         if isSubscribed == false{
             isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)

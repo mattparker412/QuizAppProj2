@@ -16,6 +16,7 @@ class UseMicrophone{
     var rTask : SFSpeechRecognitionTask!
     var isStart = false
     
+    /// Starts recording of speech
     func startSpeechRec(){
         let nd = audioEng.inputNode
         let recordF = nd.outputFormat(forBus: 0)
@@ -48,14 +49,11 @@ class UseMicrophone{
                 str = String(msg![indexTo...])
             }
             
-            
-        
         })
-        
-        
         print("start")
     }
     
+    /// Cancels recording of speech
     func cancelSpeechRec(){
         rTask.finish()
         rTask.cancel()

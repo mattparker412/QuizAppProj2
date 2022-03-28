@@ -16,9 +16,6 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var blockButton: UIButton!
     @IBOutlet weak var subDate: UILabel!
     var username : String?
-//    var subscribedDate : Date?
-//    var currentDate : Date?
-//    var subscribedDate = Date("2014-05-20")
     var userName: String?
     var blockedStatus : Int?
     override func viewDidLoad() {
@@ -64,7 +61,6 @@ class UserInfoViewController: UIViewController {
             db.updateBlockTrue(userID: db.getUserID(userName: username!))
             blockButton.setTitle("Unblock", for: .normal)
         }
-        //print(db.getBlockStatus(userID: db.getUserID(userName: userName!)))
     }
     
 }

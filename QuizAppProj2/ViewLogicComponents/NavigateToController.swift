@@ -7,7 +7,20 @@
 
 import Foundation
 import UIKit
+
+/// When class is instanced, can navigate to a defined UIViewcontroller
 class NavigateToController{
+    
+    /**
+        Navigates to view controller
+                
+         -Parameters:
+                -current: the current UIViewController
+                -storyboard: the name of the storuboard reference
+                -identifier: the identifier of the view controller
+                -controller: the UIViewcontroller to navigate to
+         -Returns: Void
+     */
     func navToController(current: UIViewController, storyboard: String, identifier: String, controller: UIViewController){
         let storyBoard : UIStoryboard = UIStoryboard(name: storyboard, bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: identifier)
@@ -15,7 +28,15 @@ class NavigateToController{
         current.present(nextViewController, animated: true, completion:nil)
     }
     
-    //"Subscription","Quizzes","Feedback","Ranking","Logout"
+    /**
+            Determines which view controller to navigate to in SideMenu view table selection
+            
+            -Parameters:
+                -named: the selected row of the side menu table view
+            -Returns:
+                -array of values to pass to navToController() function in relevant ViewControllers
+        
+     */
     func viewControllerSwitch(named: String) -> Array<Any>{
         
         if named == "MyAccount"{
