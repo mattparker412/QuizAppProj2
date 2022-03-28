@@ -12,11 +12,10 @@ import SQLite3
 // In the entry point view controller create a global InitialDbInserts instance. Ex. let i = InitialDBInserts()
 // Then inside viewDidLoad() --> i.connect()
 //                               i.insertInitial()
-// After a run, you should have a data base that contains the tables bellow.
+// After a run, you should have a database that contains the tables created bellow.
 // ***** The most important thing is, you will have a questions table filled up with 60 questions.
 //
 
-// It inserts three users in the user table(one is subscribed), than all the questions in the question table.
 
 class InitialDbInserts{
     
@@ -28,11 +27,11 @@ class InitialDbInserts{
     // This array holds three User objects. The third user is subscribed.
     var initialUsers = [User(id : 1,name: "user1", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
                         User(id : 2,name:"user2", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
-                        User(id : 3,name:"user3", password: "234", subscribed: .isSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 4,name:"user4", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 5,name:"user5", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 6,name: "user6", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
+                        User(id : 3,name:"user3", password: "234", subscribed: .isSubscribed, blocked: .isNotBlocked, startDate: "03/25/2022", endDate: "04/25/2022"), User(id : 4,name:"user4", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 5,name:"user5", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 6,name: "user6", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
                         User(id : 7,name:"user7", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
-                        User(id : 8,name:"user8", password: "234", subscribed: .isSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 9,name:"user9", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 10,name:"user10", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: "")]
+                        User(id : 8,name:"user8", password: "234", subscribed: .isSubscribed, blocked: .isNotBlocked, startDate: "02/20/2022", endDate: "02/20/2023"), User(id : 9,name:"user9", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 10,name:"user10", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: "")]
     
-    // This array holds the initial technologies (Spring, Java, Android).
+    // This array holds the initial technologies (Swift, Java, Android).
     var initialTechnologies = [Technology(id: 1, name:"Swift"), Technology(id:2, name:"Java"), Technology(id: 3, name: "Android")]
     
     
@@ -325,7 +324,7 @@ class InitialDbInserts{
         // Create the tables.
         
         // User Table.
-        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer, startSubDate text, endSubDate text)", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer, startSubDate text, endSubDate text, claimedMonthlyReward integer", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create user table --> ", err)

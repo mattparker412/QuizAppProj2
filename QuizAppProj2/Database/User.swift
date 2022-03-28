@@ -9,8 +9,6 @@ import Foundation
 
 class User {
     
-    // Import the IsSubscribed enumeration.
-    
     var id: Int
     var name: String?
     var password: String?
@@ -22,7 +20,9 @@ class User {
     var blocked: Int
     var start: String
     var end: String
-    
+    // This holds 0 if the user did not claim the monthly reward and 1 if he did.
+    // The default value is 0.
+    var claimedMonthlyReward: Int = 0
     init(id: Int, name: String, password: String, subscribed: IsSubscribed, blocked: IsBlocked, startDate: String, endDate: String){
         
         self.id = id
