@@ -84,6 +84,7 @@ class DataFetcher{
 //                print("no more data")
 //            }
             
+            
             var originalData = [String]()//[users[0],users[1],users[2],users[3],users[4]]
             var newData = [String]()
             guard getFetchFunctionCount > 0 else {
