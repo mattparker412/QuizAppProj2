@@ -651,11 +651,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="vbs-Pu-RvY"/>
                     <connections>
+                        <outlet property="annuallyButton" destination="M1M-ud-SMs" id="6gD-xm-Mt5"/>
                         <outlet property="creditCard" destination="owt-Mp-Xtf" id="r1s-Cf-V2f"/>
                         <outlet property="cvc" destination="iHH-6v-rP8" id="Aev-0d-9ra"/>
                         <outlet property="errorLabel" destination="ami-ra-cXi" id="0pU-gs-jfl"/>
                         <outlet property="expireMonth" destination="NlZ-zw-oxG" id="zMz-8u-OfH"/>
                         <outlet property="expireYear" destination="VS0-Eb-Gpx" id="tz7-kL-KHC"/>
+                        <outlet property="monthlyButton" destination="08E-GS-SWi" id="hwZ-Nj-Y92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUd-Ia-Toa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
