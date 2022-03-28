@@ -23,7 +23,11 @@ class UserInfoViewController: UIViewController {
     var blockedStatus = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        subDate.text = String(db.getEnd(userId: userID!))
+//        if(String(db.getEnd(userId: userID!)) == ""){
+//            subDate.text = "No subscription"
+//        } else {
+//            subDate.text = String(db.getEnd(userId: userID!))
+//        }
         user.text = userName!
         print(userName)
         // Do any additional setup after loading the view.

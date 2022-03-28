@@ -1048,6 +1048,9 @@ class DBHelper{
             } else if subscriptionType == false{
                 dateComponent.day = 365
             }
+//            } else if subscriptionType == nil{
+//                dateComponent.day = 0
+//            }
             let futureDate = Calendar.current.date(byAdding: dateComponent, to: Date())
 
             let formatter = DateFormatter()
