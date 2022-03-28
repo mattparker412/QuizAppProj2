@@ -23,10 +23,12 @@ class UserInfoViewController: UIViewController {
     var blockedStatus : Int?
     override func viewDidLoad() {
         super.viewDidLoad()
+
         blockedStatus = db.getBlockStatus(userID: db.getUserID(userName: userName!))
         if isSubscribed == true{
             subDate.text = String(db.getEnd(userId: userID!)!)
         }
+
         user.text = userName!
         print(userName)
         // Do any additional setup after loading the view.

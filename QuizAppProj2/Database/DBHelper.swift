@@ -53,7 +53,7 @@ class DBHelper{
         // Create the tables.
         
         // User Table.
-        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer, startSubDate text, endSubDate text)", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer, startSubDate text, endSubDate text, claimedMonthlyReward integer)", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create user table --> ", err)
@@ -905,6 +905,49 @@ class DBHelper{
         
     }
     
+    func setClaim(userID :  Int, claimBool : Int){
+        var pointer : OpaquePointer?
+        
+        let query = "update user set claimedMonthlyReward = '" + String(claimBool) + "' where id = " + String(userID)
+        print("inside set claim " + String(claimBool))
+        //sqlite prepare gives query to pointer
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at update ranking step --> ", err)
+        }
+        
+        
+    }
+    
+    func getClaim(userID :  Int) -> Int{
+        var pointer : OpaquePointer?
+        var output : Int?
+        let query = "select claimedMonthlyReward from user where id = " + String(userID)
+        
+        //sqlite prepare gives query to pointer
+        if sqlite3_prepare(db, query, -1, &pointer, nil) != SQLITE_OK{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at prepare ranking sort --> ", err)
+        }
+        
+        while(sqlite3_step(pointer) == SQLITE_ROW){
+            output = Int(sqlite3_column_int(pointer, 0))
+            
+        }
+        
+        if sqlite3_step(pointer) != SQLITE_DONE{
+            let err = String(cString: sqlite3_errmsg(db)!)
+            print("There is an error at update ranking step --> ", err)
+        }
+        
+        return output!
+    }
+    
     func updateBlockFalse(userID :  Int){
         var pointer : OpaquePointer?
         
@@ -926,7 +969,7 @@ class DBHelper{
     func addNewUser(userName : String, passWord : String){
         var pointer : OpaquePointer?
         
-        let query3 = "insert into user (name, password, isSubscribed, isBlocked, startSubDate, endSubDate) values (?,?,0,0,'','')"
+        let query3 = "insert into user (name, password, isSubscribed, isBlocked, startSubDate, endSubDate, claimedMonthlyReward) values (?,?,0,0,'','', 0)"
 
         if sqlite3_prepare(db, query3, -1, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
@@ -1021,7 +1064,7 @@ class DBHelper{
             dateComponent.day = 10
         }
         dateToAdd = formatter.date(from: endDate)
-        let updatedDate = Calendar.current.date(byAdding: dateComponent, to: dateToAdd!)
+        let updatedDate = Calendar.current.date(byAdding: dateComponent, to: dateToAdd ??  Date())
         formatter.timeZone = .current
         formatter.dateStyle = .medium
         formatter.locale = .current
@@ -1056,6 +1099,9 @@ class DBHelper{
             } else if subscriptionType == false{
                 dateComponent.day = 365
             }
+//            } else if subscriptionType == nil{
+//                dateComponent.day = 0
+//            }
             let futureDate = Calendar.current.date(byAdding: dateComponent, to: Date())
 
             let formatter = DateFormatter()
