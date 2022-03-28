@@ -68,10 +68,10 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
                 errorLabel.text = "Subscription type must be selected."
                 return false
             } else{
+                isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
                 
-                db.updateSubStartDate(userid: userID!, subStatus: true, subscriptionType: isMonthly!)
+                db.updateSubStartDate(userid: userID!, subStatus: isSubscribed, subscriptionType: isMonthly!)
                 //db.updateSubEndDate(userid: userID!, startDate: db.getSubStartDate(userid: userID!), subStatus: isSubscribed, subscriptionType: isMonthly!)
-                isSubscribed = db.changeSubStatus(subStatus: true, userid: userID!)
                 //print(isSubscribed)
                 quizzesLeft = -1
                 return true
