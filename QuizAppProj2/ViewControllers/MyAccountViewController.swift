@@ -69,7 +69,7 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         
         let date = Date()
         var dateComponent = DateComponents()
-        dateComponent.day = 5 // set this to simulate first day of month claim
+        dateComponent.day = 0 // set this to simulate first day of month claim
         let exampleDate = Calendar.current.date(byAdding: dateComponent, to: Date())
         
         let calendar = Calendar.current
@@ -80,19 +80,19 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
             rank.text = "Rank 1!"
             if dayOfMonth! == 1{
                 claimButton.isHidden = false
-                db.setClaim(userID: userID!, claimBool: 0)
+                db.setClaim(userID: userID!, claimBool: 1)
             }
         } else if (myRanks.contains(2)){
             rank.text = "Rank 2!"
             if dayOfMonth! == 1{
                 claimButton.isHidden = false
-                db.setClaim(userID: userID!, claimBool: 0)
+                db.setClaim(userID: userID!, claimBool: 1)
             }
         } else if (myRanks.contains(3)){
             rank.text = "Rank 3!"
             if dayOfMonth! == 1{
                 claimButton.isHidden = false
-                db.setClaim(userID: userID!, claimBool: 0)
+                db.setClaim(userID: userID!, claimBool: 1)
             }
         }
         
@@ -167,10 +167,11 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
                 print("goodbye")
         
         }
-        db.changeSubStatus(subStatus: true, userid: userID!)
+        //db.changeSubStatus(subStatus: true, userid: userID!)
         print("rewards claimed")
-        
-        isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
+        if isSubscribed == false{
+            isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
+        }
         quizzesLeft = -1
     }
 }
