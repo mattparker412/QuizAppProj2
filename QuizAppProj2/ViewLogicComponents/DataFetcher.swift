@@ -83,9 +83,26 @@ class DataFetcher{
 //            default:
 //                print("no more data")
 //            }
-            let originalData = [users[0],users[1],users[2],users[3],users[4]]
+            
+            var originalData = [String]()//[users[0],users[1],users[2],users[3],users[4]]
             var newData = [String]()
-            removeFromUsers(removeArray: originalData)
+            guard getFetchFunctionCount > 0 else {
+                print("inside guard")
+                for index in 0..<5{
+                    let user = db.getUserName(userId: index + 1)
+                    if user != ""{
+                        originalData.append(user)
+                    }
+                }
+                
+                completion(.success(pagination && getFetchFunctionCount > 0 ? newData : originalData))
+                if pagination{
+                    self.isPaginating = false
+                }
+                getFetchFunctionCount += 1
+                return
+            }
+            //removeFromUsers(removeArray: originalData)
             //print(users)
 //            users.remove(at: 1)
 //            users.remove(at: 1)
@@ -100,11 +117,16 @@ class DataFetcher{
             print(getFetchFunctionCount)
             if getFetchFunctionCount > 0{
                 //print(users)
-                newData = updateData() as! [String]
+                for index in 5*getFetchFunctionCount...(9*getFetchFunctionCount-4*(getFetchFunctionCount-1)){
+                    let user = db.getUserName(userId: index + 1)
+                    if user != ""{
+                        newData.append(user)
+                    }
+                }
+                print("inside if")
                 print(newData)
-            } else {
-                newData = [users[0],users[1],users[2],users[3],users[4]]
-                print(newData)
+//                newData = updateData() as! [String]
+//                print(newData)
             }
             
 //            //let users = self.db.getAllUsers()
@@ -138,15 +160,15 @@ class DataFetcher{
 //                print(count)
 //
 //            }
-            guard getFetchFunctionCount > 0 else {
-                completion(.success(pagination && getFetchFunctionCount > 0 ? newData : originalData))
-                if pagination{
-                    self.isPaginating = false
-                }
-                getFetchFunctionCount += 1
-                return
-            }
-            completion(.success(pagination && getFetchFunctionCount == 0 ? newData : originalData))
+//            guard getFetchFunctionCount > 0 else {
+//                completion(.success(pagination && getFetchFunctionCount > 0 ? newData : originalData))
+//                if pagination{
+//                    self.isPaginating = false
+//                }
+//                getFetchFunctionCount += 1
+//                return
+//            }
+            completion(.success(pagination && getFetchFunctionCount > 0 ? newData : originalData))
             if pagination{
                 self.isPaginating = false
             }
