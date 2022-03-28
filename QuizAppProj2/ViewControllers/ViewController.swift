@@ -43,7 +43,6 @@ class ViewController: UIViewController {
         wrongPass.textAlignment = .center
         wrongPass.numberOfLines = 2
         
-        
         var f1 = db.prepareDatabaseFile()
                 if sqlite3_open(f1, &db.db) != SQLITE_OK{
                     print("can't open database")
