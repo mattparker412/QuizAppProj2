@@ -152,7 +152,7 @@ class AdminCreateQuizViewController: UIViewController, UIPickerViewDelegate, UIP
         
         let content = UNMutableNotificationContent()
         content.title = "New Quizz"
-        content.body = "A new " + pickedTechnology + " is available."
+        content.body = "A new " + String(pickedTechnology) + " is available."
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {(granded, err) in
             self.notificationGranded = granded

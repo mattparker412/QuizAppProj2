@@ -15,7 +15,7 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var averageScore: UILabel!
     @IBOutlet weak var blockButton: UIButton!
     @IBOutlet weak var subDate: UILabel!
-    
+    var username : String?
 //    var subscribedDate : Date?
 //    var currentDate : Date?
 //    var subscribedDate = Date("2014-05-20")
@@ -24,15 +24,19 @@ class UserInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        blockedStatus = db.getBlockStatus(userID: db.getUserID(userName: userName!))
-        if isSubscribed == true{
-            subDate.text = String(db.getEnd(userId: userID!)!)
+        blockedStatus = db.getBlockStatus(userID: db.getUserID(userName: username!))
+        
+        print(db.getUserID(userName: username!))
+         if(String(db.getEnd(userId: db.getUserID(userName: username!))!) == ""){
+            subDate.text = "No subscription"
+        } else{
+            subDate.text = String(db.getEnd(userId: db.getUserID(userName: username!))!)
         }
 
-        user.text = userName!
-        print(userName)
+        user.text = username!
+
         // Do any additional setup after loading the view.
-        let scores = (db.getTotalScoreForUser(userName: userName!))
+        let scores = (db.getTotalScoreForUser(userName: username!))
         swiftScore.text = String(scores[0])
         iOSScore.text = String(scores[1])
         androidScore.text = String(scores[2])
@@ -51,13 +55,13 @@ class UserInfoViewController: UIViewController {
         }
     }
     @IBAction func blockUser(_ sender: Any) {
-        if(db.getBlockStatus(userID: db.getUserID(userName: userName!)) == 1){
+        if(db.getBlockStatus(userID: db.getUserID(userName: username!)) == 1){
             blockedStatus = 0
-            db.updateBlockFalse(userID: db.getUserID(userName: userName!))
+            db.updateBlockFalse(userID: db.getUserID(userName: username!))
             blockButton.setTitle("Block", for: .normal)
-        } else if (db.getBlockStatus(userID: db.getUserID(userName: userName!)) == 0){
+        } else if (db.getBlockStatus(userID: db.getUserID(userName: username!)) == 0){
             blockedStatus = 1
-            db.updateBlockTrue(userID: db.getUserID(userName: userName!))
+            db.updateBlockTrue(userID: db.getUserID(userName: username!))
             blockButton.setTitle("Unblock", for: .normal)
         }
         //print(db.getBlockStatus(userID: db.getUserID(userName: userName!)))

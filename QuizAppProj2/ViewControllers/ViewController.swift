@@ -141,7 +141,7 @@ class ViewController: UIViewController {
             self.present(nextViewController, animated:false, completion: nil)
         }
         else{
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavigation") as! UIViewController
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UIViewController
             //self.navigationController?.pushViewController(nextViewController, animated: true)
             self.view?.window?.rootViewController = nextViewController
             self.modalPresentationStyle = .fullScreen
