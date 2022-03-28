@@ -61,25 +61,37 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         if(topAndroidThree.contains(username!)){
             myRanks.append(topAndroidThree.firstIndex(of: username!)! + 1)
         }
+        if db.getClaim(userID: userID!) == 1{
+            claimButton.isHidden = true
+        }
+        
         let date = Date()
         var dateComponent = DateComponents()
-        dateComponent.day = 5
+        dateComponent.day = 0 // set this to simulate first day of month claim
         let exampleDate = Calendar.current.date(byAdding: dateComponent, to: Date())
         
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: exampleDate!)
         let dayOfMonth = components.day
-        print("day of month")
-        print(dayOfMonth)
+        
         if myRanks.contains(1){
             rank.text = "Rank 1!"
-            if dayOfMonth! == 1{claimButton.isHidden = false}
+            if dayOfMonth! == 1{
+                claimButton.isHidden = false
+                db.setClaim(userID: userID!, claimBool: 0)
+            }
         } else if (myRanks.contains(2)){
             rank.text = "Rank 2!"
-            if dayOfMonth! == 1{claimButton.isHidden = false}
+            if dayOfMonth! == 1{
+                claimButton.isHidden = false
+                db.setClaim(userID: userID!, claimBool: 0)
+            }
         } else if (myRanks.contains(3)){
             rank.text = "Rank 3!"
-            if dayOfMonth! == 1{claimButton.isHidden = false}
+            if dayOfMonth! == 1{
+                claimButton.isHidden = false
+                db.setClaim(userID: userID!, claimBool: 0)
+            }
         }
         
         user.text = db.getUserName(userId: userID!)
@@ -127,13 +139,16 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
             case "Rank 1!":
                 print("hello")
             subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 1)
+            db.setClaim(userID: userID!, claimBool: 1)
             claimButton.isHidden = true
             
             case "Rank 2!":
             subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 2)
+            db.setClaim(userID: userID!, claimBool: 1)
             claimButton.isHidden = true
             case "Rank 3!":
             subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 3)
+            db.setClaim(userID: userID!, claimBool: 1)
             claimButton.isHidden = true
             default:
                 print("goodbye")
