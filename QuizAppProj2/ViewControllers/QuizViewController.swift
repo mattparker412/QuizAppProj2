@@ -42,6 +42,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if indexPath.section == 1{
             cell.answerLabel.font = UIFont.systemFont(ofSize: 16)
+            cell.answerLabel.adjustsFontSizeToFitWidth = true
             cell.selectionStyle = .default
             switch indexPath.row{
             case 0:
@@ -76,6 +77,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         else if indexPath.section == 0{
             cell.selectionStyle = .none
             cell.answerLabel.font = UIFont.systemFont(ofSize: 24)
+            cell.answerLabel.adjustsFontSizeToFitWidth = true
             cell.answerLabel.numberOfLines = 3
             print(pickQuestion!)
             cell.answerLabel.text = quizChoice?.questions[remainingQuestions[pickQuestion!]].question
