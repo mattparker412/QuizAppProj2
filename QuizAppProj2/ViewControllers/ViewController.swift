@@ -22,7 +22,7 @@ let color = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)
 
 
 class ViewController: UIViewController {
-   // var i = InitialDbInserts()
+    //var i = InitialDbInserts()
     
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //i.connect()
+       // i.connect()
         //i.insertInitial()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         print(dateFormatter.string(from: date))
@@ -48,20 +48,7 @@ class ViewController: UIViewController {
                 if sqlite3_open(f1, &db.db) != SQLITE_OK{
                     print("can't open database")
                 }
-               // db.connect()
-        
-        //let db = DBHelper()
-        
-//     let feedBacks = db.getFeedBacks()
-//        //print(feedBacks)
-//
-//        for f in feedBacks{
-//            print(f["name"]! + " ----> " + f["feedback"]!)
-//        }
-        
-        //i.connect()
-        //i.insertInitial()
-        // Do any additional setup after loading the view.
+               
         pass.isSecureTextEntry = true
         let loginButton = FBLoginButton()
         loginButton.permissions = ["public_profile", "email"]
@@ -88,6 +75,9 @@ class ViewController: UIViewController {
                 if db.getSubStatus(userid: userID!) == 0{
                     isSubscribed = false
                     quizzesLeft = 2 - db.checkQuizzesTaken(userid: userID!, date: dateFormatter.string(from: date))
+                    if quizzesLeft! < 0{
+                        quizzesLeft = 0
+                    }
                 }
                 else{
                     isSubscribed = true

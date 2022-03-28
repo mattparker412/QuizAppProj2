@@ -19,7 +19,7 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var rank: UILabel!
     @IBOutlet weak var claimButton: UIButton!
-    var isSubbed = false
+    //var isSubbed = false
     
     
     var username: String?
@@ -43,6 +43,8 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyy"
         let menu = MenuController(with: views)
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
@@ -86,12 +88,12 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         var account = db.getUserName(userId: userID!)
         // print(userName) why is this even nil?
         
-        if(String(db.getEnd(userId: userID!)) == ""){
+        if(isSubscribed == false){
             subDate.text = "No subscription"
-            isSubbed = false
+            //isSubscribed = false
         } else {
-            subDate.text = String(db.getEnd(userId: userID!))
-            isSubbed = true
+            subDate.text = String(db.getEnd(userId: userID!)!)
+            //isSubscribed = true
         }
         
         // Do any additional setup after loading the view.
@@ -108,37 +110,52 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
     
 
     @IBAction func cancelSub(){
-        if isSubbed == false{
+        if isSubscribed == false{
             errorLabel.backgroundColor = color
             errorLabel.textColor = .red
             errorLabel.text = "No subscription to cancel"
         }
         db.updateSubStartDate(userid: userID!, subStatus: false, subscriptionType: false)
         //db.updateSubEndDate(userid: userID!, startDate: db.getSubStartDate(userid: userID!), subStatus: isSubscribed, subscriptionType: isMonthly!)
-        isSubscribed = db.changeSubStatus(subStatus: false, userid: userID!)
+        isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
+        quizzesLeft = 2 - db.checkQuizzesTaken(userid: userID!, date: dateFormatter.string(from: date))
+        if quizzesLeft! < 0{
+            quizzesLeft = 0
+        }
         subDate.text = "No subscription"
         print("subscription cancelled")
     }
 
     @IBAction func claimRewards(){
+        
         var rankText: String!
+        var endOfSub : String?
         rankText = rank.text!
+        if isSubscribed == true{
+            endOfSub = db.getEnd(userId: userID!)
+        }
+        else{
+            endOfSub = dateFormatter.string(from: date)
+        }
         switch rankText{
             case "Rank 1!":
                 print("hello")
-            subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 1)
+            subDate.text = db.addSubTime(userid: userID!, endDate: endOfSub!, rank: 1)
             claimButton.isHidden = true
             
             case "Rank 2!":
-            subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 2)
+            subDate.text = db.addSubTime(userid: userID!, endDate: endOfSub!, rank: 2)
             claimButton.isHidden = true
             case "Rank 3!":
-            subDate.text = db.addSubTime(userid: userID!, endDate: db.getEnd(userId: userID!), rank: 3)
+            subDate.text = db.addSubTime(userid: userID!, endDate: endOfSub!, rank: 3)
             claimButton.isHidden = true
             default:
                 print("goodbye")
         
         }
         print("rewards claimed")
+        
+        isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
+        quizzesLeft = -1
     }
 }

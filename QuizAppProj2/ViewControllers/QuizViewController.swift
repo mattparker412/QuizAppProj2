@@ -90,7 +90,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             return 150
         case 1:
-            return 43.5
+            return 75
         default:
             return 0
         }
@@ -116,7 +116,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 0:
             return 20
         case 1:
-            return 10
+            return 20
         default:
             return 0
         }
@@ -135,11 +135,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     let createMenu = CallMenuList()
     
     
-    
+    var rankscore : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         var time = clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer, errorLabel : errorLabel)
 //        switch techChoice{
 //        case 1:
@@ -159,7 +159,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func pressNext(_ sender: Any) {
         //store answer
         let calculator = CalculateRanking()
-        var rankscore : Int?
+        
         
         if quizTimer.text == "Out of time!"{
             clock.stopTimerTest()
@@ -174,7 +174,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                 quizzesLeft! -= 1
             }
         
-            performSegue(withIdentifier: "quizSubmitted", sender: self)
+            self.performSegue(withIdentifier: "quizSubmitted", sender: self)
             //performSegue(withIdentifier: "quizSubmitted", sender: self)
         } else{
             if answerSelection == nil{
@@ -185,9 +185,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             if answerSelection == correctLocation{
                 totalCorrect += 1
             }
-            else{
-                print("Selected row:",answerSelection!,"Correct answer was:", correctLocation!)
-            }
+//            else{
+//                print("Selected row:",answerSelection!,"Correct answer was:", correctLocation!)
+//            }
             remainingQuestions.remove(at: pickQuestion!)
             if questionNumber < 4 {
             pickQuestion = Int.random(in: 0...(4-questionNumber))
@@ -214,13 +214,24 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                     quizzesLeft! -= 1
                 }
             
-                performSegue(withIdentifier: "quizSubmitted", sender: self)
+                self.performSegue(withIdentifier: "quizSubmitted", sender: self)
             }
             if questionNumber != 6{
                 answerSelection = nil
                 quizTable.reloadData()
+                errorLabel.text = ""
             }
         }
+        
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "quizSubmitted"{
+            print("entered prepare for segue")
+            let nextVC = segue.destination as? QuizSubmittedViewController
+            nextVC?.score = rankscore!
+        }
+    }
+    
+    
 
 }

@@ -20,14 +20,18 @@ class User {
     // IsSubscribed and IsBlocked files.
     var subscribed: Int
     var blocked: Int
+    var start: String
+    var end: String
     
-    init(id: Int, name: String, password: String, subscribed: IsSubscribed, blocked: IsBlocked){
+    init(id: Int, name: String, password: String, subscribed: IsSubscribed, blocked: IsBlocked, startDate: String, endDate: String){
         
         self.id = id
         self.name = name
         self.password = password
         self.subscribed = subscribed.rawValue
         self.blocked = blocked.rawValue
+        self.start = startDate
+        self.end = endDate
     }
     
 }

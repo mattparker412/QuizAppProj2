@@ -26,9 +26,11 @@ class InitialDbInserts{
     var data = [Question]()
     
     // This array holds three User objects. The third user is subscribed.
-    var initialUsers = [User(id: 1, name: "user1", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked),
-                        User(id:2, name:"user2", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked),
-                        User(id:3, name:"user3", password: "234", subscribed: .isSubscribed, blocked: .isNotBlocked)]
+    var initialUsers = [User(id : 1,name: "user1", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
+                        User(id : 2,name:"user2", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
+                        User(id : 3,name:"user3", password: "234", subscribed: .isSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 4,name:"user4", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 5,name:"user5", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 6,name: "user6", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
+                        User(id : 7,name:"user7", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""),
+                        User(id : 8,name:"user8", password: "234", subscribed: .isSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 9,name:"user9", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: ""), User(id : 10,name:"user10", password: "123", subscribed: .isNotSubscribed, blocked: .isNotBlocked, startDate: "", endDate: "")]
     
     // This array holds the initial technologies (Spring, Java, Android).
     var initialTechnologies = [Technology(id: 1, name:"Swift"), Technology(id:2, name:"Java"), Technology(id: 3, name: "Android")]
@@ -323,7 +325,7 @@ class InitialDbInserts{
         // Create the tables.
         
         // User Table.
-        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer)", nil, nil, nil) != SQLITE_OK
+        if sqlite3_exec(db, "create table if not exists user (id integer primary key autoincrement, name text, password text, isSubscribed integer, isBlocked integer, startSubDate text, endSubDate text)", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create user table --> ", err)
@@ -378,7 +380,7 @@ class InitialDbInserts{
             
             
             
-            let query = "insert into user (id, name, password, isSubscribed, isBlocked) values (?,?,?,?,?)"
+            let query = "insert into user (id, name, password, isSubscribed, isBlocked, startSubDate, endSubDate) values (?,?,?,?,?,'','')"
         
             if sqlite3_prepare_v2(db, query, -1, &statement, nil) != SQLITE_OK {
                 let err = String(cString: sqlite3_errmsg(db)!)
@@ -389,7 +391,7 @@ class InitialDbInserts{
             if sqlite3_bind_int(statement, 1, (Int32(u.id))) != SQLITE_OK{
                 let err = String(cString: sqlite3_errmsg(db)!)
                 print(err)
-            
+
             }
         
             if sqlite3_bind_text(statement, 2, (u.name! as NSString).utf8String, -1, nil ) != SQLITE_OK{
