@@ -60,12 +60,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
         
         //access data and append to messages array
         // can use -userName to indicate who sent message or we can try uploading images for the message display name
-        messages.append(Message(sender: otherUser, messageId: "1", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello World - John")))
-        messages.append(Message(sender: currentUser, messageId: "2", sentDate: Date().addingTimeInterval(-70000), kind: .text("How is it going - Costin")))
-        messages.append(Message(sender: otherUser, messageId: "3", sentDate: Date().addingTimeInterval(-50000), kind: .text("Here is a long reply - Matthew")))
-        messages.append(Message(sender: currentUser, messageId: "4", sentDate: Date().addingTimeInterval(-40000), kind: .text("Long message Long message Long message Long message Long message")))
-        messages.append(Message(sender: otherUser, messageId: "5", sentDate: Date().addingTimeInterval(-20000), kind: .text("Look, it works. Long messageLong message Long messageLong messageLong messageLong messageLong messageLong messageLong messageLong message")))
-        messages.append(Message(sender: currentUser, messageId: "6", sentDate: Date().addingTimeInterval(-10000), kind: .text("Hahaha")))
+//        messages.append(Message(sender: otherUser, messageId: "1", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello World - John")))
+//        messages.append(Message(sender: currentUser, messageId: "2", sentDate: Date().addingTimeInterval(-70000), kind: .text("How is it going - Costin")))
+//        messages.append(Message(sender: otherUser, messageId: "3", sentDate: Date().addingTimeInterval(-50000), kind: .text("Here is a long reply - Matthew")))
+//        messages.append(Message(sender: currentUser, messageId: "4", sentDate: Date().addingTimeInterval(-40000), kind: .text("Long message Long message Long message Long message Long message")))
+//        messages.append(Message(sender: otherUser, messageId: "5", sentDate: Date().addingTimeInterval(-20000), kind: .text("Look, it works. Long messageLong message Long messageLong messageLong messageLong messageLong messageLong messageLong messageLong message")))
+//        messages.append(Message(sender: currentUser, messageId: "6", sentDate: Date().addingTimeInterval(-10000), kind: .text("Hahaha")))
         for index in 0..<db.getFeedBacks().count{
             var name = db.getFeedBacks()[index]["name"]
             var message = db.getFeedBacks()[index]["feedback"]
