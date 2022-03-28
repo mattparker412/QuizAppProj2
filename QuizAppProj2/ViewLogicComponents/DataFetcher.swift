@@ -68,24 +68,9 @@ class DataFetcher{
         }
         DispatchQueue.global().asyncAfter(deadline: .now()
                                           + (pagination ? 3 : 2), execute: { [self] in
-           // var originalData = [String]()
-//            switch users.count{
-//            case 5:
-//                originalData = [users[0],users[1],users[2],users[3],users[4]]
-//            case 4:
-//                originalData = [users[0],users[1],users[2],users[3]]
-//            case 3:
-//                originalData = [users[0],users[1],users[2]]
-//            case 2:
-//                originalData = [users[0],users[1]]
-//            case 1:
-//                originalData = [users[0]]
-//            default:
-//                print("no more data")
-//            }
             
             
-            var originalData = [String]()//[users[0],users[1],users[2],users[3],users[4]]
+            var originalData = [String]()
             var newData = [String]()
             guard getFetchFunctionCount > 0 else {
                 print("inside guard")
@@ -103,18 +88,6 @@ class DataFetcher{
                 getFetchFunctionCount += 1
                 return
             }
-            //removeFromUsers(removeArray: originalData)
-            //print(users)
-//            users.remove(at: 1)
-//            users.remove(at: 1)
-//            users.remove(at: 2)
-//            users.remove(at: 3)
-//            users.remove(at: 4)
-//            for index in 0..<5{
-//                print(users[index])
-//                originalData.append(users[index])
-//                users.remove(at: index)
-//            }
             print(getFetchFunctionCount)
             if getFetchFunctionCount > 0{
                 //print(users)
@@ -124,51 +97,8 @@ class DataFetcher{
                         newData.append(user)
                     }
                 }
-                print("inside if")
-                print(newData)
-//                newData = updateData() as! [String]
-//                print(newData)
             }
             
-//            //let users = self.db.getAllUsers()
-//            // This keeps track of location within the users array.
-//            var location:Int = 0
-//            //This holds the originalData.
-//            var originalData = [String]()
-//
-//            for index in 0..<5{
-//                if(!originalData.contains(self.users[index])){
-//                originalData.append(self.users[index])
-//                    location += 1
-//                }
-//            }
-//            print(originalData)
-//
-//            // This holds the new data. It should update when the getNewData() function is run.
-//            var newData = [String]()
-//            var count = 0
-//
-//            while(self.users.count > location)
-//            {
-//
-//                newData = self.getNewData(location:location,size: 5)
-//                location += 5
-//                count += 1
-//              print("--------------------------------------------********************************")
-//                for s in newData{
-//                    print("new data user name ------> ", s)
-//                }
-//                print(count)
-//
-//            }
-//            guard getFetchFunctionCount > 0 else {
-//                completion(.success(pagination && getFetchFunctionCount > 0 ? newData : originalData))
-//                if pagination{
-//                    self.isPaginating = false
-//                }
-//                getFetchFunctionCount += 1
-//                return
-//            }
             completion(.success(pagination && getFetchFunctionCount > 0 ? newData : originalData))
             if pagination{
                 self.isPaginating = false

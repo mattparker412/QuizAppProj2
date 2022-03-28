@@ -71,8 +71,7 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
                 isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
                 
                 db.updateSubStartDate(userid: userID!, subStatus: isSubscribed, subscriptionType: isMonthly!)
-                //db.updateSubEndDate(userid: userID!, startDate: db.getSubStartDate(userid: userID!), subStatus: isSubscribed, subscriptionType: isMonthly!)
-                //print(isSubscribed)
+
                 quizzesLeft = -1
                 return true
             }

@@ -2,8 +2,10 @@
 //  CustomCollectionViewCell.swift
 //  CollectionDemo
 //
-//  Created by Asha Rani on 25/02/22.
+//  Created by admin on 25/02/22.
 //
+
+
 
 import UIKit
 

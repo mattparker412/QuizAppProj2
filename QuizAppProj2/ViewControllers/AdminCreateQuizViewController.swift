@@ -22,7 +22,6 @@ class AdminCreateQuizViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var wrongAnswerThree: UITextField!
     @IBOutlet weak var correctAnswer: UITextField!
     var pickedTechnology : Int = 1
-    //var placeHolderCount = 1
     
     
     let technologies = ["Swift", "Java", "Android"]
@@ -62,15 +61,7 @@ class AdminCreateQuizViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     @IBAction func submitQuestion(_ sender: Any) {
-        //print data that needs to be stored
-       // print(placeHolderCount)
-      //  guard placeHolderCount < 5 else{
-       //     print("questions cannot exceed 5")
-       //     return
-       // }
-       // print("past guard")
         print(pickedTechnology)
-       // print(quizName.text!)
         print(question.text!)
         print(wrongAnswerOne.text!)
         print(wrongAnswerTwo.text!)
@@ -130,13 +121,6 @@ class AdminCreateQuizViewController: UIViewController, UIPickerViewDelegate, UIP
         technologyPicker.dataSource = self
         technologyPicker.delegate = self
         UNUserNotificationCenter.current().delegate = self
-//        let center = UNUserNotificationCenter.current()
-//        center.requestAuthorization(options: [.alert, .sound], completionHandler: {(granted, error) in})
-//
-//        let content = UNMutableNotificationContent()
-//        content.title = "New Quizz"
-//        content.body = "A new " + String(pickedTechnology) + " is available."
-        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: { [self](granded, err) in
             self.notificationGranded = granded
             print("inside notificaiton")

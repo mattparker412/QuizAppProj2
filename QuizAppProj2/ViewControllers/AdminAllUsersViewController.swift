@@ -35,8 +35,6 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
         print("user")
         print(user)
         self.performSegue(withIdentifier: "toUserInfo", sender: self)
-//        let navigator = NavigateToController()
-//        navigator.navToController(current: self, storyboard: "Admin", identifier: "userInfo", controller: UserInfoViewController())
     }
     private func createSpinnerFooter() -> UIView{
         let footerView = UIView(frame: CGRect(x:0,y:0, width: view.frame.size.width, height:100))
@@ -71,36 +69,27 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
         return 50
     }
     
-    
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "User List"
     }
 
-    //creates tableview
     private let tableView : UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        //tableView.backgroundColor = UIColor(red: 0/255, green: 117/255, blue: 227/255, alpha: 0)
         return tableView
         
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0/255, green: 117/255, blue: 227/255, alpha: 1)
-        // Do any additional setup after loading the view.
         
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.backgroundColor = .clear
-        
-
-        //implement tableviews delegate
         tableView.delegate = self
     }
 
-    
-// When scrolling down too quickly, it seems like program gets malloc errors. need to debuk/error check this later
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height){
@@ -110,7 +99,6 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             self.tableView.tableFooterView = createSpinnerFooter()
-            //print("right before function call in scroll view")
             dataFetcher.fetchData(pagination: true){[weak self] result in
                 DispatchQueue.main.async {
                     self?.tableView.tableFooterView = nil

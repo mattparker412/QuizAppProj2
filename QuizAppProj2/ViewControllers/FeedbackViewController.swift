@@ -161,10 +161,6 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-//    @IBAction func navToChatView(_ sender: Any) {
-//        let navigator = NavigateToController()
-//        navigator.navToController(current: self, storyboard: "Main", identifier: "chatPage", controller: ChatViewController())
-//    }
     
     @IBAction func activeMicro(_ sender: Any) {
         
@@ -173,15 +169,11 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
             startSpeechRec()
             micro.setTitle("stop", for: .normal)
             micro.tintColor = .red
-            
-         //   sender.setTitle("stop", for: .normal)
         }else{
             cancelSpeechRec()
             micro.setTitle("start", for: .normal)
             micro.tintColor = .green
-            
-            
-          //  sender.setTitle("start", for: .normal)
+
         }
     }
     

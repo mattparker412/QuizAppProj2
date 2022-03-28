@@ -15,14 +15,11 @@ class QuizPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
         
     let clock = Clock()
-    //need to add animation for disappearing start button when start is clicked and display quiz questions
     @IBAction func startTimer(_ sender: UIButton) {
         print("button pressed")
-        //clock.countdownTimer(secondsRemaining: 1800)
         var time = 1800
         var minutes : String?
         var seconds : String?
@@ -35,7 +32,6 @@ class QuizPageViewController: UIViewController {
                 fullTime = "\(minutes!):\(seconds!)"
                 self.remainingTime.text = fullTime!
                 time -= 1
-                //return time
             } else {
                 Timer.invalidate()
             }

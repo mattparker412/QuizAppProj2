@@ -185,12 +185,6 @@ class DBHelper{
             let id = Int(sqlite3_column_int(pointer,0))
             let name = String(cString:sqlite3_column_text(pointer, 1))
             let pass = String(cString: sqlite3_column_text(pointer, 2))
-           // let isSubRaw = Int(sqlite3_column_int(pointer, 3))
-           // let isBlockedRaw = Int(sqlite3_column_int(pointer, 4))
-            
-            //Create the enums.
-           // let isSubscribed = IsSubscribed(rawValue: isSubRaw)
-           // let isBlocked = IsBlocked(rawValue: isBlockedRaw)
             
             // Create a user object.
             let admin = Admin(id: id, name: name, password: pass)
@@ -301,12 +295,6 @@ class DBHelper{
             let id = Int(sqlite3_column_int(pointer,0))
             let name = String(cString:sqlite3_column_text(pointer, 1))
             let pass = String(cString: sqlite3_column_text(pointer, 2))
-           // let isSubRaw = Int(sqlite3_column_int(pointer, 3))
-            //let isBlockedRaw = Int(sqlite3_column_int(pointer, 4))
-            
-            //Create the enums.
-           // let isSubscribed = IsSubscribed(rawValue: isSubRaw)
-           // let isBlocked = IsBlocked(rawValue: isBlockedRaw)
             
             // Create a user object.
             let admin = Admin(id: id, name: name, password: pass)
@@ -609,20 +597,6 @@ class DBHelper{
             {
                 let name = String(cString:sqlite3_column_text(pointer, 0))
                 
-                // Get the id.
-                /*let id = Int(sqlite3_column_int(pointer,0))
-                let name = String(cString:sqlite3_column_text(pointer, 1))
-                let pass = String(cString: sqlite3_column_text(pointer, 2))
-                let isSubRaw = Int(sqlite3_column_int(pointer, 3))
-                let isBlockedRaw = Int(sqlite3_column_int(pointer, 4))
-                
-                //Create the enums.
-                let isSubscribed = IsSubscribed(rawValue: isSubRaw)
-                let isBlocked = IsBlocked(rawValue: isBlockedRaw)
-                
-                // Create a user object.
-                let user = User(id: id, name: name, password: pass, subscribed: isSubscribed!, blocked: isBlocked!)
-            */
                 // Add the returned users to the array.
                 userList.append(name)
             }
@@ -780,10 +754,6 @@ class DBHelper{
     }
     func getTopRanking(techID : Int) -> [Ranking]{
         var pointer : OpaquePointer?
-        
-        //var userRankingDict = [Int:Int]()
-        //var dictUsers = [Int]()
-        //var dictRankings = [Int]()
         var rankingArray = [Ranking]()
         
         
@@ -795,23 +765,12 @@ class DBHelper{
         }
         
         while(sqlite3_step(pointer) == SQLITE_ROW){
-            
-            //userRankingDict[Int(sqlite3_column_int(pointer, 0))] = Int(sqlite3_column_int(pointer, 2))
-            //dictUsers.append(Int(sqlite3_column_int(pointer, 0)))
-            //dictRankings.append(Int(sqlite3_column_int(pointer, 2)))
             let name = String(cString:sqlite3_column_text(pointer, 0))
             let id = Int(sqlite3_column_int(pointer, 1))
             let rankscore = Int(sqlite3_column_int(pointer, 3))
             let rankingObj = Ranking(username: name, userId: id, technologyId: techID, rank: rankscore)
             rankingArray.append(rankingObj)
         }
-//        print(dictUsers)
-//        print(dictRankings)
-//        for r in rankingArray{
-//            print(r.userId)
-//            print(r.technologyId)
-//            print(r.ranking)
-//        }
         return rankingArray
     }
     func getUserName(userId:Int) -> String{
@@ -1099,9 +1058,7 @@ class DBHelper{
             } else if subscriptionType == false{
                 dateComponent.day = 365
             }
-//            } else if subscriptionType == nil{
-//                dateComponent.day = 0
-//            }
+            
             let futureDate = Calendar.current.date(byAdding: dateComponent, to: Date())
 
             let formatter = DateFormatter()
@@ -1132,29 +1089,6 @@ class DBHelper{
         var pointer : OpaquePointer?
         var newStatus : Int?
         
-        //date data supposed to be from database
-//        var endOfSubscription = Date() // gets date. can add 10, 20, or 30 if option is available because of rank 1,2,3 position in a technology
-//
-//
-//        // example of adding more days to user who has good rank
-//        var dateComponent = DateComponents()
-//        if subscriptionType == true{
-//            dateComponent.day = 30
-//        } else if subscriptionType == false{
-//            dateComponent.day = 365
-//        }
-//        let futureDate = Calendar.current.date(byAdding: dateComponent, to: Date())
-//
-//        let formatter = DateFormatter()
-//        formatter.timeZone = .current
-//        formatter.dateStyle = .medium
-//        formatter.locale = .current
-//        formatter.dateFormat = "MM/dd/yyyy"
-//
-//        let startDateAsString = formatter.string(from: Date())
-//        let endDateAsString = formatter.string(from: futureDate!)
-        //subDate.text = formatter.string(from: futureDate!)
-        
         if subStatus == false{
             newStatus = 1
         }
@@ -1162,20 +1096,10 @@ class DBHelper{
             newStatus = 0
         }
         let query2 = "update user set isSubscribed = " + String(newStatus!) + " where id = " + String(userid)
-       // let query3 = "update user set startSubDate = " + String(startDateAsString) + " where id = " + String(userid)
-        //let query4 = "update user set endSubDate = " + String(endDateAsString) + " where id = " + String(userid)
         if sqlite3_prepare(db, query2, -1, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at insert sub status prep --> ", err)
         }
-//        if sqlite3_prepare(db, query3, -1, &pointer, nil) != SQLITE_OK{
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("There is an error at insert sub status prep --> ", err)
-//        }
-//        if sqlite3_prepare(db, query4, -1, &pointer, nil) != SQLITE_OK{
-//            let err = String(cString: sqlite3_errmsg(db)!)
-//            print("There is an error at insert sub status prep --> ", err)
-//        }
         
         if sqlite3_step(pointer) != SQLITE_DONE{
             let err = String(cString: sqlite3_errmsg(db)!)

@@ -7,14 +7,27 @@
 
 import Foundation
 import UIKit
+
+/// Creates a countdown clock
 class Clock{
     var timerTest : Timer?
     var leftOver = 0
     var endQuiz = false
+    
     func getTime(timeCount : (Int,Int,Int))->(Int,Int,Int){
         return timeCount
     }
-    func countdownTimer(secondsRemaining : Int, remainingTime : UILabel, errorLabel : UILabel){
+    
+    /**
+            Creates the actual countdown clock and displays it
+                -Parameters:
+                    -secondsRemaining: amount of time left in quiz
+                    -remainingTime: label that countdown gets displayed in
+                -Returns:
+                    -remainingTime: function essentially returns this value
+                    -errorLabel: if there is an error, function essentially returns this value
+     */
+    func countdownTimer(secondsRemaining: Int, remainingTime: UILabel, errorLabel: UILabel){
         
         var time = secondsRemaining
         var minutes : String?
@@ -30,8 +43,7 @@ class Clock{
                 self.leftOver = time
                 print ("\(display)")
                 time -= 1
-                
-                //return time
+
             }
             else{
                 remainingTime.text = "Out of time!"

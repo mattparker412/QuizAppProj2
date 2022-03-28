@@ -22,11 +22,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     var correctLocation : Int?
     var answerSelection : Int?
     var totalCorrect = 0
-//    var swiftQuestionData = ["What is Swift?", "What was the original name for iOS?", "What is the difference between a Table View and Collection View?", "What is XCode?", "How many ways to pass data from one controller to another?"]
-//    var swiftQuestionAnswer1 = ["A bird", "Internal Operating System", "They are the same", "Apple's IDE for macOS", "1"]
-//    var swiftQuestionAnswer2 = ["A plane", "iPhone Operating System", "Table view scrolls horizontally", "A video game about the letter X", "3"]
-//    var swiftQuestionAnswer3 = ["Something going fast", "Immortal Operating System", "Collection View is a collection of labels", "Microsoft's IDE for Windows", "10"]
-//    var swiftQuestionAnswer4 = ["A language developed by Apple for iOS", "Illegal Operating System", "Table view scrolls vertically", "A code editor for Android", "5"]
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return 1
@@ -50,23 +46,18 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if cell.answerLabel.text == quizChoice?.questions[remainingQuestions[pickQuestion!]].rightAnswer{
                     correctLocation = 1
                 }
-//                cell.answerLabel.text = swiftQuestionAnswer1[pickQuestion!]
-//                swiftQuestionAnswer1.remove(at: pickQuestion!)
-//                print(swiftQuestionAnswer1)
+
             case 1:
                 cell.answerLabel.text = quizChoice?.questions[remainingQuestions[pickQuestion!]].answer2
                 if cell.answerLabel.text == quizChoice?.questions[remainingQuestions[pickQuestion!]].rightAnswer{
                     correctLocation = 2
                 }
-//                cell.answerLabel.text = swiftQuestionAnswer2[pickQuestion!]
-//                swiftQuestionAnswer2.remove(at: pickQuestion!)
+
             case 2:
                 cell.answerLabel.text = quizChoice?.questions[remainingQuestions[pickQuestion!]].answer3
                 if cell.answerLabel.text == quizChoice?.questions[remainingQuestions[pickQuestion!]].rightAnswer{
                     correctLocation = 3
                 }
-//                cell.answerLabel.text = swiftQuestionAnswer3[pickQuestion!]
-//                swiftQuestionAnswer3.remove(at: pickQuestion!)
             
             default:
                 print("impossible error")
@@ -81,8 +72,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.answerLabel.numberOfLines = 3
             print(pickQuestion!)
             cell.answerLabel.text = quizChoice?.questions[remainingQuestions[pickQuestion!]].question
-            //swiftQuestionData.remove(at: pickQuestion!)
-            //print(swiftQuestionData)
         }
         
         return cell
@@ -143,18 +132,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         var time = clock.countdownTimer(secondsRemaining: 1800, remainingTime : quizTimer, errorLabel : errorLabel)
-//        switch techChoice{
-//        case 1:
-//            textLabel.text = "Swift"
-//        case 2:
-//            textLabel.text = "Java"
-//        case 3:
-//            textLabel.text = "Android"
-//        default:
-//            textLabel.text = "Error"
-//            
-//        }
-        
 
     }
     
@@ -177,7 +154,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         
             self.performSegue(withIdentifier: "quizSubmitted", sender: self)
-            //performSegue(withIdentifier: "quizSubmitted", sender: self)
         } else{
             if answerSelection == nil{
                 print("please select an answer")
@@ -187,9 +163,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             if answerSelection == correctLocation{
                 totalCorrect += 1
             }
-//            else{
-//                print("Selected row:",answerSelection!,"Correct answer was:", correctLocation!)
-//            }
             remainingQuestions.remove(at: pickQuestion!)
             if questionNumber < 4 {
             pickQuestion = Int.random(in: 0...(4-questionNumber))

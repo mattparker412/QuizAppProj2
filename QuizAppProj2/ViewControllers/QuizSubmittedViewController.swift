@@ -43,7 +43,7 @@ class QuizSubmittedViewController: UIViewController, MenuControllerDelegate {
         quizLeft.textAlignment = .center
         quizLeft.adjustsFontSizeToFitWidth = true
         quizLeft.center.x = view.center.x
-        //quizLeft.center = CGPoint(x: view.center.x, y: 50)
+
         if isSubscribed == false{
             quizLeft.text = "Quizzes Left: \(quizzesLeft!)"
             view.addSubview(quizLeft)
