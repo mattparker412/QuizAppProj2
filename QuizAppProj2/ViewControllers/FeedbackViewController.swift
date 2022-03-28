@@ -13,6 +13,8 @@ import SideMenu
 class FeedbackViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MenuControllerDelegate {
 
     @IBOutlet weak var micro: UIButton!
+    @IBOutlet weak var fdbackMsg: UILabel!
+    @IBOutlet weak var submitted: UILabel!
     let audioEng = AVAudioEngine()
     let req = SFSpeechAudioBufferRecognitionRequest()
     let speechR = SFSpeechRecognizer()
@@ -76,6 +78,10 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         
        // let db = DBHelper()
         
+        fdbackMsg.numberOfLines = 10
+        fdbackMsg.textColor = color
+        submitted.textColor = color
+        
         let feedBacks = db.getFeedBacks()
            //print(feedBacks)
            
@@ -87,6 +93,8 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
     
     func startSpeechRec(){
         finalMsg = ""
+        fdbackMsg.text = ""
+        submitted.text = ""
         let nd = audioEng.inputNode
         let recordF = nd.outputFormat(forBus: 0)
         nd.installTap(onBus: 0, bufferSize: 1024, format: recordF)
@@ -122,6 +130,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func cancelSpeechRec(){
+//        let fdbackMsg = UILabel(frame: CGRect(x: self.view.safeAreaInsets.left, y: 20, width: self.view.frame.width, height: 500))
         rTask.finish()
         rTask.cancel()
         rTask = nil
@@ -134,9 +143,6 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         print("final msg")
         print(finalMsg!)
         
-        let fdbackMsg = UILabel(frame: CGRect(x: self.view.safeAreaInsets.left, y: 20, width: self.view.frame.width, height: 500))
-        fdbackMsg.numberOfLines = 10
-        fdbackMsg.textColor = .systemPink
         fdbackMsg.text = finalMsg!
         
         self.view.addSubview(fdbackMsg)
@@ -149,6 +155,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
             //store message id
             // message in finalMsg
             db.saveFeedback(userId: userID!, feedBack: finalMsg!)
+            submitted.text = "Submitted"
         } else {
             print("no message to send")
         }
