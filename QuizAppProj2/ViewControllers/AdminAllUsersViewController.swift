@@ -132,7 +132,7 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
         let svc = segue.destination as!  UserInfoViewController
         print("user again")
         print(user!)
-        svc.userName = user
+        svc.username = user
     }
 }
 
