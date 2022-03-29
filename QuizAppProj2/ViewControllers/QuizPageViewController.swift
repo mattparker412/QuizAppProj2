@@ -17,9 +17,8 @@ class QuizPageViewController: UIViewController {
 
     }
         
-    let clock = Clock()
+    let clock = Clock() /// Instantiates clock class
     @IBAction func startTimer(_ sender: UIButton) {
-        print("button pressed")
         var time = 1800
         var minutes : String?
         var seconds : String?

@@ -7,35 +7,33 @@
 
 import UIKit
 
-//adminallusersviewcontroller operates similarly to rankingviewcontroller
+/// Displays list of users in table view for admin to see
 class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
-    
-    
     private let dataFetcher = DataFetcher()
     private var data = [String]()
     var user: String?
     
+    /// Defines number of data in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
     }
-    
+    /// Returns the specific cell value in a row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for : indexPath)
         cell.textLabel?.text = data[indexPath.row]
         cell.backgroundColor = UIColor(red: 0/255, green: 117/255, blue: 227/255, alpha: 1)
         return cell
     }
-    
+    /// If a row is selected navigate to user info page and populate data in page with this specific user's data
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow //optional, to get from any UIButton for example
-
         let currentCell = tableView.cellForRow(at: indexPath!)! as UITableViewCell
-
         user = currentCell.textLabel!.text
-        print("user")
-        print(user)
         self.performSegue(withIdentifier: "toUserInfo", sender: self)
     }
+    /**
+        Spinner animation in footer when loading data
+     */
     private func createSpinnerFooter() -> UIView{
         let footerView = UIView(frame: CGRect(x:0,y:0, width: view.frame.size.width, height:100))
         let spinner = UIActivityIndicatorView()
@@ -44,15 +42,14 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
         spinner.startAnimating()
         return footerView
     }
-    
+    /**
+            Updates view whenever pagination and data fetching  ends
+     */
     override func viewDidLayoutSubviews() {
-        //super.viewDidLayoutSubviews()
         var callCount = 0
         tableView.frame = view.bounds
-
         if callCount < 1{
             callCount += 1
-            
             dataFetcher.fetchData(pagination: false, completion: {[weak self] result in switch result{
                     case .success(let data):
                         self?.data.append(contentsOf: data)
@@ -65,14 +62,15 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
             })
         }
     }
+    /// Section header height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    
+    /// Section header title
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "User List"
     }
-
+    /// Defines table view
     private let tableView : UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -82,14 +80,14 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0/255, green: 117/255, blue: 227/255, alpha: 1)
-        
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.delegate = self
     }
-
-
+    /**
+                Determines if the view has been scrolled down to a specific height. If it is, then begin fetching data and paginating
+     */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height){
@@ -97,7 +95,6 @@ class AdminAllUsersViewController: UIViewController, UITableViewDelegate, UITabl
                 //data being fetched already
                 return
             }
-            
             self.tableView.tableFooterView = createSpinnerFooter()
             dataFetcher.fetchData(pagination: true){[weak self] result in
                 DispatchQueue.main.async {

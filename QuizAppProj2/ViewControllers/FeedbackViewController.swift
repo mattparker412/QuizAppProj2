@@ -10,6 +10,7 @@ import AVFoundation
 import Speech
 import SideMenu
 
+/// Creates display for feedback and implements functionality for voice recording and submitting feedback to DB
 class FeedbackViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MenuControllerDelegate {
 
     @IBOutlet weak var micro: UIButton!
@@ -21,6 +22,7 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
     var rTask : SFSpeechRecognitionTask!
     var isStart = false
     var finalMsg : String?
+    //can delete tableview stuff probably
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -32,30 +34,26 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    //something happens when cell clicked
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        //show chat messages
-        print("clicked")
         let vc = ChatViewController()
         vc.title = "Chat"
-        //navigationController?.pushViewController(vc, animated: true)
         self.present(vc, animated:false, completion: nil)
     }
     
 
-    
-    //@IBOutlet var myTable : UITableView!
-    
     private var sideMenu: SideMenuNavigationController?
     let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
     let menuCaller = CreateSideMenu()
     
+    
+    /// Opens side menu view when clicked
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true)
     }
 
+    /// Selects row in table view of side menu and then navigates to the associated view controller to said row
     let navigator = NavigateToController()
     func didSelectMenuItem(named: String) {
         sideMenu?.dismiss(animated: true, completion: { [weak self] in
@@ -71,26 +69,14 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         let menu = MenuController(with: views)
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
-        // Do any additional setup after loading the view.
-        //myTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        //myTable.delegate = self
-        //myTable.dataSource = self
-        
-       // let db = DBHelper()
         
         fdbackMsg.numberOfLines = 10
         fdbackMsg.textColor = color
         submitted.textColor = color
-        
-        let feedBacks = db.getFeedBacks()
-           //print(feedBacks)
-           
-           for f in feedBacks{
-               print(f["name"]! + " ----> " + f["feedback"]!)
-           }
     }
 
     
+    /// Starts speech recognition
     func startSpeechRec(){
         finalMsg = ""
         fdbackMsg.text = ""
@@ -129,8 +115,8 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    /// Cancels speech recognition
     func cancelSpeechRec(){
-//        let fdbackMsg = UILabel(frame: CGRect(x: self.view.safeAreaInsets.left, y: 20, width: self.view.frame.width, height: 500))
         rTask.finish()
         rTask.cancel()
         rTask = nil
@@ -149,19 +135,18 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    /// Submits message to DB
     @IBAction func submitMsg(_ sender: Any) {
         if(!(finalMsg ?? "").isEmpty && micro.currentTitle == "start"){
-            //send data to database
-            //store message id
-            // message in finalMsg
             db.saveFeedback(userId: userID!, feedBack: finalMsg!)
             submitted.text = "Submitted"
         } else {
-            print("no message to send")
+            submitted.text = "No message to send"
         }
     }
     
     
+    /// Acitavates microphone button and calls start or stop speech reconigiton functions in order to record voice
     @IBAction func activeMicro(_ sender: Any) {
         
         isStart = !isStart
@@ -177,8 +162,8 @@ class FeedbackViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    /// Sends the submitted message to the next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("enter prepare")
         let svc = segue.destination as!  ChatViewController
             svc.messageToAppend = finalMsg ?? ""
         }

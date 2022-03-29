@@ -7,12 +7,18 @@
 
 import UIKit
 import SideMenu
+
+/// Provides UI to choose whether or not to continue as guest or to get a subscription. Only shown if user is not subscribed. Otherwise program flow navigates directly to MyAccount page.
 class UserPageViewController: UIViewController, MenuControllerDelegate {
 
     private var sideMenu: SideMenuNavigationController?
     let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
-    let menuCaller = CreateSideMenu()
     
+    let menuCaller = CreateSideMenu() // Instantiates side menu via the CreateSideMenu class
+    
+    /**
+            Navigates to the selected view when tapped in the Side Menu table view
+     */
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true)
     }
@@ -25,10 +31,8 @@ class UserPageViewController: UIViewController, MenuControllerDelegate {
             }
         }
         sideMenu?.dismiss(animated: true, completion: { [weak self] in
-            
             var controllerToNav = self?.navigator.viewControllerSwitch(named: named)
             self?.navigator.navToController(current: self!, storyboard: controllerToNav![0] as! String, identifier: controllerToNav![1] as! String, controller: controllerToNav![2] as! UIViewController)
-
         })
     }
     
@@ -37,11 +41,6 @@ class UserPageViewController: UIViewController, MenuControllerDelegate {
         let menu = MenuController(with: views)
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
-
-        print("inside user")
-        print(userID)
-        print(userName)
-        
     }
     
 

@@ -20,8 +20,12 @@ var quizzesLeft : Int?
 let color = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)
 
 
-
+/// Loads and displays initial view to user
 class ViewController: UIViewController {
+    
+    // When running the program for the first time, uncomment line 29, 39, and 40--all the statements that involve var i
+    // Uncommenting these statements will allow a database to be created and initialized in SQLlite
+    // Once the database is first created, these statements can be commented back out
     //var i = InitialDbInserts()
     
     @IBOutlet weak var user: UITextField!
@@ -46,7 +50,6 @@ class ViewController: UIViewController {
         
         var f1 = db.prepareDatabaseFile()
                 if sqlite3_open(f1, &db.db) != SQLITE_OK{
-                    print("can't open database")
                 }
                
         pass.isSecureTextEntry = true
@@ -62,6 +65,9 @@ class ViewController: UIViewController {
         }
     }
     
+    /**
+            Login function utilizes input validation class to validate input and makes DB query to check if a user is blocked or subscribed, then handles the click event based on this
+     */
     let validation = InputValidation()
     @IBAction func login(_ sender: Any) {
         if db.checkUsernameExists(userName: user.text!) || db.checkAdminUsernameExists(userName: user.text!){
@@ -107,8 +113,6 @@ class ViewController: UIViewController {
                 
                 view.addSubview(wrongPass)
                 wrongPass.shake()
-                
-                print("error wrong password")
             }
         }
         else{
@@ -116,16 +120,13 @@ class ViewController: UIViewController {
             
             view.addSubview(wrongPass)
             wrongPass.shake()
-            print("username does not exist, please sign up")
         }
     }
     
     
-    func nav(){
-        print("inside nav")
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "userPage") as! UserPageViewController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
-    }
+    /**
+            Navigates to the continue as guest or subscribe view if the user is not subscribed.
+     */
     func navigateToUserController(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         if quizzesLeft != 0{
@@ -136,7 +137,6 @@ class ViewController: UIViewController {
         }
         else{
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UIViewController
-            //self.navigationController?.pushViewController(nextViewController, animated: true)
             self.view?.window?.rootViewController = nextViewController
             self.modalPresentationStyle = .fullScreen
             self.present(nextViewController, animated:false, completion: nil)
@@ -144,6 +144,9 @@ class ViewController: UIViewController {
     
     }
     
+    /**
+            Navigates to the relevant my account view if the user is subscribed.
+     */
     func navigateToMyAccountPage(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "myAccount") as! UIViewController
@@ -151,6 +154,9 @@ class ViewController: UIViewController {
         self.present(nextViewController, animated:false, completion: nil)
     }
     
+    /**
+            Navigates to the administrator initial view if the user logs in as admin.
+     */
     func navigateToAdmin(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Admin", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "adminPage") as! AdminViewController
@@ -160,6 +166,10 @@ class ViewController: UIViewController {
     }
     
 }
+
+/**
+        UIView extension to animate shaking of any error messages
+ */
 extension UIView{
     func shake(){
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")

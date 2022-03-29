@@ -12,7 +12,11 @@ import UIKit
 class InputValidation{
     
     /**
-     
+            Validates the month of credit card information
+                -Parameters
+                    -monthExpire: the month to check
+                -Return
+                    -Returns whether or not the month is valid or not
      */
     func validateMonth(monthExpire: String) -> Bool{
         if(monthExpire.count != 2 || Int(monthExpire)! > 12 || Int(monthExpire)! < 1 || checkContainsOnlyDigits(stringToCheck: monthExpire) == false){
@@ -22,7 +26,11 @@ class InputValidation{
     }
     
     /**
-     
+            Validates the year of credit card information
+                -Parameters
+                    -yearExpire: the month to check
+                -Return
+                    -Returns whether or not the year is valid or not
      */
     func validateYear(yearExpire: String) -> Bool{
         if(yearExpire.count != 2 || Int(yearExpire)! < 22 || Int(yearExpire)! < 1 || checkContainsOnlyDigits(stringToCheck: yearExpire) == false){
@@ -32,7 +40,11 @@ class InputValidation{
     }
     
     /**
-     
+            Validates the CVC of credit card information
+                -Parameters
+                    -cvc: the cvc to check
+                -Return
+                    -Returns whether or not the cvc is valid or not
      */
     func validateCVC(cvc: String) -> Bool{
         if(cvc.count != 3 || checkContainsOnlyDigits(stringToCheck: cvc) == false){
@@ -42,7 +54,11 @@ class InputValidation{
     }
     
     /**
-     
+            Validates the credit card number information
+                -Parameters
+                    -creditCardNumber: the cc number to check
+                -Return
+                    -Returns whether or not the cc number is valid or not
      */
     func validateCCNumber(creditCardNumber: String)-> Bool{
         if(creditCardNumber.count != 16 || checkContainsOnlyDigits(stringToCheck: creditCardNumber) == false){
@@ -57,7 +73,11 @@ class InputValidation{
     }
     
     /**
-     
+            Checks
+                -Parameters
+                    -cvc: the cvc to check
+                -Return
+                    -Returns whether or not the cvc is valid or not
      */
     func checkContainsOnlyDigits(stringToCheck: String) -> Bool{
         let numbersSet = CharacterSet(charactersIn: "0123456789")

@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Defines userinfo page UI
 class UserInfoViewController: UIViewController {
     @IBOutlet weak var user: UILabel!
     @IBOutlet weak var swiftScore: UILabel!
@@ -20,19 +21,14 @@ class UserInfoViewController: UIViewController {
     var blockedStatus : Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-
         blockedStatus = db.getBlockStatus(userID: db.getUserID(userName: username!))
-        
         print(db.getUserID(userName: username!))
          if(String(db.getEnd(userId: db.getUserID(userName: username!))!) == ""){
             subDate.text = "No subscription"
         } else{
             subDate.text = String(db.getEnd(userId: db.getUserID(userName: username!))!)
         }
-
         user.text = username!
-
-        // Do any additional setup after loading the view.
         let scores = (db.getTotalScoreForUser(userName: username!))
         swiftScore.text = String(scores[0])
         iOSScore.text = String(scores[1])
@@ -43,7 +39,9 @@ class UserInfoViewController: UIViewController {
         }
         averageScore.text = String(sumScores/3)
     }
-    
+    /**
+            Updates button in view whenever clicked.
+     */
     override func viewDidLayoutSubviews() {
         if(blockedStatus == 1){
             blockButton.setTitle("Unblock", for: .normal)
@@ -51,6 +49,9 @@ class UserInfoViewController: UIViewController {
             blockButton.setTitle("Block", for: .normal)
         }
     }
+    /**
+            Blocks user if clicked and updates DB to reflect this.
+     */
     @IBAction func blockUser(_ sender: Any) {
         if(db.getBlockStatus(userID: db.getUserID(userName: username!)) == 1){
             blockedStatus = 0
