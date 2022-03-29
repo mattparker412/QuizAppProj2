@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// View controller that is used whenever side menu is created
 class MenuListController: UITableViewController {
 
     var items = ["MyAccount", "Subscription","Quizzes","Feedback","Ranking","Logout"]

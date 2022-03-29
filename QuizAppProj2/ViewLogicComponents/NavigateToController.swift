@@ -10,7 +10,6 @@ import UIKit
 
 /// When class is instanced, can navigate to a defined UIViewcontroller
 class NavigateToController{
-    
     /**
         Navigates to view controller
                 
@@ -38,7 +37,6 @@ class NavigateToController{
         
      */
     func viewControllerSwitch(named: String) -> Array<Any>{
-        
         if named == "MyAccount"{
             return ["Main","myAccount", MyAccountViewController()]
         } else if named == "Subscription"{

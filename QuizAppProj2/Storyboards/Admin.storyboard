@@ -353,6 +353,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="46U-RD-Zy8"/>
         <segue reference="v5c-Nh-vLc"/>
     </inferredMetricsTieBreakers>
     <resources>
