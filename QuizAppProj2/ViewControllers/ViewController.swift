@@ -10,6 +10,8 @@ import UIKit
 import FBSDKLoginKit
 import SQLite3
 
+var i = InitialDbInserts()
+
 var db = DBHelper()
 var userName : String?
 var userID : Int?
@@ -22,7 +24,6 @@ let color = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)
 
 
 class ViewController: UIViewController {
-    //var i = InitialDbInserts()
     
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
@@ -32,8 +33,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // i.connect()
-        //i.insertInitial()
+        //i.connect()
+        i.insertInitial()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         print(dateFormatter.string(from: date))
         
