@@ -19,18 +19,15 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var rank: UILabel!
     @IBOutlet weak var claimButton: UIButton!
-    //var isSubbed = false
-    
-    
     var username: String?
     private var sideMenu: SideMenuNavigationController?
     let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
     let menuCaller = CreateSideMenu()
-    
+    /// If tapped, display side menu
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true)
     }
-
+    /// Creates side menu UI
     let navigator = NavigateToController()
     func didSelectMenuItem(named: String) {
         sideMenu?.dismiss(animated: true, completion: { [weak self] in
@@ -40,7 +37,6 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
 
         })
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let dateFormatter = DateFormatter()
@@ -66,20 +62,19 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         if db.getClaim(userID: userID!) == 1{
             claimButton.isHidden = true
         }
-        
         let date = Date()
         var dateComponent = DateComponents()
-        
-        //in a fully functioning application, dateComponent.day should be set to 0
-        // it is set to 4 for demo purposes
-        //when set to 0, the application claimRewardButton will only be redisplayed the first of every month
+        /**
+            In a fully functioning application, dateComponent.day should be set to 0
+            It is set to the number of days difference to get to the first day of the next month for demo purposes.
+            When set to 0, the application claimRewardButton will only be redisplayed the first of every month
+         */
         dateComponent.day = 4 // set this to 0 to simulate first day of month claim reward functionality
         let exampleDate = Calendar.current.date(byAdding: dateComponent, to: Date())
-        
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: exampleDate!)
         let dayOfMonth = components.day
-        
+        /// Block of if-else-if statements is to determine what rank a person is and
         if myRanks.contains(1){
             rank.text = "Rank 1!"
             if dayOfMonth! == 1{
@@ -99,19 +94,13 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
                 db.setClaim(userID: userID!, claimBool: 1)
             }
         }
-        
         user.text = db.getUserName(userId: userID!)
         var account = db.getUserName(userId: userID!)
-        
         if(isSubscribed == false){
             subDate.text = "No subscription"
-            //isSubscribed = false
         } else {
             subDate.text = String(db.getEnd(userId: userID!)!)
-            //isSubscribed = true
         }
-        
-        // Do any additional setup after loading the view.
         let scores = (db.getTotalScoreForUser(userName: account))
         swiftScore.text = String(scores[0])
         iOSScore.text = String(scores[1])
@@ -122,8 +111,7 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         }
         averageScore.text = String(sumScores/3)
     }
-    
-
+    /// Cancels a user's subscription
     @IBAction func cancelSub(){
         if isSubscribed == false{
             errorLabel.backgroundColor = color
@@ -139,9 +127,8 @@ class MyAccountViewController: UIViewController, MenuControllerDelegate {
         subDate.text = "No subscription"
         print("subscription cancelled")
     }
-
+    /// When clicked, rewards are claimed and DB updated to reflect subscription status changes and any other associated updates
     @IBAction func claimRewards(){
-        
         var rankText: String!
         var endOfSub : String?
         rankText = rank.text!

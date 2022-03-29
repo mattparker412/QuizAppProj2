@@ -9,11 +9,14 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView //sending message dependency
 
+/// Struct that defines the sender of a message
 struct Sender : SenderType{
     var senderId: String
     var displayName: String
     
 }
+
+/// Struct that defines the message
 struct Message : MessageType{
     var sender: SenderType
     
@@ -22,27 +25,26 @@ struct Message : MessageType{
     var sentDate: Date
     
     var kind: MessageKind
-    
-    
 }
+
+/// Displays review history
 class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate,InputBarAccessoryViewDelegate {
-    
     let currentUser = Sender(senderId: "self", displayName: "iOS Academy")
-    
-    //users for displaying review history
     let otherUser = Sender(senderId: "other", displayName: "John Smith")
     var messageToAppend : String = ""
     var messages = [MessageType]()
     
+    /// Gets current sender
     func currentSender() -> SenderType {
         return currentUser
-        
     }
     
+    /// Updates message at specific section location
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
         return messages[indexPath.section]
     }
     
+    /// Defines number of sections in the collection view
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
@@ -69,7 +71,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
             messages.append(Message(sender: otherUser, messageId: String(messages.count+index+1), sentDate: Date(), kind: .text(message!)))
         }
     }
-    
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
         messageInputBar.inputTextView.becomeFirstResponder()
@@ -78,9 +79,5 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
             guard !text.replacingOccurrences(of: " ", with: "").isEmpty else {
                 return
             }
-            
     }
-    
-    
-
 }

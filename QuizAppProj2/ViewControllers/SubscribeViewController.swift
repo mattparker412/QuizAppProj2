@@ -7,6 +7,8 @@
 
 import UIKit
 import SideMenu
+
+/// Defines subscribe page UI
 class SubscribeViewController: UIViewController, MenuControllerDelegate {
 
     @IBOutlet weak var errorLabel: UILabel!
@@ -25,10 +27,12 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
     let views = ["MyAccount","Subscription","Quizzes","Feedback","Ranking","Logout"]
     let menuCaller = CreateSideMenu()
     
+    /// Opens side menu when clicked
     @IBAction func didTapMenu(){
         present(sideMenu!, animated: true)
     }
 
+    /// Creates side menu interface
     let navigator = NavigateToController()
     func didSelectMenuItem(named: String) {
         sideMenu?.dismiss(animated: true, completion: { [weak self] in
@@ -38,40 +42,45 @@ class SubscribeViewController: UIViewController, MenuControllerDelegate {
 
         })
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let menu = MenuController(with: views)
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
     }
-    
+    /**
+            When clicked, indicates user subscribing as monthly
+     */
     @IBAction func checkedMonthly(){
         isMonthly = true
         monthlyButton.setImage(UIImage(systemName: "checkmark.square"), for: UIControl.State.normal)
         annuallyButton.setImage(UIImage(systemName: "square"), for: UIControl.State.normal)
         print("isMonthly")
     }
+    /**
+            When clicked, indicates user subscribing as annually
+     */
     @IBAction func checkedAnnually(){
         isMonthly = false
         monthlyButton.setImage(UIImage(systemName: "square"), for: UIControl.State.normal)
         annuallyButton.setImage(UIImage(systemName: "checkmark.square"), for: UIControl.State.normal)
         print("is annually")
     }
+    
+    /**
+            Defines conditions for when segue should or should not be performed
+     */
     let validator = InputValidation()
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if(validator.validateCreditCard(creditCard: creditCard.text!, cvc: cvc.text!, expMonth: expireMonth.text!, expYear: expireYear.text! , error: errorLabel) == false){
             return false
         } else {
-            
             if isMonthly == nil{
                 errorLabel.text = "Subscription type must be selected."
                 return false
             } else{
                 isSubscribed = db.changeSubStatus(subStatus: isSubscribed, userid: userID!)
-                
                 db.updateSubStartDate(userid: userID!, subStatus: isSubscribed, subscriptionType: isMonthly!)
-
                 quizzesLeft = -1
                 return true
             }

@@ -6,6 +6,7 @@
 //
 import UIKit
 
+/// Defines the sign up view class and how it handles inputs
 class SignupViewController: UIViewController {
 
     var isAdmin = false
@@ -20,16 +21,13 @@ class SignupViewController: UIViewController {
         wrongPass.textColor = .red
         wrongPass.textAlignment = .center
         wrongPass.numberOfLines = 2
-
-        // Do any additional setup after loading the view.
     }
     
 
+    /**
+            When submit button pressed, input is validated and if valid is stored in the DB
+     */
     @IBAction func submitToDB(_ sender: Any) {
-        // Use this class
-        //let valid = InputValidation()
-        //submits textfield input to DB
-        // Check if you have empty strings, and if the user is already in the database by name, if ok store it into user.
         if adminCode.text! == "1234"{
             isAdmin = true
         }
