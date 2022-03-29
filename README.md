@@ -27,6 +27,12 @@ To use the application:
 4. If logged in as admin, can create questions for quizzes or access user info to block a user.
 5. Logout whenever done using application.
 
+Note: If running the application for the first time, on the view controller
+the statements:
+var i = InitialDbInserts()
+i.connect()
+i.insertInitial()
+must be uncommented in order to initialize the database for the first time. 
 **Credits**
 Collaborators:
 Matthew Parker
