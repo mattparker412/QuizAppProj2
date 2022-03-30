@@ -21,7 +21,6 @@ class User {
     var start: String
     var end: String
     // This holds 0 if the user did not claim the monthly reward and 1 if he did.
-    // The default value is 0.
     var claimedMonthlyReward: Int
     init(id: Int, name: String, password: String, subscribed: IsSubscribed, blocked: IsBlocked, startDate: String, endDate: String, claimedMonthlyReward: Int){
         

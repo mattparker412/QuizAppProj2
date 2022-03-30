@@ -11,11 +11,19 @@ import SQLite3
 class DBHelper{
     
     var db: OpaquePointer?
-    
+
+/**
+    Initializes a DBHelper instance. Calls the connect method on self.
+ */
     init(){
         self.connect()
     }
+
     
+/**
+          Prepares the database file.
+        - Returns: A String which is the database file path.
+ */
     func prepareDatabaseFile() -> String{
         let fileName : String = "quizzer.db"
         
@@ -35,7 +43,12 @@ class DBHelper{
         }
         return documentUrl.path
     }
+ 
+
     
+/**
+    Creates a database file , and the tables.
+ */
     func connect(){
     
     // Create the file path.
@@ -80,7 +93,7 @@ class DBHelper{
             print("error at create question table --> ", err)
         }
         
-        // feedback table.
+        // Feedback table.
         if sqlite3_exec(db, "create table if not exists feedback (id integer primary key autoincrement, userId integer, review text, foreign key (userId) references user (id))", nil, nil, nil) != SQLITE_OK
         {
             let err = String(cString: sqlite3_errmsg(db)!)
@@ -107,24 +120,32 @@ class DBHelper{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at create admin table --> ", err)
         }
-        
-        
-    } // End of connect().
+    }
     
+
     
     // Check user account.
+    // The checkUser() function checks if a user that has the name and password passed in the parameter list exists in the database.
+    // Returns 'true' if a user is found and 'false' if not.
+    
+/**
+    Checks the user table for a specific user.
+
+    -Parameters:
+        -userName: The name of the user.
+        -pass: The user's password.
+ 
+    -Returns: A boolean
+        - true if the user is found.
+        -false if the user is not found.
+ */
     func checkUser(userName:String, pass: String) -> Bool{
         
+        var pointer: OpaquePointer?
         var userList = [User]()
         
-        var pointer: OpaquePointer?
-        
-        // This query did not work. It gives a weird error.
-        //let query = "select * from user where name = userName and password = pass"
         let query = "select * from user"
         
-        // Apply the query.
-        // Connect the pointer to the database, and apply the query.
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at DBHelper.checkUser() --> ", err)
@@ -133,7 +154,6 @@ class DBHelper{
         
         while(sqlite3_step(pointer)) == SQLITE_ROW
         {
-            // Get the id.
             let id = Int(sqlite3_column_int(pointer,0))
             let name = String(cString:sqlite3_column_text(pointer, 1))
             let pass = String(cString: sqlite3_column_text(pointer, 2))
@@ -161,29 +181,34 @@ class DBHelper{
             }
         }
         return false
-        
-    } // End of checkUser
+    }
     
+    
+    /**
+        Checks the admin table for a specific admin.
+
+        -Parameters:
+            -userName: The name of the admin.
+            -pass: The admin's password.
+     
+        -Returns: A boolean
+            - true if the admin is found.
+            -false if the admin is not found.
+     */
     func checkAdmin(userName:String, pass: String) -> Bool{
         
+        var pointer: OpaquePointer?
         var adminList = [Admin]()
         
-        var pointer: OpaquePointer?
-        
-        // This query did not work. It gives a weird error.
-        //let query = "select * from user where name = userName and password = pass"
         let query = "select * from admin"
-        // Apply the query.
-        // Connect the pointer to the database, and apply the query.
+        
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at DBHelper.checkUser() --> ", err)
-            
         }
         
         while(sqlite3_step(pointer)) == SQLITE_ROW
         {
-            // Get the id.
             let id = Int(sqlite3_column_int(pointer,0))
             let name = String(cString:sqlite3_column_text(pointer, 1))
             let pass = String(cString: sqlite3_column_text(pointer, 2))
@@ -203,9 +228,18 @@ class DBHelper{
         }
         return false
         
-    } // End of checkUser
+    }
+ 
     
-    // Get a user Id
+    /**
+        Checks the user table for a specific user.
+
+        -Parameters:
+            -userName: The name of the user.
+     
+        -Returns: An integer
+            - the id of the user
+     */
     func getUserID(userName:String) -> Int{
         var pointer : OpaquePointer?
         var id : Int?
@@ -225,18 +259,25 @@ class DBHelper{
         return id!
     }
     
-    // Check username exists.
+    
+    
+    /**
+        Checks the user table for a specific user name.
+
+        -Parameters:
+            -userName: The name of the user.
+     
+        -Returns: A boolean
+            - true if the user name is found.
+            - false if the user name is not found.
+     */
     func checkUsernameExists(userName:String) -> Bool{
         
+        var pointer: OpaquePointer?
         var userList = [User]()
         
-        var pointer: OpaquePointer?
-        
-        // This query did not work. It gives a weird error.
-        //let query = "select * from user where name = userName and password = pass"
         let query = "select * from user"
-        // Apply the query.
-        // Connect the pointer to the database, and apply the query.
+        
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at DBHelper.checkUsernameExists() --> ", err)
@@ -245,7 +286,6 @@ class DBHelper{
         
         while(sqlite3_step(pointer)) == SQLITE_ROW
         {
-            // Get the id.
             let id = Int(sqlite3_column_int(pointer,0))
             let name = String(cString:sqlite3_column_text(pointer, 1))
             let pass = String(cString: sqlite3_column_text(pointer, 2))
@@ -265,7 +305,7 @@ class DBHelper{
             // Add the returned users to the array.
             userList.append(user)
         }
-        // Check if there is a user with the passed name and password.
+        // Check if there is a user with the passed name.
         for u in userList{
             if(u.name == userName)
             {
@@ -274,19 +314,26 @@ class DBHelper{
         }
         return false
         
-    } // End of checkUser
+    }
+    
+    
+    /**
+        Checks the admin table for a specific admin name.
 
+        -Parameters:
+            -userName: The name of the admin.
+     
+        -Returns: A boolean
+            - true if the admin name is found.
+            - false if the admin name is not found.
+     */
     func checkAdminUsernameExists(userName:String) -> Bool{
         
+        var pointer: OpaquePointer?
         var adminList = [Admin]()
         
-        var pointer: OpaquePointer?
-        
-        // This query did not work. It gives a weird error.
-        //let query = "select * from user where name = userName and password = pass"
         let query = "select * from admin"
-        // Apply the query.
-        // Connect the pointer to the database, and apply the query.
+       
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at DBHelper.checkAdminUsernameExists() --> ", err)
@@ -295,7 +342,6 @@ class DBHelper{
         
         while(sqlite3_step(pointer)) == SQLITE_ROW
         {
-            // Get the id.
             let id = Int(sqlite3_column_int(pointer,0))
             let name = String(cString:sqlite3_column_text(pointer, 1))
             let pass = String(cString: sqlite3_column_text(pointer, 2))
@@ -306,7 +352,7 @@ class DBHelper{
             // Add the returned admins to the array.
             adminList.append(admin)
         }
-        // Check if there is a user with the passed name and password.
+        // Check if there is an with the passed name.
         for u in adminList{
             if(u.name == userName)
             {
@@ -315,9 +361,18 @@ class DBHelper{
         }
         return false
         
-    }// End of checkAdminUsernameExists()
+    }
     
-    // This function stores a user feedback into the feedback table.
+    
+    /**
+        Saves a user feedback in the feedback table.
+
+        - Parameters:
+            - userName: The name of the user that left the feedback.
+            - feedBack: The feedback.
+        - Returns
+            - A Quiz object.
+     */
     func saveFeedback(userId: Int, feedBack: String){
         
         var pointer: OpaquePointer?
@@ -343,12 +398,20 @@ class DBHelper{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("error at saveFeedback step --> ",err)
         }
-    }// Emd of saveFeedback
+    }
     
-    // When the admin wants to create a quizz all he has to do is pick a technology id.
-    // On a "Create Quizz" button click, this function will be called.
-    // The function creates and returns a Quizz object, and saves the Quizz object into the database.
+
+    /**
+        Creates and saves into the quizes table a quiz.
+
+        - Parameters:
+            - technologyId: the id of the technology the quiz will represent.
+        - Returns
+            - a Quiz object.
+     */
     func createQuiz(technologyId: Int) -> Quizz {
+        
+        var pointer: OpaquePointer?
         
         // This is the list of questions in the quiz.
         var questions = [Question]()
@@ -362,49 +425,36 @@ class DBHelper{
         var rightAnswer: String?
         var quizid : Int?
         
-        
+        // Int to String.
         let techId = String(technologyId)
-        // Build query.
+    
         let query = "select * from question where technologyId = " + techId + " order by random() limit 5"
         
-        var pointer: OpaquePointer?
-        
-        // Connect the pointer to the database, and apply the query.
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at create quizz --> ", err)
             
         }
         
-        while(sqlite3_step(pointer) == SQLITE_ROW){
+        while(sqlite3_step(pointer) == SQLITE_ROW)
+        {
             
-            // Get the id.
-             id = Int(sqlite3_column_int(pointer, 0))
-            // Get the technologyId.
+            id = Int(sqlite3_column_int(pointer, 0))
             let tId = Int(sqlite3_column_int(pointer, 1))
-            // Get question.
-             question = String(cString:sqlite3_column_text(pointer, 2))
-            // Get answer1
+            question = String(cString:sqlite3_column_text(pointer, 2))
             answer1 = String(cString: sqlite3_column_text(pointer,3))
-            // Get answer2
-             answer2 = String(cString: sqlite3_column_text(pointer,4))
-            // Get answer3
+            answer2 = String(cString: sqlite3_column_text(pointer,4))
             answer3 = String(cString: sqlite3_column_text(pointer,5))
-            // Get rightAnswer
-             rightAnswer = String(cString: sqlite3_column_text(pointer,6))
-            
+            rightAnswer = String(cString: sqlite3_column_text(pointer,6))
             
             // Add the row to the question list.
             let ques = Question(id: id!, technologyId:tId, question:question!, answer1: answer1!, answer2: answer2!, answer3: answer3!, rightAnswer: rightAnswer!)
+            
             questions.append(ques)
             
         }// End of while loop.
         
-        // Display the ids in questions.
-        for q in questions{
-            print("id --> ", q.id)
-        }
-        //print(questions[0].id, "***************************")
+        
         let query2 = "select * from quizes order by id desc limit 1"
         
         if sqlite3_prepare(db, query2, -2, &pointer, nil) != SQLITE_OK{
@@ -468,9 +518,20 @@ class DBHelper{
             
         }
         return quizz
-    }// End of create quizz.
+    }
     
+    
+    /**
+        Saves a QuizesTaken object in the quizzestaken table.
+
+        - Parameters:
+            - quiz: The Quizz object that was taken by a user.
+            - userId: The id of the user that took the quizz.
+            - score: The score the user got on the quiz.
+            - currentDate: The date when the quiz was taken.
+    */
     func quizTaken(quiz : Quizz, userid : Int, score : Int, currentDate : String){
+        
         var pointer : OpaquePointer?
         
         let insertQuiz = "insert into quizzestaken (quizid, technologyid, userid, score, date) values (?,?,?,?,?)"
@@ -511,10 +572,17 @@ class DBHelper{
             print(err)
             
         }
-        
-        
     }
     
+    
+    /**
+     .Checks the quizzestaken table for a user that already took two quizzes today.
+        - Parameters:
+            - userId: The id of the user that wants to take a quizz.
+            - date: Today's date.
+        - Returns
+            - The number of quizzes already taken by the user today.
+     */
     func checkQuizzesTaken(userid : Int, date : String) -> Int{
         var pointer : OpaquePointer?
         
@@ -536,11 +604,21 @@ class DBHelper{
             print(err)
             
         }
-        
-        
         return quizzesTaken
     }
     
+    
+    /**
+        Saves a Question object in the question table.
+
+        - Parameters:
+            - techId: The id of the technology the question represents.
+            - question: The question.
+            - answer1
+            - answer2
+            - answer3
+            - rightAnswer
+     */
     func addQuestionToDB(techID: Int, question: String, answer1: String, answer2: String, answer3: String, rightAnswer: String){
         var pointer : OpaquePointer?
         
@@ -586,6 +664,13 @@ class DBHelper{
             print("There is an error at done add question step --> ", err)
         }
     }
+    
+    
+    /**
+        Returns all user names from the user table.
+
+         - Returns: An array that contains all the user names in the user table.
+     */
     func getAllUsers() -> [String] {
         
         var userList = [String]()
@@ -606,24 +691,24 @@ class DBHelper{
                 userList.append(name)
             }
             return userList
-        
-    }// End of getAllUsers()
+        }
     
     
     
-    // This function returns an array of dictionaries.
-    //Each dictionary contains the user name and user feedback of each feedback received.
+    /**
+        Returns all feedbacks from the feedback table.
+
+         - Returns: An array of dictionaries where the key of tthat contains all the user names in the user table.
+     */
     func getFeedBacks() -> [[String:String]]{
+        
+        var pointer: OpaquePointer?
         
         // This array holds the feedbacks.
         var feedBacks : [[String:String]] = []
         
-        var pointer: OpaquePointer?
-        
-        //let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
         let query = "select userId, review from feedback"
         
-        // Connect the pointer to the database, and apply the query.
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at DBHelper.getFeedBacks() --> ", err)
@@ -639,18 +724,21 @@ class DBHelper{
         }
         
        return feedBacks
-    }// End getFeedBacks
+    }
     
     
-    
+    /**
+        Returns the date when a user's subscription ends if the user is subscrided  from the user table.
+
+         - Returns: An array of dictionaries where the key of tthat contains all the user names in the user table.
+     */
     func getEnd(userId: Int)-> String?{
         
         var pointer: OpaquePointer?
         var output : String?
-        //let query = "select user.name, feedback.review from user inner join feedback on user.id = feedback.userId"
+    
         let query = "select endSubDate from user where id = " + String(userId)
         
-        // Connect the pointer to the database, and apply the query.
         if sqlite3_prepare(db, query, -2, &pointer, nil) != SQLITE_OK{
             let err = String(cString: sqlite3_errmsg(db)!)
             print("There is an error at DBHelper.getFeedBacks() --> ", err)
@@ -663,6 +751,8 @@ class DBHelper{
         
        return output!
     }
+    
+    
     
     func storeRanking(userName : String, userID : Int, techID : Int, rankScore : Int){
         var pointer : OpaquePointer?
@@ -681,15 +771,11 @@ class DBHelper{
         }
         
         while(sqlite3_step(pointer) == SQLITE_ROW){
-            
-            // Get the id.
             oldRank = Int(sqlite3_column_int(pointer, 3))
             newRank = rankScore + oldRank
         }
         
-       
-        
-        if newRank != rankScore{
+       if newRank != rankScore{
             let query2 = "update ranking set rankingValue = " + String(newRank) + " where userID = " + struserID + " and technologyID = " + strTechID
             
             if sqlite3_prepare(db, query2, -1, &pointer, nil) != SQLITE_OK{
@@ -757,6 +843,8 @@ class DBHelper{
 
         return topThree
     }
+    
+    
     func getTopRanking(techID : Int) -> [Ranking]{
         var pointer : OpaquePointer?
         var rankingArray = [Ranking]()
@@ -781,6 +869,8 @@ class DBHelper{
 
         return rankingArray
     }
+    
+    
     func getUserName(userId:Int) -> String{
         var pointer : OpaquePointer?
         var name : String?

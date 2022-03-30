@@ -10,7 +10,6 @@ import UIKit
 import FBSDKLoginKit
 import SQLite3
 
-var i = InitialDbInserts()
 
 var db = DBHelper()
 var userName : String?
@@ -33,8 +32,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //i.connect()
-        i.insertInitial()
+        
         dateFormatter.dateFormat = "MM/dd/yyyy"
         print(dateFormatter.string(from: date))
         
@@ -44,7 +42,7 @@ class ViewController: UIViewController {
         wrongPass.textAlignment = .center
         wrongPass.numberOfLines = 2
         
-        var f1 = db.prepareDatabaseFile()
+        let f1 = db.prepareDatabaseFile()
                 if sqlite3_open(f1, &db.db) != SQLITE_OK{
                     print("can't open database")
                 }
@@ -57,11 +55,8 @@ class ViewController: UIViewController {
         if let token = AccessToken.current,
                 !token.isExpired {
                 // User is logged in, do work such as go to next view controller.
-            
             }
-        else{
-            
-        }
+        
     }
     
     let validation = InputValidation()
