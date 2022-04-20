@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
-    @IBOutlet weak var error: UILabel!
+    //@IBOutlet weak var error: UILabel!
     let wrongPass = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
     
     
@@ -39,9 +39,8 @@ class ViewController: UIViewController {
        // i.connect()
         //i.insertInitial()
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        print(dateFormatter.string(from: date))
         
-        
+        //Setup error text label
         wrongPass.center = CGPoint(x: view.center.x, y: view.center.y + 200)
         wrongPass.textColor = .red
         wrongPass.textAlignment = .center
@@ -52,6 +51,8 @@ class ViewController: UIViewController {
                 }
                
         pass.isSecureTextEntry = true
+        
+        //Create FB Login Button
         let loginButton = FBLoginButton()
         loginButton.permissions = ["public_profile", "email"]
         loginButton.center = CGPoint(x: view.center.x, y: 600)
@@ -124,22 +125,17 @@ class ViewController: UIViewController {
     
     
     /**
-            Navigates to the continue as guest or subscribe view if the user is not subscribed.
+            Navigates to the continue as guest or subscribe view 
      */
     func navigateToUserController(){
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        if quizzesLeft != 0{
+
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UIViewController
             self.view?.window?.rootViewController = nextViewController
             self.modalPresentationStyle = .fullScreen
             self.present(nextViewController, animated:false, completion: nil)
-        }
-        else{
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "userPage") as! UIViewController
-            self.view?.window?.rootViewController = nextViewController
-            self.modalPresentationStyle = .fullScreen
-            self.present(nextViewController, animated:false, completion: nil)
-        }
+        
+        
     
     }
     

@@ -8,13 +8,11 @@
 import UIKit
 import SideMenu
 
-
+//Class showing the three technology options as cells to take a quiz
 class QuizCollectionViewController: UICollectionViewController, MenuControllerDelegate {
     
     let techNames = ["Swift", "Java", "Android", "Coming Soon"]
     let techImgs = ["swiftlogo", "javalogo", "androidlogo"]
-    var userID : Int? = Int.random(in: 1...1000)
-    var db = DBHelper()
     
 
     private var sideMenu: SideMenuNavigationController?
@@ -35,31 +33,30 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
         })
     }
     
+    //Setup side menu
     override func viewDidLoad() {
         super.viewDidLoad()
         let menu = MenuController(with: views)
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
-        db.connect()
-
     }
 
   
 
     // MARK: UICollectionViewDataSource
 
+    //Only one section in the collection view
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     
-
+    //Three items for the three technologies
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return 3
     }
 
+    //Customize the cell for each item using array of tech names and images
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mcell", for: indexPath) as! QuizCollectionViewCell
         cell.mlb1.text = techNames[indexPath.row]
@@ -69,32 +66,38 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
         return cell
     }
     
+    //When selecting an item in the collection, perform the quiz segue
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "quizSegue", sender: indexPath)
     }
     
+    //Do some setup for the segue to next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "quizSegue"{
             if let locationIndex = sender as? NSIndexPath{
+                
                 let quizVC = segue.destination as? QuizViewController
+                //Select a random integer to randomize which question is asked first
                 quizVC?.pickQuestion = Int.random(in: 0...4)
                 
                 
                 switch locationIndex.row{
+                    
+                    //If chose Swift technology, create quiz in that tech
                 case 0:
-                    
                     quizVC?.quizChoice = db.createQuiz(technologyId: 1)
-                    
                     quizVC?.techChoice = 1
-                    //quizVC?.view.backgroundColor = UIColor.red
+                    
+                    //If chose Java technology
                 case 1:
                     quizVC?.quizChoice = db.createQuiz(technologyId: 2)
                     quizVC?.techChoice = 2
-                    //quizVC?.view.backgroundColor = UIColor.blue
+                    
+                    //If chose Android technology
                 case 2:
                     quizVC?.quizChoice = db.createQuiz(technologyId: 3)
                     quizVC?.techChoice = 3
-                   // quizVC?.view.backgroundColor = UIColor.green
                 default:
                     print("error")
                     
