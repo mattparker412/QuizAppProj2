@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OlV-cZ-V27">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OlV-cZ-V27">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -412,7 +412,7 @@
             <objects>
                 <viewController storyboardIdentifier="rankingPage" id="fhw-h3-ITk" customClass="RankingViewController" customModule="QuizAppProj2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Cw-zd-Fqm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E8q-jC-abe">
@@ -781,7 +781,7 @@
                         <outlet property="goToQuizzes" destination="aMJ-AT-BUc" id="dc3-cj-01p"/>
                         <outlet property="goToRanking" destination="4jo-sd-WC1" id="8AD-eK-ZuY"/>
                         <outlet property="scoreLabel" destination="d52-Mu-CB9" id="KXt-81-jKM"/>
-                        <segue destination="fhw-h3-ITk" kind="show" identifier="goToRanking" id="9oP-Xj-RYL"/>
+                        <segue destination="fhw-h3-ITk" kind="presentation" identifier="goToRanking" modalPresentationStyle="fullScreen" id="9oP-Xj-RYL"/>
                         <segue destination="cA4-37-W0F" kind="presentation" identifier="goToQuiz" modalPresentationStyle="fullScreen" id="fzk-Zo-bgm"/>
                         <segue destination="Pl3-mA-f7O" kind="show" identifier="goToFeedback" id="UzS-z2-f0Q"/>
                     </connections>
@@ -1090,7 +1090,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Quizzes"/>
                                 <connections>
-                                    <segue destination="Y9N-00-2yD" kind="show" id="51s-Sk-5vO"/>
+                                    <segue destination="cA4-37-W0F" kind="presentation" modalPresentationStyle="fullScreen" id="7mT-Uu-PRi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL1-Ge-4ju">
@@ -1202,7 +1202,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Hw2-yY-uRi"/>
-        <segue reference="51s-Sk-5vO"/>
+        <segue reference="7mT-Uu-PRi"/>
         <segue reference="Pfv-X0-oeW"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

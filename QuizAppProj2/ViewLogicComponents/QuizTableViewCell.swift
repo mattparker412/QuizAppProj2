@@ -7,6 +7,7 @@
 
 import UIKit
 
+///Cells that make up the quiz questions and answers
 class QuizTableViewCell: UITableViewCell {
 
     

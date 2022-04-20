@@ -8,7 +8,7 @@
 import UIKit
 import SideMenu
 
-
+/// A collection of cells that allow technology choice for the quizzes
 class QuizCollectionViewController: UICollectionViewController, MenuControllerDelegate {
     
     let techNames = ["Swift", "Java", "Android", "Coming Soon"]
@@ -40,8 +40,6 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
         let menu = MenuController(with: views)
         menu.delegate = self
         sideMenu = menuCaller.displaySideMenu(sideMenu: sideMenu, menu: menu, view: view)
-        db.connect()
-
     }
 
   
@@ -60,6 +58,9 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
         return 3
     }
 
+    /**
+                Sets the text and background image for the cell in the collection view
+     */
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mcell", for: indexPath) as! QuizCollectionViewCell
         cell.mlb1.text = techNames[indexPath.row]
@@ -69,10 +70,16 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
         return cell
     }
     
+    /**
+                When a cell is selected perform the segue to the quiz screen
+     */
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "quizSegue", sender: indexPath)
     }
     
+    /**
+                Function that prepares the quiz screen when segued from selection screen
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "quizSegue"{
             if let locationIndex = sender as? NSIndexPath{
@@ -82,19 +89,15 @@ class QuizCollectionViewController: UICollectionViewController, MenuControllerDe
                 
                 switch locationIndex.row{
                 case 0:
-                    
                     quizVC?.quizChoice = db.createQuiz(technologyId: 1)
-                    
                     quizVC?.techChoice = 1
-                    //quizVC?.view.backgroundColor = UIColor.red
                 case 1:
                     quizVC?.quizChoice = db.createQuiz(technologyId: 2)
                     quizVC?.techChoice = 2
-                    //quizVC?.view.backgroundColor = UIColor.blue
                 case 2:
                     quizVC?.quizChoice = db.createQuiz(technologyId: 3)
                     quizVC?.techChoice = 3
-                   // quizVC?.view.backgroundColor = UIColor.green
+                   
                 default:
                     print("error")
                     

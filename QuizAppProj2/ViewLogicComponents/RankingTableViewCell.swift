@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Cells that make up the ranking list
 class RankingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var rightLabel: UILabel!

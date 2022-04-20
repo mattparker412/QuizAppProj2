@@ -7,6 +7,7 @@
 
 import UIKit
 import SideMenu
+/// Displays a table view of question and answer options
 class QuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var quizTimer: UILabel!
@@ -31,10 +32,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             return 3
         }
     }
-    
+    /**
+            Picks answer text and places it into the cells in section 1, places text of question in section 0 of the table view
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "quizcell", for: indexPath) as! QuizTableViewCell
-        print(remainingQuestions)
         
         if indexPath.section == 1{
             cell.answerLabel.font = UIFont.systemFont(ofSize: 16)
@@ -61,8 +63,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             default:
                 print("impossible error")
-                
-                
             }
         }
         else if indexPath.section == 0{
@@ -73,9 +73,12 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(pickQuestion!)
             cell.answerLabel.text = quizChoice?.questions[remainingQuestions[pickQuestion!]].question
         }
-        
         return cell
     }
+    
+    /**
+            Sets the height for question row as double the height of the answers for visibility
+     */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section{
         case 0:
@@ -87,10 +90,17 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    /**
+     Sets two sections, one for question and the other for the answer options
+     */
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
+    /**
+        Sets the title of the question section with which question number the user is on
+     */
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section{
         case 0:
@@ -102,6 +112,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    /**
+     Sets the height of the headers as 20
+     */
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section{
         case 0:
@@ -113,6 +126,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    /**
+     When a user selects an answer option, sets the answerSelection variable as that row number plus 1 to keep track of their answer
+     */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         answerSelection = indexPath.row + 1
     }
@@ -124,10 +140,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
     var clock = Clock()
     var menu: SideMenuNavigationController?
     let createMenu = CallMenuList()
-    
-    
     var rankscore : Int?
     
+    /**
+        On View did load sets the clock on a 30 minutes timer
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
@@ -135,6 +152,11 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
+    /**
+        When the next button is pressed either reloads data to the next question and stores answer for the last, or submits quiz
+        Calculates score when all five questions answered, stores ranking in ranking database table
+        Stores the quiz taken in the quizzestaken table with the date to keep track of daily quizzes
+     */
     @IBAction func pressNext(_ sender: Any) {
         //store answer
         let calculator = CalculateRanking()
@@ -145,9 +167,7 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             rankscore = calculator.calculateRank(timeLeft: 1800 - clock.leftOver, correctAnswers: totalCorrect)
             db.storeRanking(userName: userName!, userID: userID!, techID: techChoice!, rankScore: rankscore ?? 0)
-            print(userName!, "Finished in", 1800-clock.leftOver,"seconds, with rank score of ",rankscore)
             
-            print("Total correct answers:",totalCorrect)
             db.quizTaken(quiz: quizChoice!, userid: userID!, score: rankscore ?? 0, currentDate: dateFormatter.string(from: date))
             if isSubscribed == false{
                 quizzesLeft! -= 1
@@ -156,7 +176,6 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.performSegue(withIdentifier: "quizSubmitted", sender: self)
         } else{
             if answerSelection == nil{
-                print("please select an answer")
                 errorLabel.text = "An answer must be selected"
                 return
             }
@@ -199,6 +218,9 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
+    /**
+     Gives the next view controller information about the score of the quiz to display when segue is performed
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "quizSubmitted"{
             print("entered prepare for segue")
@@ -206,7 +228,4 @@ class QuizViewController: UIViewController, UITableViewDelegate, UITableViewData
             nextVC?.score = rankscore!
         }
     }
-    
-    
-
 }

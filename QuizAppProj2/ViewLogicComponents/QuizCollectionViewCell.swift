@@ -9,6 +9,7 @@
 
 import UIKit
 
+///Cells that make up the quiz selection page
 class QuizCollectionViewCell: UICollectionViewCell {
     
    
@@ -21,21 +22,11 @@ class QuizCollectionViewCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
         layer.cornerRadius = 5.0
         layer.masksToBounds = false
-       // layer.frame.
+      
         
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.black.cgColor
         contentView.layer.backgroundColor = UIColor.white.cgColor
         backgroundColor = UIColor.blue
-}
-
-    @IBAction func buttonPressed(_ sender: Any) {
     }
-    
-
-    
-    
-
-    
-    
 }
