@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var user: UITextField!
     @IBOutlet weak var pass: UITextField!
-    //@IBOutlet weak var error: UILabel!
+    @IBOutlet weak var error: UILabel!
     let wrongPass = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
     
     
